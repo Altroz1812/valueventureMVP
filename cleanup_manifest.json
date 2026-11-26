@@ -1,0 +1,1182 @@
+{
+  "removed": [
+    {
+      "path": ".output/nitro.json",
+      "size_bytes": 471,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/package-lock.json",
+      "size_bytes": 26,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/package.json",
+      "size_bytes": 53,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/ValuationPro_User_Import_Template.xlsx",
+      "size_bytes": 6422,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/_headers",
+      "size_bytes": 62,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/QueryClientProvider-DKgzvSnG.js",
+      "size_bytes": 380,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/admin.bank-masters-Bzn7MJ0X.js",
+      "size_bytes": 10870,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/admin.branches-BDdSh8Aw.js",
+      "size_bytes": 11218,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/admin.data-integrity-DTojdgiA.js",
+      "size_bytes": 4774,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/admin.roles-permissions-hDEsZte3.js",
+      "size_bytes": 32394,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/admin.settings.branches._id-CRwhg4GL.js",
+      "size_bytes": 4688,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/admin.users-jyTqsQqm.js",
+      "size_bytes": 21336,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/analytics-zF538D61.js",
+      "size_bytes": 12150,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/app-context-CRxTYnQo.js",
+      "size_bytes": 281364,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/arrow-left-GhOKNtuo.js",
+      "size_bytes": 154,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/billing-mis-RY1SUrHs.js",
+      "size_bytes": 21130,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/browser-Dr-IQ98d.js",
+      "size_bytes": 66528,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/calendar-clock-BPtsZ3wS.js",
+      "size_bytes": 367,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/card-qEAh_xPs.js",
+      "size_bytes": 163776,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/cases-Cc6PKvz6.js",
+      "size_bytes": 13321,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/cases_._caseId-BItIzHYM.js",
+      "size_bytes": 968,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/cases_._caseId-DFLFzHTB.js",
+      "size_bytes": 20306,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/checkbox-D17xXwfQ.js",
+      "size_bytes": 4524,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/circle-check-B13vz7Qy.js",
+      "size_bytes": 167,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/data-uKEMQyRo.js",
+      "size_bytes": 8569,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/dialog-C1DPx2xk.js",
+      "size_bytes": 7114,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/download-CByVTswD.js",
+      "size_bytes": 221,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/field-inspections._visitId-BiLCMTw9.js",
+      "size_bytes": 899,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/field-inspections._visitId-CwVA-WYX.js",
+      "size_bytes": 12615,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/field-operations-Cs0dq250.js",
+      "size_bytes": 24886,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/index-CSgPIFiT.js",
+      "size_bytes": 340020,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/input-Bsc1tuXo.js",
+      "size_bytes": 620,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/label-B0tZ1o0j.js",
+      "size_bytes": 652,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/lazyRouteComponent-BJ7Ntqmj.js",
+      "size_bytes": 3814,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/lock-Dc5lO58W.js",
+      "size_bytes": 195,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/map-pin-wkMPK1G4.js",
+      "size_bytes": 248,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/mutation-i-9CW-pE.js",
+      "size_bytes": 3480,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/notifications-CQLDTHRw.js",
+      "size_bytes": 8159,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/onboarding-soNCmbbW.js",
+      "size_bytes": 18493,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/ops-ui-Dx40cjFx.js",
+      "size_bytes": 2282,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/preload-helper-Czpn1I53.js",
+      "size_bytes": 1196,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/qc-checking-CxZe-8ax.js",
+      "size_bytes": 15185,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/query-DThdbwYv.js",
+      "size_bytes": 14831,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/refresh-cw-DySOxc9R.js",
+      "size_bytes": 310,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/reports-DwLs-Rgb.js",
+      "size_bytes": 15747,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/rotate-ccw-BqCeC83Y.js",
+      "size_bytes": 189,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/routes-Cu4f8mBl.js",
+      "size_bytes": 10752,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/save-CbtVUSqu.js",
+      "size_bytes": 316,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/settings-2-DP2JTMVH.js",
+      "size_bytes": 241,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/styles-CbLQ4aIW.css",
+      "size_bytes": 85757,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/switch-f6kIJKkz.js",
+      "size_bytes": 4331,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/table-C838BbPt.js",
+      "size_bytes": 1643,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/tabs-CjsZwOwJ.js",
+      "size_bytes": 3507,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/textarea-C9v2kkL_.js",
+      "size_bytes": 518,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/triangle-alert-HTz5Ejta.js",
+      "size_bytes": 254,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/upload-BWYjoT-a.js",
+      "size_bytes": 219,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/useNavigate-BgfucW8V.js",
+      "size_bytes": 191,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/useParams-DV3ROwFn.js",
+      "size_bytes": 261,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/useQuery-pIpmQaqu.js",
+      "size_bytes": 8019,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/user-plus-CE7RYIAG.js",
+      "size_bytes": 299,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/vp-analytics-0VpRvqc_.js",
+      "size_bytes": 1430,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/vp-cases-DuXYBiXT.js",
+      "size_bytes": 3911,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/vp-field-B2A2sOwZ.js",
+      "size_bytes": 4074,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/vp-inspection-template-Dll2Fc2j.js",
+      "size_bytes": 5692,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/vp-reports-wnGWwcUD.js",
+      "size_bytes": 4440,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/assets/vp-voice-DXlo_Umy.js",
+      "size_bytes": 6964,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/favicon.ico",
+      "size_bytes": 20373,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/public/robots.txt",
+      "size_bytes": 160,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_chunks/ssr-renderer.mjs",
+      "size_bytes": 602,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@floating-ui/core+[...].mjs",
+      "size_bytes": 25557,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@floating-ui/dom+[...].mjs",
+      "size_bytes": 25383,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@floating-ui/react-dom+[...].mjs",
+      "size_bytes": 32687,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@radix-ui/react-avatar+[...].mjs",
+      "size_bytes": 19879,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@radix-ui/react-checkbox+[...].mjs",
+      "size_bytes": 20118,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@radix-ui/react-dialog+[...].mjs",
+      "size_bytes": 67758,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@radix-ui/react-dropdown-menu+[...].mjs",
+      "size_bytes": 58741,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@radix-ui/react-select+[...].mjs",
+      "size_bytes": 48303,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@supabase/storage-js+[...].mjs",
+      "size_bytes": 127776,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@tanstack/react-router+[...].mjs",
+      "size_bytes": 704874,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/@tanstack/router-core+[...].mjs",
+      "size_bytes": 105138,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/class-variance-authority+clsx.mjs",
+      "size_bytes": 3173,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/fflate.mjs",
+      "size_bytes": 13677,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/h3+rou3+srvx.mjs",
+      "size_bytes": 17327,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/h3-v2+rou3+srvx.mjs",
+      "size_bytes": 9878,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/hookable.mjs",
+      "size_bytes": 1173,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/lucide-react.mjs",
+      "size_bytes": 39053,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__number.mjs",
+      "size_bytes": 329,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__primitive.mjs",
+      "size_bytes": 1833,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-collection.mjs",
+      "size_bytes": 20149,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-direction.mjs",
+      "size_bytes": 814,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-label.mjs",
+      "size_bytes": 1003,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-progress.mjs",
+      "size_bytes": 4072,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-scroll-area.mjs",
+      "size_bytes": 31810,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-switch.mjs",
+      "size_bytes": 7910,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-tabs.mjs",
+      "size_bytes": 6304,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/radix-ui__react-tooltip.mjs",
+      "size_bytes": 19551,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/read-excel-file+worker-f.mjs",
+      "size_bytes": 151937,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/seroval.mjs",
+      "size_bytes": 16042,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/sonner.mjs",
+      "size_bytes": 53587,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/supabase__auth-js.mjs",
+      "size_bytes": 321603,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/supabase__functions-js.mjs",
+      "size_bytes": 12549,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/supabase__phoenix.mjs",
+      "size_bytes": 50542,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/supabase__postgrest-js.mjs",
+      "size_bytes": 112056,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/supabase__realtime-js+unenv.mjs",
+      "size_bytes": 83624,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/supabase__supabase-js.mjs",
+      "size_bytes": 38564,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/tailwind-merge.mjs",
+      "size_bytes": 88926,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/tanstack__history.mjs",
+      "size_bytes": 12505,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/tanstack__query-core.mjs",
+      "size_bytes": 143421,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_libs/tanstack__react-query.mjs",
+      "size_bytes": 18098,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_runtime.mjs",
+      "size_bytes": 1445,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/admin.bank-masters-DN085bSx.mjs",
+      "size_bytes": 20618,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/admin.branches-NSyCtaSw.mjs",
+      "size_bytes": 21716,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/admin.data-integrity-B6gMK7Jz.mjs",
+      "size_bytes": 8449,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/admin.roles-permissions-bIU9GwmE.mjs",
+      "size_bytes": 18633,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/admin.settings.branches._id-BVYPxWiR.mjs",
+      "size_bytes": 8832,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/admin.users-DGhIXyD9.mjs",
+      "size_bytes": 37633,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/analytics-BQ9x7Z-t.mjs",
+      "size_bytes": 23380,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/app-context-CxLAHbcP.mjs",
+      "size_bytes": 11235,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/billing-mis-DfOdCE53.mjs",
+      "size_bytes": 39395,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/card-BPaDfZFp.mjs",
+      "size_bytes": 32057,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/cases-DhjzfKUs.mjs",
+      "size_bytes": 26804,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/cases_._caseId-DAowSCX5.mjs",
+      "size_bytes": 37332,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/cases_._caseId-voXyO7_R.mjs",
+      "size_bytes": 576,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/checkbox-CdtY2pe7.mjs",
+      "size_bytes": 1403,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/createCsrfMiddleware-B2To0gPJ.mjs",
+      "size_bytes": 3110,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/data-Ba3-ex4t.mjs",
+      "size_bytes": 10977,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/dialog-C8UpMu2C.mjs",
+      "size_bytes": 3772,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/empty-plugin-adapters-D9UWiqvJ.mjs",
+      "size_bytes": 230,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/field-inspections._visitId-o7QMKbHN.mjs",
+      "size_bytes": 540,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/field-inspections._visitId-p4_nzdVS.mjs",
+      "size_bytes": 21810,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/field-operations-BkJsGbcV.mjs",
+      "size_bytes": 44795,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/input-Dwa0T_sg.mjs",
+      "size_bytes": 1075,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/label-awaA2Kvm.mjs",
+      "size_bytes": 967,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/notifications-DtYCLVdU.mjs",
+      "size_bytes": 10205,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/onboarding-Dco-a8Nl.mjs",
+      "size_bytes": 36436,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/ops-ui-C1Hn0GLk.mjs",
+      "size_bytes": 3566,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/qc-checking-CX3w3Nwy.mjs",
+      "size_bytes": 28719,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/reports-CMIE3rLE.mjs",
+      "size_bytes": 30088,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/router-Bo-zNw5g.mjs",
+      "size_bytes": 30074,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/routes-CxduefzD.mjs",
+      "size_bytes": 18623,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/server-DfNUOS3q.mjs",
+      "size_bytes": 64839,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/ssr.mjs",
+      "size_bytes": 4553,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/start-RKGGYzjZ.mjs",
+      "size_bytes": 1536,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/switch-C6ZIrSaT.mjs",
+      "size_bytes": 1431,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/table-C2F5KMi-.mjs",
+      "size_bytes": 2871,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/tabs-Doj4YYf9.mjs",
+      "size_bytes": 2024,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/textarea-DI14_r1t.mjs",
+      "size_bytes": 985,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/vp-analytics-gFfeTWfA.mjs",
+      "size_bytes": 2356,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/vp-cases-CMVsHPzc.mjs",
+      "size_bytes": 6189,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/vp-field-Cyjrjk88.mjs",
+      "size_bytes": 5916,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/vp-inspection-template-ynf3msTx.mjs",
+      "size_bytes": 7204,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/vp-reports-DIVIM8_a.mjs",
+      "size_bytes": 6414,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_ssr/vp-voice-Bb4BnUkH.mjs",
+      "size_bytes": 10886,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/_tanstack-start-manifest_v-J0Pyl27P.mjs",
+      "size_bytes": 9945,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/index.mjs",
+      "size_bytes": 24086,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".output/server/wrangler.json",
+      "size_bytes": 360,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".wrangler/deploy/config.json",
+      "size_bytes": 55,
+      "reason": "Generated build / local deployment output; regenerate with npm run build",
+      "kind": "generated"
+    },
+    {
+      "path": ".env",
+      "size_bytes": 361,
+      "reason": "Local environment credentials/settings; exclude even when gitignored",
+      "kind": "secret"
+    },
+    {
+      "path": "bun.lock",
+      "size_bytes": 170005,
+      "reason": "Alternative Bun package-manager file; package-lock.json retained for npm",
+      "kind": "tooling"
+    },
+    {
+      "path": "bunfig.toml",
+      "size_bytes": 407,
+      "reason": "Alternative Bun package-manager file; package-lock.json retained for npm",
+      "kind": "tooling"
+    },
+    {
+      "path": "supabase/config.toml",
+      "size_bytes": 35,
+      "reason": "Locally linked Supabase project reference; retain config.example.toml, link project explicitly",
+      "kind": "local-config"
+    },
+    {
+      "path": "tools/add-notification-card.ps1",
+      "size_bytes": 1492,
+      "reason": "Historical one-time installer/repair; live app and audits do not import this script",
+      "kind": "obsolete-tool"
+    },
+    {
+      "path": "tools/apply-case-links.mjs",
+      "size_bytes": 2060,
+      "reason": "Historical one-time installer/repair; live app and audits do not import this script",
+      "kind": "obsolete-tool"
+    },
+    {
+      "path": "tools/apply-dashboard.ps1",
+      "size_bytes": 4998,
+      "reason": "Historical one-time installer/repair; live app and audits do not import this script",
+      "kind": "obsolete-tool"
+    },
+    {
+      "path": "tools/apply-ui-patches.ps1",
+      "size_bytes": 3288,
+      "reason": "Historical one-time installer/repair; live app and audits do not import this script",
+      "kind": "obsolete-tool"
+    },
+    {
+      "path": "tools/fix-ts-strict.mjs",
+      "size_bytes": 4282,
+      "reason": "Historical one-time installer/repair; live app and audits do not import this script",
+      "kind": "obsolete-tool"
+    },
+    {
+      "path": "tools/install-diagnostic-route.mjs",
+      "size_bytes": 1591,
+      "reason": "Historical one-time installer/repair; live app and audits do not import this script",
+      "kind": "obsolete-tool"
+    },
+    {
+      "path": "supabase/functions/vp-invite-user/index.ts",
+      "size_bytes": 4297,
+      "reason": "Legacy unreferenced Edge Function; current UI calls vp-provision-users (does not undeploy remote function)",
+      "kind": "unused-function"
+    },
+    {
+      "path": "src/components/ui/accordion.tsx",
+      "size_bytes": 2015,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/alert-dialog.tsx",
+      "size_bytes": 4183,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/alert.tsx",
+      "size_bytes": 1589,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/aspect-ratio.tsx",
+      "size_bytes": 143,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/breadcrumb.tsx",
+      "size_bytes": 2749,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/calendar.tsx",
+      "size_bytes": 7226,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/carousel.tsx",
+      "size_bytes": 6200,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/chart.tsx",
+      "size_bytes": 10570,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/collapsible.tsx",
+      "size_bytes": 335,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/command.tsx",
+      "size_bytes": 4876,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/context-menu.tsx",
+      "size_bytes": 7360,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/drawer.tsx",
+      "size_bytes": 2973,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/form.tsx",
+      "size_bytes": 4201,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/hover-card.tsx",
+      "size_bytes": 1246,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/input-otp.tsx",
+      "size_bytes": 2232,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/menubar.tsx",
+      "size_bytes": 8515,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/navigation-menu.tsx",
+      "size_bytes": 5152,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/pagination.tsx",
+      "size_bytes": 2739,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/popover.tsx",
+      "size_bytes": 1352,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/resizable.tsx",
+      "size_bytes": 1552,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/separator.tsx",
+      "size_bytes": 723,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/sheet.tsx",
+      "size_bytes": 4248,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/sidebar.tsx",
+      "size_bytes": 23975,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/skeleton.tsx",
+      "size_bytes": 239,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/slider.tsx",
+      "size_bytes": 1025,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/toggle-group.tsx",
+      "size_bytes": 1752,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/components/ui/toggle.tsx",
+      "size_bytes": 1534,
+      "reason": "No static import from a live route, reachable component or test; optional generic shadcn component",
+      "kind": "unused-ui"
+    },
+    {
+      "path": "src/hooks/use-mobile.tsx",
+      "size_bytes": 576,
+      "reason": "Only imported by removed unused sidebar UI component",
+      "kind": "unused-ui"
+    }
+  ],
+  "ops_bytes_before": 6162,
+  "ops_bytes_after": 1407
+}

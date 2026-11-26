@@ -1,0 +1,11 @@
+import {useQuery} from '@tanstack/react-query';
+import {useApp} from '@/lib/app-context';
+import {vpDb} from '@/lib/vp-db';
+import {collectPages} from '@/lib/vp-query';
+export type Method='cost'|'comparison'|'income';
+export type Analysis={version_no:number;link_version:number;effective_date:string;method:Method;formula_version:string;inputs:Record<string,unknown>;results:Record<string,unknown>;created_by:string;created_at:string;evidence_snapshots:unknown;property_snapshot:unknown;inspection_snapshot:unknown};
+export type Review={version_no:number;decision:'Reviewed'|'Returned';reason:string;reviewed_by:string;reviewed_at:string};
+export function useP19History(num:number,enabled:boolean){const {tenant}=useApp();return useQuery({queryKey:['vp-p19-history',tenant.id,num],enabled,queryFn:()=>collectPages<Analysis>(async(start,end)=>{const {data,error}=await vpDb.from('vp_p19_analyses').select('version_no,link_version,effective_date,method,formula_version,inputs,results,created_by::text,created_at,evidence_snapshots,property_snapshot,inspection_snapshot').eq('org_id',tenant.id).eq('num',num).order('version_no',{ascending:false}).range(start,end);return {data:data as Analysis[]|null,error};})});}
+export function useP19Reviews(num:number,enabled:boolean){const {tenant}=useApp();return useQuery({queryKey:['vp-p19-reviews',tenant.id,num],enabled,queryFn:()=>collectPages<Review>(async(start,end)=>{const {data,error}=await vpDb.from('vp_p19_reviews').select('version_no,decision,reason,reviewed_by::text,reviewed_at').eq('org_id',tenant.id).eq('num',num).order('version_no',{ascending:false}).range(start,end);return {data:data as Review[]|null,error};})});}
+export async function saveP19(num:number,link:number,date:string,method:Method,input:Record<string,unknown>,expected:number){const {data,error}=await vpDb.rpc('vp_p19_save',{p_num:num,p_link:link,p_date:date,p_method:method,p_input:input,p_expected:expected});if(error)throw error;return Number(data);}
+export async function reviewP19(num:number,version:number,decision:Review['decision'],reason:string){const {error}=await vpDb.rpc('vp_p19_review',{p_num:num,p_version:version,p_decision:decision,p_reason:reason});if(error)throw error;}

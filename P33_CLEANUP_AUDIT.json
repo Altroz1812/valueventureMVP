@@ -1,0 +1,3031 @@
+﻿{
+    "inventory":  [
+                      {
+                          "path":  ".gitignore",
+                          "bytes":  515,
+                          "sha256":  "EAC70C62EE4434D3E213A7C67EC3C462A87E4D8E0D90EAA5B7E3C3F3027B75AF"
+                      },
+                      {
+                          "path":  ".prettierignore",
+                          "bytes":  92,
+                          "sha256":  "52C7C767FF0615EEC4EB64CC71265877F7F423EB597D665B5E439F337C661A5A"
+                      },
+                      {
+                          "path":  ".prettierrc",
+                          "bytes":  90,
+                          "sha256":  "1ED88D3B99ECED8DC3B6F58F26645466DD1CEACA6C5A9B818531C941AC28E55B"
+                      },
+                      {
+                          "path":  "AGENTS.md",
+                          "bytes":  480,
+                          "sha256":  "4E96B38F10A0BBF0F105F51E6D2C39A889BAEC12B3386AE3FACEC4F076714D60"
+                      },
+                      {
+                          "path":  "app-shell-before-p25.backup.txt",
+                          "bytes":  16563,
+                          "sha256":  "5146A22DAC1AEA319351F22425D9C69529B6B483E8A3FE851151F65358D88988"
+                      },
+                      {
+                          "path":  "app-shell.p24.backup.txt",
+                          "bytes":  16563,
+                          "sha256":  "5146A22DAC1AEA319351F22425D9C69529B6B483E8A3FE851151F65358D88988"
+                      },
+                      {
+                          "path":  "bun.lock",
+                          "bytes":  170005,
+                          "sha256":  "C2BE647A288DB665BC010BBC40BB821CFA28CE56FB97BECAF846A484F6F8CD2D"
+                      },
+                      {
+                          "path":  "bunfig.toml",
+                          "bytes":  407,
+                          "sha256":  "1ED9B1FC5131FD50C2E0975635C3E98A8362362103F4061910B56EAC510B748E"
+                      },
+                      {
+                          "path":  "cleanup_manifest.json",
+                          "bytes":  43187,
+                          "sha256":  "E3F30E68E8433E19F894BBC6936063B99003C522642B0C1AD7A4BF96B0AFC930"
+                      },
+                      {
+                          "path":  "CLEANUP_REPORT.md",
+                          "bytes":  4963,
+                          "sha256":  "8DC65FA777BBD40A692183C8AF5DF14BE023A9C018FDB75611856F1835BB995B"
+                      },
+                      {
+                          "path":  "components.json",
+                          "bytes":  443,
+                          "sha256":  "37C484818824D2521EEE3367E7AA2C2ABBD19635D8103D19734B6E24603D0292"
+                      },
+                      {
+                          "path":  "eslint.config.js",
+                          "bytes":  1250,
+                          "sha256":  "3266245A1FF610A0B37DBB8B8C77B93A125E0D8758B9838CFD04B2E0A1397D56"
+                      },
+                      {
+                          "path":  "P0_ACCEPTANCE.md",
+                          "bytes":  3004,
+                          "sha256":  "5F4FE954EE47C5396A148274BC4E71043ADA0C1135D1FD8434A000B9D5C9B414"
+                      },
+                      {
+                          "path":  "P0_CHANGELOG.md",
+                          "bytes":  524,
+                          "sha256":  "629D23057E3C3471847263D62C7767C88F239A5B2E341793296206345F340A9C"
+                      },
+                      {
+                          "path":  "P0_DECISIONS.md",
+                          "bytes":  2281,
+                          "sha256":  "0F4953392C029CEE31A8D53BBC026764B7AE7B9A990D00E6EE11736902DCDA69"
+                      },
+                      {
+                          "path":  "P0_FILE_DIFF.json",
+                          "bytes":  444,
+                          "sha256":  "C21AA0B624B78B41BB998319F01454FCC4F7C76725D7233C8722B2993F79B6D5"
+                      },
+                      {
+                          "path":  "P0_frontend.diff",
+                          "bytes":  29308,
+                          "sha256":  "5F98C23628777B4AE2146D71D9249E3E500C541A7B8C19789DCED3FF2BC88FDF"
+                      },
+                      {
+                          "path":  "P0_README.md",
+                          "bytes":  2200,
+                          "sha256":  "C6E3F1CA47ADA72168290F4F14E5686874EDCE9286A89B52912702EE9192EC97"
+                      },
+                      {
+                          "path":  "P10_CHANGE_MANIFEST.json",
+                          "bytes":  642,
+                          "sha256":  "F9BB044295B21FBD107109B5180DC59518CF518288AE29F0738CE86D1BA5E860"
+                      },
+                      {
+                          "path":  "P10_RBAC_ACCEPTANCE.md",
+                          "bytes":  2974,
+                          "sha256":  "6E32F8A3EABB4FFD06A4034D25F18E19A763D97AB08FD7BAE14375942E2F05C8"
+                      },
+                      {
+                          "path":  "P10_RBAC_INSTALL.md",
+                          "bytes":  6123,
+                          "sha256":  "B00EDD2865757949D6467A6968E4DAF41FB3CFEE37F468938DB7AC50AC721B42"
+                      },
+                      {
+                          "path":  "P11_RBAC_RECOVERY_README.md",
+                          "bytes":  2610,
+                          "sha256":  "F08E26D27A274D27BAB27652E7D526774D12063A8EE58463B0AEBB846B0EBDC2"
+                      },
+                      {
+                          "path":  "P12_USER_MANAGEMENT_FIX.md",
+                          "bytes":  4166,
+                          "sha256":  "EFC45E5DD47CA763E8452FC21F9E34E6E48D7E3616C0EFC2D01C9A8E42CEBC15"
+                      },
+                      {
+                          "path":  "P13_AUTH_ROUTING_AND_BACK_OFFICE.md",
+                          "bytes":  2824,
+                          "sha256":  "AB634C7C1D001A27586C5038D62CF9AFE6D89ED84F65E6E5234111F419B865FB"
+                      },
+                      {
+                          "path":  "P14_MOBILE_DELIVERY.md",
+                          "bytes":  6591,
+                          "sha256":  "4AA58F5B34CA8053B34567C31EA69FD9E10E77049E134A50C69D4BA00B0FFCB7"
+                      },
+                      {
+                          "path":  "P14_SOURCE_CHANGE_MANIFEST.json",
+                          "bytes":  1963,
+                          "sha256":  "9D2DC6B5AE53C55CAEB8AAC1939E656F4B1676AE0BFF35B347A454A557339E27"
+                      },
+                      {
+                          "path":  "P14_TS_FIX_MANIFEST.json",
+                          "bytes":  1818,
+                          "sha256":  "AEC6E9E173C5926E0F04499D0DDDA82852096DB8B2302AA8DEEC3749CB0B7C17"
+                      },
+                      {
+                          "path":  "P15_INSTALL.md",
+                          "bytes":  6168,
+                          "sha256":  "876001FAA14DC11819D2AAFA01BC4C797111FE4AAE0011CC4BA537D622E9019D"
+                      },
+                      {
+                          "path":  "P16_CHANGE_MANIFEST.json",
+                          "bytes":  682,
+                          "sha256":  "DE2A2882C8ABD4460B30F4DA22795AF34C050D337EF5230774915F7171E8B9FF"
+                      },
+                      {
+                          "path":  "P16_INSTALL.md",
+                          "bytes":  7745,
+                          "sha256":  "134BF6D1496A244569C5132A7828A363F6851BCFD26962549E3ECCEEE10E29BA"
+                      },
+                      {
+                          "path":  "P17_INSTALL.md",
+                          "bytes":  6259,
+                          "sha256":  "079BBE67072B19F979F90CBEBC0187E50977C0E9116B7FE4729DAABB8ED21825"
+                      },
+                      {
+                          "path":  "P17_STATIC_RESULTS.txt",
+                          "bytes":  3061,
+                          "sha256":  "10F4D9E87291C7065F03DB0C20A6001857CDFA7D6A9D97B0C3E39635D7463B5B"
+                      },
+                      {
+                          "path":  "P18_CHANGE_MANIFEST.json",
+                          "bytes":  3191,
+                          "sha256":  "FF7758D17DFB7612212B30EC2E96FF6936F43895A789FD7D4E8F6463CD99CDFD"
+                      },
+                      {
+                          "path":  "P18_INSTALL.md",
+                          "bytes":  6178,
+                          "sha256":  "6049D6BA1A7018AAE2A1699B118A0BDDBDCDEE8D52114E54458A8E55321DD9A1"
+                      },
+                      {
+                          "path":  "P18_OPEN_ISSUES.md",
+                          "bytes":  951,
+                          "sha256":  "8C2AE8AAAD9102F14B85D716CC9F3B1DDA46E8F4C1FF729F748AE9CA6DDFA609"
+                      },
+                      {
+                          "path":  "P18_STATIC_RESULTS.txt",
+                          "bytes":  1045,
+                          "sha256":  "07B35C4D165676F7FFE69AA7B892DC7021A5417A92E4204DB8BC82CF46A79081"
+                      },
+                      {
+                          "path":  "P19_CHANGE_MANIFEST.json",
+                          "bytes":  2767,
+                          "sha256":  "AD07A7D8E3508B44DD2112EB1EA25EB49BC5F46D445DDF3701AEA8A016C2DCBA"
+                      },
+                      {
+                          "path":  "P19_INSTALL.md",
+                          "bytes":  4108,
+                          "sha256":  "62D4D3227D0275F50D89E206444882E6AAF87C413799D691F5EC62FD245184AF"
+                      },
+                      {
+                          "path":  "P19_OPEN_ISSUES.md",
+                          "bytes":  1213,
+                          "sha256":  "104C9DAC84C823F8EC268AC3D1C93E2D019597FC3D09AB3CCA0CC88951FA9412"
+                      },
+                      {
+                          "path":  "P19_SOURCE_REGISTER.md",
+                          "bytes":  1342,
+                          "sha256":  "897D56A4F7274ACD1B3FF067BCC0EA2990B91C6700AD7C8F70756FAE6CA7585C"
+                      },
+                      {
+                          "path":  "P19_STATIC_RESULTS.txt",
+                          "bytes":  1405,
+                          "sha256":  "7EB77539432216A059B527C4034D9C9BCDE8A228EE15F45810E625869B4DFEA0"
+                      },
+                      {
+                          "path":  "P1_CHANGELOG.md",
+                          "bytes":  1478,
+                          "sha256":  "D1DF25155C76E089A5B389D1BF47EB26801C841AA7CE965932630DB76643BEC1"
+                      },
+                      {
+                          "path":  "P1_DELIVERY.md",
+                          "bytes":  5119,
+                          "sha256":  "ABBFC7A396A8BB7D3B9D95F8A48A31CE98B8470C2C04CC707CAFB8FEAD08CCC4"
+                      },
+                      {
+                          "path":  "P1_FILE_DIFF.json",
+                          "bytes":  664,
+                          "sha256":  "744786FB17558F6487356FF14D4F7A89BFC0D749F3962F9FE8471E0C2C0044BE"
+                      },
+                      {
+                          "path":  "P20_INSTALL.md",
+                          "bytes":  4927,
+                          "sha256":  "8946F6B3B6230430949B812A310832CD7B6D512D25EC14BB7961B6F718AF2647"
+                      },
+                      {
+                          "path":  "P20_OPEN_ISSUES.md",
+                          "bytes":  1663,
+                          "sha256":  "37CE87560B83DDAA13049139C038C54F1BC1ADC422958CC84C3714F2A06AE411"
+                      },
+                      {
+                          "path":  "P20_STATIC_RESULTS.txt",
+                          "bytes":  6342,
+                          "sha256":  "61543F98A9ABC62884498902B5FDC776633E3659223A7643623FE78366507A6B"
+                      },
+                      {
+                          "path":  "P21_INSTALL.md",
+                          "bytes":  6801,
+                          "sha256":  "A2D016A303C4D8141F2F1AC513C7671C7E941E15FB0291031EF1082B9E04C366"
+                      },
+                      {
+                          "path":  "P21_MODEL_TESTS.txt",
+                          "bytes":  272,
+                          "sha256":  "E7272502F29F8B508640EA61271F5B0687D9D117A20873223C8D5C0DCE8CC62A"
+                      },
+                      {
+                          "path":  "P21_OPEN_ISSUES.md",
+                          "bytes":  2411,
+                          "sha256":  "6EC16173C721B0E5471824AB37E3D839FC2A3CEEBBA60339E869A029E36B7CDE"
+                      },
+                      {
+                          "path":  "P21_PYTHON_TESTS.txt",
+                          "bytes":  1083,
+                          "sha256":  "76B2BE23FF4F8CF053451A62099E8E491AED43A6CA38BADA1B072D51A3F313D5"
+                      },
+                      {
+                          "path":  "P21_STATIC_RESULTS.txt",
+                          "bytes":  10351,
+                          "sha256":  "59641942E51F3E4F4E34B602A2144235422FCCBC96D6CFF42B32BA59C5574A12"
+                      },
+                      {
+                          "path":  "P21_TS_SYNTAX.txt",
+                          "bytes":  435,
+                          "sha256":  "1D8EC4F503A0E6820C28845812EB1F2D95C75566F853ACDDBEAB431D6D2AB114"
+                      },
+                      {
+                          "path":  "P22_CHANGE_MANIFEST.json",
+                          "bytes":  740,
+                          "sha256":  "3C9C1BCEA01E2D074AD834D20DEA655E2D4D140B1A4A25ED64E58B7484EBF4E4"
+                      },
+                      {
+                          "path":  "P22_INSTALL.md",
+                          "bytes":  4517,
+                          "sha256":  "B4AF97F1AC00FB4E15B4302F3005F33D03605375AFCC4BB48356DFF8591ED37C"
+                      },
+                      {
+                          "path":  "P22_MODEL_RESULTS.txt",
+                          "bytes":  490,
+                          "sha256":  "18F1F444D8062B05A1C6DEB443E1D2F1DD4FB1FF641B6F46415A286D95AE8BDD"
+                      },
+                      {
+                          "path":  "P22_OPEN_ISSUES.md",
+                          "bytes":  1920,
+                          "sha256":  "B59E2E77DC650C7B8814DE20FB2CF6113D4E8AA3F2927774A356D42552D43302"
+                      },
+                      {
+                          "path":  "P22_STATIC_RESULTS.txt",
+                          "bytes":  1367,
+                          "sha256":  "1505521FF350558B114B1DA67643D53C544F8BF803CCF912A83A3E83D42D12BB"
+                      },
+                      {
+                          "path":  "P24_SOURCE_AUDIT.json",
+                          "bytes":  44462,
+                          "sha256":  "653A516145F9B36531A1F318752B1F58A388AF67E573D850CBDDC352756DC30F"
+                      },
+                      {
+                          "path":  "P25_UI_SOURCE.txt",
+                          "bytes":  110673,
+                          "sha256":  "080CFE7E40EC34B7249A44724F644DE3A905D2932B1ED9417E559D251FCF6AB3"
+                      },
+                      {
+                          "path":  "P2_ACCEPTANCE.md",
+                          "bytes":  1827,
+                          "sha256":  "9679B522A6AF4CFCE2F6170234903BBD4C39ADA0FC86E57558DA05E8601E0BBD"
+                      },
+                      {
+                          "path":  "P2_DELIVERY.md",
+                          "bytes":  4724,
+                          "sha256":  "960A8987F61227BE138E8E0205BFDC1210757C79FC9E86B3A05D2125A5DE4463"
+                      },
+                      {
+                          "path":  "P2_FILE_DIFF.json",
+                          "bytes":  659,
+                          "sha256":  "94FE920D63E3CE359B94CC7A64FF0F6B12EE2D37520794D98C2C2FA111AD9206"
+                      },
+                      {
+                          "path":  "P33_EDGE_FUNCTION_AUDIT.txt",
+                          "bytes":  78935,
+                          "sha256":  "EE32A87A80941DF9A7D95DD18A3226E5163FB160C34CE4D3A6F82D364D4C38BA"
+                      },
+                      {
+                          "path":  "P3_ACCEPTANCE.md",
+                          "bytes":  1828,
+                          "sha256":  "5C8FDE65F6DA9140A3FA1C9D5D134DD08CEDEFDB6FCB9AF125D8F25204574D92"
+                      },
+                      {
+                          "path":  "P3_DELIVERY.md",
+                          "bytes":  5834,
+                          "sha256":  "1963773D5E74926E04A9D4C2BB0673D5F07E8B4700B2927FF1F51CF3749CB170"
+                      },
+                      {
+                          "path":  "P3_FILE_DIFF.json",
+                          "bytes":  689,
+                          "sha256":  "286E15BD31961E0A933E8F94506A9D6CAC9FB5EDBF6933B9707A563FE5C3AABA"
+                      },
+                      {
+                          "path":  "P3_FREE_OCR_DELIVERY.md",
+                          "bytes":  2821,
+                          "sha256":  "936FE786D26D008BF3F3EDBD4CD3A902F9C81B4F793AC11BDBB5EB4A6E4ADFA3"
+                      },
+                      {
+                          "path":  "P4_ACCEPTANCE.md",
+                          "bytes":  1394,
+                          "sha256":  "A668563D1E7FB40782E3128DDCF85CDE571F22C6300CCB5D80614B2BD4F7BFE0"
+                      },
+                      {
+                          "path":  "P4_CHANGE_MANIFEST.json",
+                          "bytes":  989,
+                          "sha256":  "F31ACA3A8D2F38FB8B702BE620A95EAE0879587D6B50BB6A0BD0F3558AB73856"
+                      },
+                      {
+                          "path":  "P4_DELIVERY.md",
+                          "bytes":  5240,
+                          "sha256":  "36C7DEEC8D62C30DAE1EC50DF6CA91D9270156D2D94A4B9B29C292C79BD22136"
+                      },
+                      {
+                          "path":  "P4_PATCH_MANIFEST.json",
+                          "bytes":  989,
+                          "sha256":  "F31ACA3A8D2F38FB8B702BE620A95EAE0879587D6B50BB6A0BD0F3558AB73856"
+                      },
+                      {
+                          "path":  "P5_CHANGE_MANIFEST.json",
+                          "bytes":  455,
+                          "sha256":  "85CCC578FF5E799BCB04DAA1BDDC41D02984052E2F4D27B60049DDF987B65190"
+                      },
+                      {
+                          "path":  "P5_DELIVERY.md",
+                          "bytes":  3766,
+                          "sha256":  "CB522AAF8179BBE3F2DD5191CCDD402E252F80407F8C49E7D507816DCB6BC099"
+                      },
+                      {
+                          "path":  "P6_CHANGELOG.md",
+                          "bytes":  1184,
+                          "sha256":  "3B5C758E9A8B1F2E1772D06467E9FF6AAFB9A5E474FA92D9113EE45DB7837F94"
+                      },
+                      {
+                          "path":  "P6_DELIVERY.md",
+                          "bytes":  4991,
+                          "sha256":  "069F28570CB8126FFAFD1D5930F46A5666F771058C2599708C7741986EB17EAD"
+                      },
+                      {
+                          "path":  "P6_FILE_DIFF.json",
+                          "bytes":  524,
+                          "sha256":  "DDC8089CE49570F0BC95B0731EAF06A30CEBD7A90D05A43172D6193738A518E2"
+                      },
+                      {
+                          "path":  "P7_ACCEPTANCE.md",
+                          "bytes":  1323,
+                          "sha256":  "888B6AB6B6EEDD988C3CFDDA4899612D706E7E3D64286820D5AFEED646B17248"
+                      },
+                      {
+                          "path":  "P7_CHANGELOG.md",
+                          "bytes":  1538,
+                          "sha256":  "DC05089A9DBC44408DDC8A76677195C6D0E170B89852E5FD100FDB91A44D583C"
+                      },
+                      {
+                          "path":  "P7_DELIVERY.md",
+                          "bytes":  5985,
+                          "sha256":  "05E5BD42BA389711FEE2377B5A0804AD12320E6D99938DE201C9186EF3519225"
+                      },
+                      {
+                          "path":  "P7_DELIVERY.txt",
+                          "bytes":  5985,
+                          "sha256":  "05E5BD42BA389711FEE2377B5A0804AD12320E6D99938DE201C9186EF3519225"
+                      },
+                      {
+                          "path":  "P7_FILE_DIFF.json",
+                          "bytes":  715,
+                          "sha256":  "98AE619E1AE297999020DE49DB6CCE74EB3E0EB2BF49B9098F28B32B845243BE"
+                      },
+                      {
+                          "path":  "P8_ACCEPTANCE.md",
+                          "bytes":  1191,
+                          "sha256":  "0C263FDFE02065CDDA90384B34F9603AD1D46C622C342039D7AED158B627DBCA"
+                      },
+                      {
+                          "path":  "P8_CHANGE_MANIFEST.json",
+                          "bytes":  657,
+                          "sha256":  "D6EBEED944058CC59E5B29A8775FBA480F62AD5FF5BC27DA2CC87AE9DDEB8E3C"
+                      },
+                      {
+                          "path":  "P8_DELIVERY.md",
+                          "bytes":  3678,
+                          "sha256":  "D30C99D2936F6158F6B533B53ABF2F0111E4A22D242A8CFC4DBF115ECEADA5E7"
+                      },
+                      {
+                          "path":  "P8_INSTALLATION.txt",
+                          "bytes":  3678,
+                          "sha256":  "D30C99D2936F6158F6B533B53ABF2F0111E4A22D242A8CFC4DBF115ECEADA5E7"
+                      },
+                      {
+                          "path":  "P9_CHANGE_MANIFEST.json",
+                          "bytes":  1371,
+                          "sha256":  "8DE3FBC5BA6EF1BAD658A4E92B63F9E09EABE8C11C41C9110CBDA08ED9D24FE5"
+                      },
+                      {
+                          "path":  "P9_FIELD_OFFICER_ACCEPTANCE.md",
+                          "bytes":  2397,
+                          "sha256":  "8CD260407A002058A7E9FEEF05590C9536ED374E497127395B15399984829520"
+                      },
+                      {
+                          "path":  "P9_FIELD_OFFICER_MOBILE_INSTALL.md",
+                          "bytes":  4650,
+                          "sha256":  "D646E4C2A77E8291C56D11183ED692DDEF0F5266F5487219230E6C8A37454BE8"
+                      },
+                      {
+                          "path":  "package-lock.json",
+                          "bytes":  361982,
+                          "sha256":  "506199BEBCA8A877B263379861F28029FC4EE44B85A78AD17D728FA54D68ECDD"
+                      },
+                      {
+                          "path":  "package.json",
+                          "bytes":  3693,
+                          "sha256":  "5953020F0EE263978B98CCAE496FFC259EC7B89CE9BCD4C6FCA130F2C97371AD"
+                      },
+                      {
+                          "path":  "README.md",
+                          "bytes":  4741,
+                          "sha256":  "13FB54DFA41297C660DE2B9A5D9D2960AEE6836D6494E489773877F3B93F46D6"
+                      },
+                      {
+                          "path":  "README_DELIVERY.md",
+                          "bytes":  5123,
+                          "sha256":  "E6C1F83B0DF940D2C7977F694F2AA0C6A4162A1060B71D91A18A8E9B293C35DC"
+                      },
+                      {
+                          "path":  "README_PATCH.md",
+                          "bytes":  540,
+                          "sha256":  "E0A316958EF48CFBFE426D1744F845C5FA19147D9404683C0DD6208482BB0020"
+                      },
+                      {
+                          "path":  "RECHECK_FILE_DIFF.json",
+                          "bytes":  727,
+                          "sha256":  "E0895C6D47B7FBA9A45C5F1EF1EAA62C3589BA98EC2C432530446724AEAAF71D"
+                      },
+                      {
+                          "path":  "RECHECK_REPORT.md",
+                          "bytes":  5515,
+                          "sha256":  "A8A7FD96DF1165148A6EFF1AD7A8D014BEF47445CBE5C685C1B79673B45EF610"
+                      },
+                      {
+                          "path":  "roadmap.md",
+                          "bytes":  531,
+                          "sha256":  "B9C04361080CBBACF187F5EC4413A5C9A3EC7443DBC59D2E0592439BE6E5D6C7"
+                      },
+                      {
+                          "path":  "tsconfig.json",
+                          "bytes":  882,
+                          "sha256":  "E86F30FCB44F4FE5AAA1138E6F432F0FC3C094D4D7AD36BCABFAF1DB8CA96A0E"
+                      },
+                      {
+                          "path":  "Valuation_Report_Reference.xlsx",
+                          "bytes":  13007,
+                          "sha256":  "02FD3084BFB8AD6A5E273A5E39E4CF59DD0F33B2B6DF2B66F4DB7604BD63675B"
+                      },
+                      {
+                          "path":  "vite.config.ts",
+                          "bytes":  820,
+                          "sha256":  "694F17DAF64D3BF3481EE838CE69C26C593C60C0ED45A19209754FE5A742BCF0"
+                      },
+                      {
+                          "path":  "vitest.config.ts",
+                          "bytes":  396,
+                          "sha256":  "0158325852B8C6C2C4C9E2AE02196430B432A7F40772EB546E227CE16B9DA97B"
+                      },
+                      {
+                          "path":  "database\\diagnostics\\check_user_management_rpcs_readonly.sql",
+                          "bytes":  737,
+                          "sha256":  "60B15D0EC50C55DBE4BA046D086C50482CFBEC560F016F802E8B4FB5B1CD1D7A"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\01_phase1_auth_rls.sql",
+                          "bytes":  18977,
+                          "sha256":  "9E495AE4F03E2A0B24FCB499A0C82D9D83DCA65FBF730D918BF943ECD85C5DCF"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\02_phase2_case_management.sql",
+                          "bytes":  17962,
+                          "sha256":  "C6F94AE785054F32FE2DC6750C5601E1A49D52E3015B8A2B90C0CD5FB51C37B9"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\03_phase3_field_operations.sql",
+                          "bytes":  26432,
+                          "sha256":  "3481346FDA487D60CF52F3F7AFFD7D1C30A299C7C83DAD769461E278E7F117CC"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\04_phase4_qc_management.sql",
+                          "bytes":  21703,
+                          "sha256":  "7DA862BA3050B0B2032796AB94414B0A880B5A0B0F453B55B38EB1AAA7D1C3F8"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\05_phase5_valuation_reports.sql",
+                          "bytes":  27596,
+                          "sha256":  "311E1DC694698A2D6311595B3756506A84E735803869DBFDCE360A1FF33700F5"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\06_phase6_billing_mis.sql",
+                          "bytes":  22268,
+                          "sha256":  "797A9828190EFBB2BF052B0D9614D96C35F8C79D0FBF8EC4AD720E838565B5B3"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\07_phase7_notifications_tat.sql",
+                          "bytes":  21268,
+                          "sha256":  "FD2924E6BD9DEFC8DA0635AF602C1416300C2F0F0AAB51359AB6E3D8B4223A15"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\08_phase8_analytics_audit.sql",
+                          "bytes":  22577,
+                          "sha256":  "48F38156FC7201A2FF57FE3A4B35B51A547A94BF2D7BC79FC4EA2594D49A3AA2"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\09_phase9_dashboard.sql",
+                          "bytes":  8652,
+                          "sha256":  "10E712E5985312F1FED7F13BD8420957F028B0B592492BC7D91F6C808A035B28"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\10_property_type_master.sql",
+                          "bytes":  9463,
+                          "sha256":  "EE78E9FC57D15249B0DFC9DCE2AB07010A35DFC1FB1950858BCD9D205E0F3140"
+                      },
+                      {
+                          "path":  "database\\HISTORY_DO_NOT_RERUN\\11_direct_users_first_login.sql",
+                          "bytes":  10420,
+                          "sha256":  "E66F5687F37F393205613B8788D5ECB69739EE87EAEFD779DA07FAA31345777C"
+                      },
+                      {
+                          "path":  "database\\INCOMPATIBLE_UUID_SCHEMA_DO_NOT_RUN\\20261104095551_2645a470-189f-4711-aaf7-0c8e80715bf1.sql",
+                          "bytes":  4542,
+                          "sha256":  "CE4EFBF03B812D7BD10FEB3F9F47119D11285228C7CF685CF97BF153F910F8D9"
+                      },
+                      {
+                          "path":  "database\\INCOMPATIBLE_UUID_SCHEMA_DO_NOT_RUN\\README.md",
+                          "bytes":  524,
+                          "sha256":  "06536C7A286B602AA4997C3DF2CE08D042829311937FE31BF7674F12F2F78816"
+                      },
+                      {
+                          "path":  "database\\inspection\\00_preflight_readonly.sql",
+                          "bytes":  880,
+                          "sha256":  "2F661BDC4B74161DA0D1C935A7D2058E3A02B32BA25FA30DBC94A364067F2770"
+                      },
+                      {
+                          "path":  "database\\inspection\\01_inspection_additive.sql",
+                          "bytes":  8371,
+                          "sha256":  "C3808E599B51C6395D1FFD07542CAC0807960E2CC4ED2A27250F1BAC02F1624A"
+                      },
+                      {
+                          "path":  "database\\inspection\\02_verify_readonly.sql",
+                          "bytes":  645,
+                          "sha256":  "DBEF67BE9747F212675A671906FAAFBB6AC75D09AEDAEACCF2A2DF6CB11563A8"
+                      },
+                      {
+                          "path":  "database\\inspection\\03_optional_scheduled_draft_rpc.sql",
+                          "bytes":  3921,
+                          "sha256":  "BDFA19C8AD6EF4E2A45A23397FE43FF71FD7488B58A63620DCCB5E5F18A47B86"
+                      },
+                      {
+                          "path":  "p11\\CHANGES.md",
+                          "bytes":  1680,
+                          "sha256":  "822E1A6BA64642B6CA873BF1554B73482892204E5D053420C4AA5F31AAE5433E"
+                      },
+                      {
+                          "path":  "p11\\INSTALL_AND_TEST.md",
+                          "bytes":  5893,
+                          "sha256":  "9BAAE2C9830A9BE8F25EDDE45476631EF13D21637DFFC8340F8472A54F7F216B"
+                      },
+                      {
+                          "path":  "public\\favicon.ico",
+                          "bytes":  20373,
+                          "sha256":  "DD821076A9B03ADC2173C93956226AEA3D92482D7578FC4339C5D3A2E9C24586"
+                      },
+                      {
+                          "path":  "public\\robots.txt",
+                          "bytes":  160,
+                          "sha256":  "A3D27B3CA5CE32341FA9F96F01169B521B1657C05D1860C45D1E53A6258E9E8B"
+                      },
+                      {
+                          "path":  "public\\ValuationPro_User_Import_Template.xlsx",
+                          "bytes":  6422,
+                          "sha256":  "C99BE2D9A9D21CCADD188239B26B043F76FD511037938725E8D8354653BCDD7D"
+                      },
+                      {
+                          "path":  "public\\templates\\Valuation_Report.xlsx",
+                          "bytes":  13007,
+                          "sha256":  "02FD3084BFB8AD6A5E273A5E39E4CF59DD0F33B2B6DF2B66F4DB7604BD63675B"
+                      },
+                      {
+                          "path":  "services\\paddle-ocr\\requirements.txt",
+                          "bytes":  69,
+                          "sha256":  "7715F64755AA1AFBF1A471861793CD08B386DCBBEE4D396937E65CFE96B51C2C"
+                      },
+                      {
+                          "path":  "services\\paddle-ocr\\server.py",
+                          "bytes":  6285,
+                          "sha256":  "C2B4F6BA7F479EAB323F613BE0FEBD214642F5311196FEEF0293F0AD0AD04058"
+                      },
+                      {
+                          "path":  "services\\paddle-ocr\\smoke_model.py",
+                          "bytes":  785,
+                          "sha256":  "6934FA14C743F799FF26A1C7006016BBA4578D6BFA20F5CB650C721A49529FE0"
+                      },
+                      {
+                          "path":  "services\\paddle-ocr\\test_server.py",
+                          "bytes":  3789,
+                          "sha256":  "39EB87E680E6EAD794979B71EC17063FC7644A7F014D266EA2CF49F007781E2C"
+                      },
+                      {
+                          "path":  "sql\\00_PRECHECK_READONLY.sql",
+                          "bytes":  1344,
+                          "sha256":  "B078CE10D85019263E8F7C83E6E4075F3A68992593B2C8B2D5207C9181B8C14E"
+                      },
+                      {
+                          "path":  "sql\\01_DISABLE_GEOFENCE_KEEP_GPS.sql",
+                          "bytes":  7061,
+                          "sha256":  "D16325EA8D4E41695B63E5E0DDA08761F90B2D52AAF6142655DA237F98E9EDB2"
+                      },
+                      {
+                          "path":  "sql\\02_VERIFY_READONLY.sql",
+                          "bytes":  982,
+                          "sha256":  "9EBC01B886B5922CB6B65E5848CEC2D94F58C29938E1A852F2016917F5FA60A9"
+                      },
+                      {
+                          "path":  "sql\\gps_only\\00_PRECHECK_READONLY.sql",
+                          "bytes":  1344,
+                          "sha256":  "B078CE10D85019263E8F7C83E6E4075F3A68992593B2C8B2D5207C9181B8C14E"
+                      },
+                      {
+                          "path":  "sql\\gps_only\\01_DISABLE_GEOFENCE_KEEP_GPS.sql",
+                          "bytes":  7061,
+                          "sha256":  "D16325EA8D4E41695B63E5E0DDA08761F90B2D52AAF6142655DA237F98E9EDB2"
+                      },
+                      {
+                          "path":  "sql\\gps_only\\02_VERIFY_READONLY.sql",
+                          "bytes":  982,
+                          "sha256":  "9EBC01B886B5922CB6B65E5848CEC2D94F58C29938E1A852F2016917F5FA60A9"
+                      },
+                      {
+                          "path":  "sql\\gps_only\\README_GPS_ONLY.txt",
+                          "bytes":  2813,
+                          "sha256":  "4A4611C31C8365570D705EC6B7EBCA320D913FCDBAE9EB8EE29705A83688DB18"
+                      },
+                      {
+                          "path":  "sql\\p0\\00_PRECHECK_READ_ONLY.sql",
+                          "bytes":  1374,
+                          "sha256":  "7D3660EFAAB172ECCC3B7392CE353F4059B4E4E7D1042125E28F770E6FB9F6EC"
+                      },
+                      {
+                          "path":  "sql\\p0\\01_P0_STAGING_MIGRATION.sql",
+                          "bytes":  19816,
+                          "sha256":  "C073B3D3A7D26DAE64660A0E7847A420266E18A7C7E3AA0C593027B8AD6235EF"
+                      },
+                      {
+                          "path":  "sql\\p0\\02_VERIFY_READ_ONLY.sql",
+                          "bytes":  768,
+                          "sha256":  "3D21D462C43F2EA63749AB99DA2C06EE3B418AFBE9E6906FC7E3A1F4275EA579"
+                      },
+                      {
+                          "path":  "sql\\p1\\00_PRECHECK_READONLY.sql",
+                          "bytes":  822,
+                          "sha256":  "339FDB9E3436C562FEFF078D877D47BA80D57F84AC0AAAD0F1F4DB8CC834112C"
+                      },
+                      {
+                          "path":  "sql\\p1\\01_P1_OPTIMISTIC_INSPECTION_SAVE.sql",
+                          "bytes":  3211,
+                          "sha256":  "E44675DD7DCBC3F2B4B8549CF4BE00DB9342419FC1FD14D82723D68A0E213DB2"
+                      },
+                      {
+                          "path":  "sql\\p1\\02_VERIFY_READONLY.sql",
+                          "bytes":  348,
+                          "sha256":  "E9B0B1DEB4C55CCEA4959EB179FD6D5096B580D1B0A3533FF9E626FD582FA84D"
+                      },
+                      {
+                          "path":  "sql\\p10\\00_PRECHECK_READONLY.sql",
+                          "bytes":  1863,
+                          "sha256":  "8B294209602B6D565EAA96AEB2337E4AC51E1AB291E61E66F099890D7CF1B81E"
+                      },
+                      {
+                          "path":  "sql\\p10\\01_P10_RBAC_STAGING.sql",
+                          "bytes":  16026,
+                          "sha256":  "B1EB9A2265E6CCE35EE865E5558A270E30484157B4EF658F1FC68328A9D0AA78"
+                      },
+                      {
+                          "path":  "sql\\p10\\02_VERIFY_READONLY.sql",
+                          "bytes":  1155,
+                          "sha256":  "66653B71F8B23984F955152352BBC0C5DF78B61B6542226C928F078EC312872D"
+                      },
+                      {
+                          "path":  "sql\\p11\\00_AUDIT_READONLY.sql",
+                          "bytes":  2477,
+                          "sha256":  "ADFBE94B9E1C121200C091F8D7F995C4C322D51FA239B76839EB0D2D28F1C6CA"
+                      },
+                      {
+                          "path":  "sql\\p11\\01_PROMOTE_KRANTHISAMIN_TENANT_ADMIN.sql",
+                          "bytes":  2886,
+                          "sha256":  "DFF3155D55943276F5A68E71E7BECCE4026B19F55745C2D8E1E153F5283E56B2"
+                      },
+                      {
+                          "path":  "sql\\p11\\02_P11_SECURE_MATRIX_STAGING.sql",
+                          "bytes":  5025,
+                          "sha256":  "645F33A921C4AE045B171AD852F730434EBEF077EC9BC80960B768B8E12D24F2"
+                      },
+                      {
+                          "path":  "sql\\p11\\03_VERIFY_READONLY.sql",
+                          "bytes":  1099,
+                          "sha256":  "45E1D0D3E2AE21C912E2F29CE17C00616798F2E1DB915AB794E16DC79F551885"
+                      },
+                      {
+                          "path":  "sql\\p12\\00_READ_ONLY_DIAGNOSIS.sql",
+                          "bytes":  1617,
+                          "sha256":  "A839CEC4600D0391DF04F5A82B33C6E28AF43E19EC8740D742328E362959330C"
+                      },
+                      {
+                          "path":  "sql\\p12\\01_P12_USER_SETUP_STAGING.sql",
+                          "bytes":  4223,
+                          "sha256":  "630383DFD7AB709525536A4909F5C06978C1471A01143735662E87AF2BCA3D24"
+                      },
+                      {
+                          "path":  "sql\\p12\\02_VERIFY_READONLY.sql",
+                          "bytes":  627,
+                          "sha256":  "3E20ADEF0163C5072E4F88B5BA3E2DBBF8B2B603AF53D7D6DC13A3A419178BB1"
+                      },
+                      {
+                          "path":  "sql\\p12\\03_PROMOTE_KRANTHISAMIN_IF_REQUIRED.sql",
+                          "bytes":  1813,
+                          "sha256":  "496D8B01A07630CDF1900501473210F1D210F53507B1BADCF2395FC65B0D759E"
+                      },
+                      {
+                          "path":  "sql\\p13\\01_BACK_OFFICE_DASHBOARD_ADASOL.sql",
+                          "bytes":  1459,
+                          "sha256":  "468B888E9C65207C33D2FADB3ADE537C6F9DB9C32131E22F0E566AC99F3ABCAE"
+                      },
+                      {
+                          "path":  "sql\\p15\\00_PREFLIGHT_READONLY.sql",
+                          "bytes":  2403,
+                          "sha256":  "7E3DC59F6446BF622E00B158B4D5F23FAD02A8A440A1755A4B8546685AF2E6A8"
+                      },
+                      {
+                          "path":  "sql\\p15\\01_QC_GPS_ALIGNMENT_STAGING.sql",
+                          "bytes":  5628,
+                          "sha256":  "E7FAA46BCB9CF0DE6E3993BBC55F0658A23A5BC472F11263455D4DB04D091F1B"
+                      },
+                      {
+                          "path":  "sql\\p15\\02_VERIFY_READONLY.sql",
+                          "bytes":  1341,
+                          "sha256":  "45459A3154DF3655B846D31F2CF6075AE92685B63FECE0551D686E9958EB9D14"
+                      },
+                      {
+                          "path":  "sql\\p16\\00_PREFLIGHT_READONLY.sql",
+                          "bytes":  1085,
+                          "sha256":  "EFA15783D42A97CB22D7A3ED6A201B15CB08694EA7350327EDA342A2B37A930E"
+                      },
+                      {
+                          "path":  "sql\\p16\\01A_TABLES_RLS.sql",
+                          "bytes":  4083,
+                          "sha256":  "6E24DC6C024111E6C64E74A75193A8298F88E990A038F983CE43507E99ECF1C2"
+                      },
+                      {
+                          "path":  "sql\\p16\\01B_VALIDATOR.sql",
+                          "bytes":  5302,
+                          "sha256":  "92DCA26E4B02B19C855FFBBD226A9C63A9B51E0C08A814F239D624B4081CA8CA"
+                      },
+                      {
+                          "path":  "sql\\p16\\01C_SAVE_LINK_RPCS.sql",
+                          "bytes":  3784,
+                          "sha256":  "7C3E6C898F1674E5DBF5121CD7D9F5548A4DBD64250D11B02BECFB9EA5A4FAC1"
+                      },
+                      {
+                          "path":  "sql\\p16\\01_PROPERTY_MASTER_STAGING.sql",
+                          "bytes":  12972,
+                          "sha256":  "433AC397B03FEA066750FF12AEE9B918ACAF0EB884B580686E712D5E477FC614"
+                      },
+                      {
+                          "path":  "sql\\p16\\02_VERIFY_READONLY.sql",
+                          "bytes":  1815,
+                          "sha256":  "8F5C840E2A4D59C406D1BDB0B67C7630CEA055D5436A76A8B839E9F1CA832A94"
+                      },
+                      {
+                          "path":  "sql\\p16\\03_STATUS_READONLY.sql",
+                          "bytes":  420,
+                          "sha256":  "1DFED97D8F22CCE9F20A52B322072242319BB96D994BBCF64543FCABFADA3EE0"
+                      },
+                      {
+                          "path":  "sql\\p16\\README.txt",
+                          "bytes":  365,
+                          "sha256":  "997B02B13DDD7545D5BC3D71893BFCF31CC80F9458D3244A8838BB1C14DDA41C"
+                      },
+                      {
+                          "path":  "sql\\p17\\00_PREFLIGHT_READONLY.sql",
+                          "bytes":  584,
+                          "sha256":  "FD4AEB4344B74D9C2EF1BADE6FB460885BBC0D9385019598F6B2B3E6BE706EC2"
+                      },
+                      {
+                          "path":  "sql\\p17\\01_CONVERTER.sql",
+                          "bytes":  2447,
+                          "sha256":  "3F3A4CFB97B35BB3FC4B79915F6B38B09B9F8A8144A7D404F372AC276E4EF8FF"
+                      },
+                      {
+                          "path":  "sql\\p17\\02_EVIDENCE_TABLE.sql",
+                          "bytes":  3167,
+                          "sha256":  "AE866E6EBC52B2A176B0E11F794A1DD06EFAA968A7EEC16EEC876444D1D16D1C"
+                      },
+                      {
+                          "path":  "sql\\p17\\03_EVIDENCE_WRITE.sql",
+                          "bytes":  2941,
+                          "sha256":  "55AA98A6237C8CCAC04B14E137284DE8B96004C026AFF3482DFF57D364BE0EDF"
+                      },
+                      {
+                          "path":  "sql\\p17\\04_SEARCH.sql",
+                          "bytes":  3144,
+                          "sha256":  "88B9B5D0F49585F0F88FA7B1AD7F821249EDA707364CE4F629EFE21A529D9379"
+                      },
+                      {
+                          "path":  "sql\\p17\\05_CASE_EVIDENCE.sql",
+                          "bytes":  3380,
+                          "sha256":  "468371AE537157BD9101D2E95A87F0C4A1D719FF7732E75686EBC3C0F801E5B8"
+                      },
+                      {
+                          "path":  "sql\\p17\\06_VERIFY_READONLY.sql",
+                          "bytes":  1353,
+                          "sha256":  "68F8E748F3521827C95B438C54E550FC555ED350CA30DAA8421ACC3BBF5B030A"
+                      },
+                      {
+                          "path":  "sql\\p17\\07_CONVERTER_TESTS_READONLY.sql",
+                          "bytes":  1476,
+                          "sha256":  "D25C0B4EF09CA672196BF3FBF2C031E7C49163BD96272F10110F888770BF7CDD"
+                      },
+                      {
+                          "path":  "sql\\p18\\00_PREFLIGHT_READONLY.sql",
+                          "bytes":  424,
+                          "sha256":  "424A6B53D233970EAABB434E435F7D53DFDEC7BDD46F0C19626BEEEBEB1B2557"
+                      },
+                      {
+                          "path":  "sql\\p18\\01_TEMPLATE_TABLE.sql",
+                          "bytes":  1189,
+                          "sha256":  "16FA0FEA73820A070655B165C2E4683DA0226AB6405A74242C559A4154F73DD0"
+                      },
+                      {
+                          "path":  "sql\\p18\\02_TEMPLATE_PUBLISH.sql",
+                          "bytes":  3038,
+                          "sha256":  "BA59E4C9FA4F39318E1348D357F591383621F99AD24D4C70ACE372B95A3662BE"
+                      },
+                      {
+                          "path":  "sql\\p18\\03_VERIFY_READONLY.sql",
+                          "bytes":  676,
+                          "sha256":  "3A6CB141F79CF63F37E8494954403B281B3F965CEFB783C10B3D8D6D189545D0"
+                      },
+                      {
+                          "path":  "sql\\p19\\00_PREFLIGHT_READONLY.sql",
+                          "bytes":  601,
+                          "sha256":  "C16BBDC0C78540C77EAE325FE005D4CA67303C7181BC966EA73E46C4A1944F93"
+                      },
+                      {
+                          "path":  "sql\\p19\\01_TABLE.sql",
+                          "bytes":  1262,
+                          "sha256":  "94D617698520810DF8E3BFBF76A472655E501BB754ABFB0C82AB0C0269808325"
+                      },
+                      {
+                          "path":  "sql\\p19\\02_VALIDATION.sql",
+                          "bytes":  846,
+                          "sha256":  "DEFFFD616E8E53F5EAB3D49384DEC306EC0C3A06F8A6634D0B41ADAD4C520692"
+                      },
+                      {
+                          "path":  "sql\\p19\\03_COST.sql",
+                          "bytes":  2803,
+                          "sha256":  "8612B9355E92AC6D14F29422D01875F7F5B57924BDCE0C248A80F735D994656E"
+                      },
+                      {
+                          "path":  "sql\\p19\\04_COMPARISON.sql",
+                          "bytes":  2358,
+                          "sha256":  "4BE50AA0DC43C85EC168E9D5716AEA5B2C0A0269DA3808AF0D66E9FD8A09B13D"
+                      },
+                      {
+                          "path":  "sql\\p19\\05_INCOME.sql",
+                          "bytes":  1071,
+                          "sha256":  "CCADB7367EADEA3DB34F1602284BE0085616DC0F49D19373D36065AF77E79CD1"
+                      },
+                      {
+                          "path":  "sql\\p19\\06_SAVE.sql",
+                          "bytes":  3991,
+                          "sha256":  "893AB87FB35962B953EBF1945D441386B1676629F128D0925223100EF652BDC5"
+                      },
+                      {
+                          "path":  "sql\\p19\\07_REVIEW.sql",
+                          "bytes":  3022,
+                          "sha256":  "33AAED1EAE57AF5C370BC7AF84ABBC60B931298ADB4A71ABFB0B8B866F653178"
+                      },
+                      {
+                          "path":  "sql\\p19\\08_VERIFY_READONLY.sql",
+                          "bytes":  790,
+                          "sha256":  "3A7B453A08FC63D47C35E211F76BD99C2B4D74B246FE428286237C1EB0DAAA09"
+                      },
+                      {
+                          "path":  "sql\\p19\\09_CALC_TESTS_READONLY.sql",
+                          "bytes":  2374,
+                          "sha256":  "92FE5B956C1CE40AAFB52B695063FE7E8270F7D56F92AD962DEFF1E1FB11E08A"
+                      },
+                      {
+                          "path":  "sql\\p2\\00_PRECHECK_READONLY.sql",
+                          "bytes":  922,
+                          "sha256":  "DE298487A8E00064880433FE87B2241F1E9CD85673DD3D6E09CECE6DFE48CC93"
+                      },
+                      {
+                          "path":  "sql\\p2\\01_REVIEWED_TRANSFER_STAGING.sql",
+                          "bytes":  10878,
+                          "sha256":  "62C844828AD4456CB339E4C5145C077CD9D81175FF748E070F8A95E897278A21"
+                      },
+                      {
+                          "path":  "sql\\p2\\02_VERIFY_READONLY.sql",
+                          "bytes":  1068,
+                          "sha256":  "B104D64111BF24EABAEFBF9957B0F8B12521CC8F51F2508525BEEF615B353D1B"
+                      },
+                      {
+                          "path":  "sql\\p20\\00_PREFLIGHT_READONLY.sql",
+                          "bytes":  472,
+                          "sha256":  "7DF9A9791034061181627E40E6D052BF45F312723152AA616394E86A31A1FCA7"
+                      },
+                      {
+                          "path":  "sql\\p20\\01_TABLES.sql",
+                          "bytes":  2440,
+                          "sha256":  "AFDB8AC72790D7911A62A73245DAFFB9152B4ED963DFAC15F74EABBAF74546AF"
+                      },
+                      {
+                          "path":  "sql\\p20\\02_PUBLISH.sql",
+                          "bytes":  3936,
+                          "sha256":  "967CD33C6E4B5B0B9F4D0E4CB718098D59CE1A6054E0874AF0B5A49ACC9ED729"
+                      },
+                      {
+                          "path":  "sql\\p20\\03_PREPARE.sql",
+                          "bytes":  3204,
+                          "sha256":  "A26207E3C8D9CEA02B8A1D7F7026480A8F0B6271F53FE09AD944ED4EF1EAF8AF"
+                      },
+                      {
+                          "path":  "sql\\p20\\04_VERIFY_READONLY.sql",
+                          "bytes":  764,
+                          "sha256":  "D47B099AD38D5367797DE35BDB7EE55FE46B8B75331D7A3FE5CF8BA69328C17A"
+                      },
+                      {
+                          "path":  "sql\\p21\\00_PREFLIGHT_READONLY.sql",
+                          "bytes":  577,
+                          "sha256":  "0B3C9E603BDF88F5BEB072C6FFEAFF65EDC33D99B4EDA9E16BD869B578759C76"
+                      },
+                      {
+                          "path":  "sql\\p21\\01_OCR_CASE_SCOPE.sql",
+                          "bytes":  1310,
+                          "sha256":  "64BEA4CCDD3A4461E4A321E7464FFF469E1C334989C7E47675F208065F8D746A"
+                      },
+                      {
+                          "path":  "sql\\p21\\02_PROPERTY_ADOPTION.sql",
+                          "bytes":  3553,
+                          "sha256":  "48EE7A6669E5153C4D83D4C69CB6CB434C17F5A75FF15236CBFE3126DE1B0A5C"
+                      },
+                      {
+                          "path":  "sql\\p21\\03_VERIFY_READONLY.sql",
+                          "bytes":  599,
+                          "sha256":  "A172DDD71439593B23F3214A1B2E23150F340A69E8E149CD58E5BF47B08BB7D7"
+                      },
+                      {
+                          "path":  "sql\\p3\\00_PRECHECK_READONLY.sql",
+                          "bytes":  1002,
+                          "sha256":  "290BF4DEFD80252753931BB0EF60198F04DF11ACE0C096E5E62B91F7A1EE845D"
+                      },
+                      {
+                          "path":  "sql\\p3\\01_OCR_REQUEST_AUDIT_STAGING.sql",
+                          "bytes":  4508,
+                          "sha256":  "EDB22336CFA68F2BB9345E381B735E0BA234CBCA0077A567353D12CAED5E0F6B"
+                      },
+                      {
+                          "path":  "sql\\p3\\02_VERIFY_READONLY.sql",
+                          "bytes":  800,
+                          "sha256":  "2B1BDC6B7C4F1CF517A69620A6959CF90D2B981A92EDB0E60B2F9A5AF79E413B"
+                      },
+                      {
+                          "path":  "sql\\p4\\00_READINESS_READONLY.sql",
+                          "bytes":  1693,
+                          "sha256":  "0D9F2AF302AB340148DA36AE9F3A053672D325301C6F2E71267E4ECBAFA0ACE0"
+                      },
+                      {
+                          "path":  "sql\\p5\\00_BACKEND_READINESS_READONLY.sql",
+                          "bytes":  2152,
+                          "sha256":  "4E7AD7F08B9AA06BEF4290350B1DD7E7D82A5A49D18B59BB0EFEDE07406128B7"
+                      },
+                      {
+                          "path":  "sql\\p6\\00_PRECHECK_READONLY.sql",
+                          "bytes":  909,
+                          "sha256":  "2EC752B4135B85F2E119D426BDA23F03B6386087B8F2BB03303E9A40CFEEA0DC"
+                      },
+                      {
+                          "path":  "sql\\p6\\01_SAVED_OCR_REVIEW_STAGING.sql",
+                          "bytes":  8259,
+                          "sha256":  "AD7AAEF999CC3A4C0EA267636F81557E9071123F60E119A854C0FFC54F92EA11"
+                      },
+                      {
+                          "path":  "sql\\p6\\02_VERIFY_READONLY.sql",
+                          "bytes":  1034,
+                          "sha256":  "3962C7A0F563A942815558771B64AB89CEC4748A27E92BF874A5A18F7AD9264A"
+                      },
+                      {
+                          "path":  "sql\\p7\\00_BACKEND_READINESS_READONLY.sql",
+                          "bytes":  2604,
+                          "sha256":  "5B599200E05167E98518476277E5CC2AC197E0E42FFFA9398B1CDAC24E9EABE0"
+                      },
+                      {
+                          "path":  "sql\\p7\\02_POST_INSTALL_VERIFY_READONLY.sql",
+                          "bytes":  1433,
+                          "sha256":  "7A513BA4DF431B979BB6D1A12C91DE3DD2E8042606065EA46116014FBC297FF4"
+                      },
+                      {
+                          "path":  "sql\\p8\\00_RUNTIME_READINESS_READONLY.sql",
+                          "bytes":  1254,
+                          "sha256":  "ABD41E0283A208E6BC256D4DD4D7FC8C8D7BC9AEE2707349192AB1E318DA8A15"
+                      },
+                      {
+                          "path":  "sql\\p8\\01_CASE_OCR_INSPECTION_READONLY.sql",
+                          "bytes":  1425,
+                          "sha256":  "EC5D8EDFC5F664E4503B96B04E83F461E0E5AAB0D43D174232C53336DD11AC35"
+                      },
+                      {
+                          "path":  "sql\\p9\\00_PRECHECK_READONLY.sql",
+                          "bytes":  1336,
+                          "sha256":  "ABBA81915312588040B6902F75E4DCC194CA1CCC0D06500F3A97BE9085C6EB90"
+                      },
+                      {
+                          "path":  "sql\\p9\\01_FIELD_OFFICER_CASE_AND_SCHEDULE_STAGING.sql",
+                          "bytes":  7451,
+                          "sha256":  "92462C99BFDBCAF5359F0B35E20505DC1331E97C7C871B338BEEFD2AEA1E69D1"
+                      },
+                      {
+                          "path":  "sql\\p9\\02_VERIFY_READONLY.sql",
+                          "bytes":  448,
+                          "sha256":  "DD4E9F6DC9C9AC42A38C25C6EA6C295B8D9758A56DBB94728CBE488F7A69527F"
+                      },
+                      {
+                          "path":  "src\\router.tsx",
+                          "bytes":  394,
+                          "sha256":  "72B68964D3F55BA4F7DCF2A04AAD9D97D7C61FABAD13AEC1D298F1E39EE59FCC"
+                      },
+                      {
+                          "path":  "src\\routeTree.gen.ts",
+                          "bytes":  15772,
+                          "sha256":  "5CE23D79C931053498D9729FFEDADEF11FA9C5DAF20AA3CA15DA7B092A443A85"
+                      },
+                      {
+                          "path":  "src\\server.ts",
+                          "bytes":  2048,
+                          "sha256":  "F0EE683067AFEE145F81A63A3AF76B3D3767E2A1F61F0E82582F8DA184AD3EF6"
+                      },
+                      {
+                          "path":  "src\\start.ts",
+                          "bytes":  944,
+                          "sha256":  "D79D142C6C5D057ACC7A140197F464EF29A2C55BB422AAFE700F82B418894E74"
+                      },
+                      {
+                          "path":  "src\\styles.css",
+                          "bytes":  12401,
+                          "sha256":  "64A3B0E19A3258AED4A5602FD65591C2F033D03193D3BA4CF764FEE111E8D02A"
+                      },
+                      {
+                          "path":  "src\\components\\app-shell.tsx",
+                          "bytes":  10684,
+                          "sha256":  "F2D97DC2180CABF5E699F244D377BED6BD7A26472540CB0CF2516C0B2C66378A"
+                      },
+                      {
+                          "path":  "src\\components\\ops-ui.tsx",
+                          "bytes":  1915,
+                          "sha256":  "D97CB06CB455CC19D20F6C31E6A57A4310B1B68B61AAC33BA81B3ECE31E9A950"
+                      },
+                      {
+                          "path":  "src\\components\\admin\\vp-p18-template-admin.tsx",
+                          "bytes":  3643,
+                          "sha256":  "31B0E8EC2F25C3EC497F2D3053BC5C8DD707DAE47E8947B0E4D151E55CE558CC"
+                      },
+                      {
+                          "path":  "src\\components\\admin\\vp-p20-template-admin.tsx",
+                          "bytes":  4604,
+                          "sha256":  "569527D0E1B476CE48ACBA510DDE57F22034728D1FFA8F2560DF7953B299047F"
+                      },
+                      {
+                          "path":  "src\\components\\admin\\vp-user-provision.tsx",
+                          "bytes":  15583,
+                          "sha256":  "89444E8F2863650521B8042E5E08302D84EC2FF0B91650F6B8BD3A1748890B62"
+                      },
+                      {
+                          "path":  "src\\components\\cases\\vp-case-context.tsx",
+                          "bytes":  2230,
+                          "sha256":  "2E8575E8FC05AB1683EED8CD295579161966E1C88C2F96E745B1B223B56E1716"
+                      },
+                      {
+                          "path":  "src\\components\\cases\\vp-case-linked-records.tsx",
+                          "bytes":  8822,
+                          "sha256":  "47933C31E3DFA03B5967F804BDFBF311BE60910215282F267AD3D269F9603026"
+                      },
+                      {
+                          "path":  "src\\components\\cases\\vp-case-progress.tsx",
+                          "bytes":  1685,
+                          "sha256":  "D6A720AD71BB16D95C2ED4CB907C98EE630259DDA6BCCEDA00952E90D47DA8CA"
+                      },
+                      {
+                          "path":  "src\\components\\cases\\vp-inspection-valuation-review.tsx",
+                          "bytes":  9276,
+                          "sha256":  "3D8180C6F613736DF6151FF474ACB5C5E8B19639E8378B89CE2BF0D5A8EBA7A0"
+                      },
+                      {
+                          "path":  "src\\components\\cases\\vp-p19-analysis.tsx",
+                          "bytes":  13800,
+                          "sha256":  "0EA9308DF18E67A30E4307654B1EB37949B04A1203E34920C345915295F8BF2E"
+                      },
+                      {
+                          "path":  "src\\components\\cases\\vp-p20-report.tsx",
+                          "bytes":  3787,
+                          "sha256":  "3808DA16083A75D0DE7FCDEC7A95F4E4ABA1249716E1D4907FF7AFD5C419A317"
+                      },
+                      {
+                          "path":  "src\\components\\cases\\vp-value-graphic.tsx",
+                          "bytes":  1176,
+                          "sha256":  "69A571AE9EA96765F45CB81596E62C23C79BE008B5AEFBAC1A42A8CB0D634319"
+                      },
+                      {
+                          "path":  "src\\components\\dashboard\\vp9-dashboard-cards.tsx",
+                          "bytes":  12801,
+                          "sha256":  "EF0A46111E69704E1171781B920518E5B9CAB598A55544829D90A7205F04FED6"
+                      },
+                      {
+                          "path":  "src\\components\\documents\\vp-document-ocr.tsx",
+                          "bytes":  19332,
+                          "sha256":  "6756164BF15FC209B13AF7C39456B46EACA53191089CB1DEDE72E378F28C4A9A"
+                      },
+                      {
+                          "path":  "src\\components\\documents\\vp-document-workbench.tsx",
+                          "bytes":  4322,
+                          "sha256":  "8CADF7561AC7C961AE4BEDB84F05940CA1D944651E101A26EDB70B77E898EFD1"
+                      },
+                      {
+                          "path":  "src\\components\\documents\\vp-original-preview.tsx",
+                          "bytes":  6698,
+                          "sha256":  "F3F577E5E96FA256B0061A84A516E4FB1092E00A421C535B75F085D73D6FC90A"
+                      },
+                      {
+                          "path":  "src\\components\\documents\\vp-p21-property-review.tsx",
+                          "bytes":  6461,
+                          "sha256":  "57CBE76CD50B5A4F9C261916D8BB1CE9C459C47B5E83B40677EB3FB5D2B172ED"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-field-case-editor.tsx",
+                          "bytes":  3127,
+                          "sha256":  "7123577180396D4565D0CFA2A96D3E9E369ED607344DD1EC2A91B6538F0168CB"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-inspection-form.tsx",
+                          "bytes":  32914,
+                          "sha256":  "AA53FD9C44FA7C711B03D1317034EFFF247CA55FE5DAFAFBAF4F76C0BD8A04DF"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-inspection-qc-summary.tsx",
+                          "bytes":  4340,
+                          "sha256":  "BEC2C8DB7E578D5DF3E876958861C8D1C216AF582E96977E5B0AF05B47A6B89C"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-inspection-source-review.tsx",
+                          "bytes":  6944,
+                          "sha256":  "1604C7F2445F5101FCEF58FAE263FADA8E862AD907ADF4082CD69FFDA6D568CA"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-mobile-bottom-nav.tsx",
+                          "bytes":  3449,
+                          "sha256":  "60819F2E3864D39B16E06B415A94A15966BAE5E07182D2AAE886AF6D680A3B68"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-p18-supplement.tsx",
+                          "bytes":  5956,
+                          "sha256":  "DC40E2DD6327028BA7A03C44E5028D87EAC5E051918D0C8B1552AFAF8C2601A6"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-p22-canvas.tsx",
+                          "bytes":  2267,
+                          "sha256":  "18149587E05D090B8B11C54B35F46660B52F609ADA3D0ED28BA5A59554B41BEA"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-p22-sketch.tsx",
+                          "bytes":  3905,
+                          "sha256":  "EA0DEC509918114DB10B122A3F30E145774B9C274654B5752C9A1F48BA004869"
+                      },
+                      {
+                          "path":  "src\\components\\field\\vp-plot-sketch.tsx",
+                          "bytes":  3380,
+                          "sha256":  "0A9B52C007E1C4EE42F6EB6257CF7AF3EBC75B7C00E593686D02A54B804CBC05"
+                      },
+                      {
+                          "path":  "src\\components\\market\\vp-market-search.tsx",
+                          "bytes":  6629,
+                          "sha256":  "782C83EABEB3AE38665AC76D64E230AC8DDFE5F16CC436E164C02ED0F1C7A82B"
+                      },
+                      {
+                          "path":  "src\\components\\market\\vp-p22-comparable-map.tsx",
+                          "bytes":  2636,
+                          "sha256":  "9BE5B14B9B9CA03AB71A6A144A6359BA37085B7C5F41BDFB410C0B8739B58E8C"
+                      },
+                      {
+                          "path":  "src\\components\\market\\vp-p22-map-canvas.tsx",
+                          "bytes":  2795,
+                          "sha256":  "A270A43D23518B112E71F552F06EF8301E6D8046295E73D93A96BF88C7FAA600"
+                      },
+                      {
+                          "path":  "src\\components\\notifications\\vp-notification-center.tsx",
+                          "bytes":  6656,
+                          "sha256":  "98A5447C49B33268048F7A86D8E2A0F0782F0EDA44DEE8693B4B1CBB879A0CBE"
+                      },
+                      {
+                          "path":  "src\\components\\properties\\vp-case-property.tsx",
+                          "bytes":  4425,
+                          "sha256":  "FA14BF90AD653CCB05298F1300503D3DCC8D9F7D5C396A9F601F44ABE486A5C6"
+                      },
+                      {
+                          "path":  "src\\components\\properties\\vp-property-editor.tsx",
+                          "bytes":  8963,
+                          "sha256":  "A89BC0212ACE33808CA7673C3575EB027D4129202CE323CCB88C35738EA0FF21"
+                      },
+                      {
+                          "path":  "src\\components\\properties\\vp-property-reconciliation.tsx",
+                          "bytes":  4052,
+                          "sha256":  "143EF8710F86E3B5F0F4C9EF7F43EFFA8C02B5C76632763C2F16987C15D9EFB8"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\accordion.tsx",
+                          "bytes":  2015,
+                          "sha256":  "0903EFCD7B746EEF0A10C954A541B0DFA7AA1172F3C380A1A88F4E19A317FDA3"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\alert-dialog.tsx",
+                          "bytes":  4270,
+                          "sha256":  "84E5BA3136DAA12FBE9AA0D72A821D110591D42CB0CB631B12D5C10F60940873"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\alert.tsx",
+                          "bytes":  1589,
+                          "sha256":  "E7F4C2E6F78C59270905B4152B7D3EF4D5C6B9E3B2D370DAA7B301AA7CBD27B3"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\aspect-ratio.tsx",
+                          "bytes":  143,
+                          "sha256":  "D72C73D629E37995A0A71647D851D68D6FDCD7EC120797F36AB83A8EE89F2CAB"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\avatar.tsx",
+                          "bytes":  1413,
+                          "sha256":  "0326C9041C5A0B1BA31FF29822C51950B6AEAC485CD0985E7DF714741A54E7F4"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\badge.tsx",
+                          "bytes":  1123,
+                          "sha256":  "6519775252FE729F21C60B92C7C9FEEFD1FE7D0A8C2CF16D6F1C2FA7E153FE75"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\breadcrumb.tsx",
+                          "bytes":  2749,
+                          "sha256":  "D5224E87344B3AC0F8B002E5DDA6A71FF8FEE296DB8A5FBE6B034D06BD5C2AE1"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\button.tsx",
+                          "bytes":  1964,
+                          "sha256":  "457245FB82BA7FD58A79460B146710A87065054AAB7A72A403D8AE60C2DC50D1"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\calendar.tsx",
+                          "bytes":  7226,
+                          "sha256":  "E883F2245873FDF360764F77FC8F391426BEF5776C6397537012C46970EBD6EE"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\card.tsx",
+                          "bytes":  1832,
+                          "sha256":  "E9E8B6E50DAAB65B5A1AD6675C78B7C470D18D525B957B4A1557251E61ABB9FF"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\carousel.tsx",
+                          "bytes":  6200,
+                          "sha256":  "568E00E8EDBFAB8AF67EE902CA9EF5CEB6D5ED6F3045E7F9B3C15B4F7EF9E974"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\chart.tsx",
+                          "bytes":  10570,
+                          "sha256":  "81B1F692F9334BA3030213FF37EEAF2DD762B644E5D96E51ADA7072109F07430"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\checkbox.tsx",
+                          "bytes":  1043,
+                          "sha256":  "C44D02535D5C9C92807576804407DD63D01E7189DBDE526E925B53885E645FD4"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\collapsible.tsx",
+                          "bytes":  335,
+                          "sha256":  "5F0A45D8F6CA72D37ED10BF0A85306158B67D7CBC386319186CE013EAD9BC0A6"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\command.tsx",
+                          "bytes":  4876,
+                          "sha256":  "BA8C0F8B23044CE9A5066E66D7AB7BE3A3C79BFC4A0AB7DFAE6FFAFE439145A3"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\context-menu.tsx",
+                          "bytes":  7360,
+                          "sha256":  "B299F50A0A7840B136DB5670F2B2E7EEC6FC62B3C06BC2AD0015800959CC381B"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\dialog.tsx",
+                          "bytes":  3791,
+                          "sha256":  "EB48423E6637FEFD1A7BC0994A256AC4384335893F9630973B36FE6634E10172"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\drawer.tsx",
+                          "bytes":  2973,
+                          "sha256":  "478C487F66245641D5FA0F0D1C53A07D68BD60C4B3C497EC4C41CE08B482E14B"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\dropdown-menu.tsx",
+                          "bytes":  7565,
+                          "sha256":  "A6B87C89F5A806225B7F3A81F13A6577289C67E5787C2A56B5A22BD1EDEA02CE"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\form.tsx",
+                          "bytes":  4201,
+                          "sha256":  "1ED53D4AB564A64708938643DE590F2BEF3718B0B2A309C1019C57E9C1FDE23F"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\hover-card.tsx",
+                          "bytes":  1246,
+                          "sha256":  "69DC172ECE56AC77BF3A044A1CD60ED601B0041945D16B5DA4C6CC4F42116988"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\input-otp.tsx",
+                          "bytes":  2232,
+                          "sha256":  "45B7C4FD518616F76DD611B9DA13BC60BECE1352E050878BF943E1CC6A4ED678"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\input.tsx",
+                          "bytes":  786,
+                          "sha256":  "2E186B028AEE9B76CE8AB554AF32A3C8A984CD03859B2728D05B26039AAFB22A"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\label.tsx",
+                          "bytes":  716,
+                          "sha256":  "9F72E2ECF16206593AA9E3C4FBC14CD8E81AA8488D57D92D4A950B30935A9FA9"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\menubar.tsx",
+                          "bytes":  8515,
+                          "sha256":  "5BD157C3A446EA1E451867E63724B2E87AD6BBA6251C8B5F1B267D1DF7BD4E0E"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\navigation-menu.tsx",
+                          "bytes":  5152,
+                          "sha256":  "755AECC77B7911AB61159C9FBB9B25254009EB4C32C95B1430B6B5B7D37ED8F0"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\pagination.tsx",
+                          "bytes":  2739,
+                          "sha256":  "CBE8559C578EE2D34C7DAEF5EE75DC3AFEB795851E294B111DEC375BA44A9A2D"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\popover.tsx",
+                          "bytes":  1352,
+                          "sha256":  "861C18577EA5988C6F5CA00D1C677200319FD427CF8B424E59A5CCA6FF24F830"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\progress.tsx",
+                          "bytes":  781,
+                          "sha256":  "418F612946A520D1380B7A0D058185BB6A6D09846846DD6D6904A0016152DD4A"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\radio-group.tsx",
+                          "bytes":  1405,
+                          "sha256":  "8C55AA0496B00A27FC4F609CA8B43A7E82C6802F6BF613998438B7632899FA96"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\resizable.tsx",
+                          "bytes":  1552,
+                          "sha256":  "F0399FEC7BC334F06433B41B6EBF34255942CE4916B99173898893FA7FCC8281"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\scroll-area.tsx",
+                          "bytes":  1635,
+                          "sha256":  "B607F562455152A079D70A22538C95072B0267E0D59A1A1CF16A905A2E373A6F"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\select.tsx",
+                          "bytes":  5759,
+                          "sha256":  "AFB1957A141743F995CA9AB48B916FF5BDC860FE5B1BF97EE9C9016EBBACD4B4"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\separator.tsx",
+                          "bytes":  723,
+                          "sha256":  "BF5838B692E5F74FDE7083280B99492DD402BCE6966E912E79F5E23F14BC98EB"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\sheet.tsx",
+                          "bytes":  4248,
+                          "sha256":  "A82F9341962E766EE925A2FE883B0A9AB5D5DD8475C402AC8E491EE37DC95FDE"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\sidebar.tsx",
+                          "bytes":  23975,
+                          "sha256":  "9F44F4523271F965ADEC608AE1C3B8A2F350F2F45BA1401A2C7EE33BC5EDA238"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\skeleton.tsx",
+                          "bytes":  239,
+                          "sha256":  "F4C42257D73925B0B856A3500E2CBDD918FE6744FCD6BE87EF28BB88E7EB7366"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\slider.tsx",
+                          "bytes":  1025,
+                          "sha256":  "D307CF3FF05B54BE4A04389EF4379F9E8B4DC49720197937991CE843A8D4B5EC"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\sonner.tsx",
+                          "bytes":  734,
+                          "sha256":  "3AD40F66C339E799B1A57C00E10B4627294C7D580D99D8A48AE0D8D4C13CF931"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\switch.tsx",
+                          "bytes":  1156,
+                          "sha256":  "C3C298DF4FFB56695E4A8F0FF3E37EEE08437DEC542A677153EC16BED0820107"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\table.tsx",
+                          "bytes":  2878,
+                          "sha256":  "46DECF011A7E8756B691787B6E3DEB4282B59D70E45E18DFB623A7C4C50AE88D"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\tabs.tsx",
+                          "bytes":  2046,
+                          "sha256":  "8233B30F938955DB3A205E1DB8E87D4CEFC85E210D3D9CA306F7B96950D0922E"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\textarea.tsx",
+                          "bytes":  697,
+                          "sha256":  "82505D95DD3AAE392BB5E5BC271729BA77A2B2699AFE1D8DFAD2944945FE3C4E"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\toggle-group.tsx",
+                          "bytes":  1752,
+                          "sha256":  "D59CD3937C967A3E221FDFCFE4EA5CD57EB97CBE37E1AC98126664C9C7DB49C1"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\toggle.tsx",
+                          "bytes":  1534,
+                          "sha256":  "62E6E21993F1AB633B9F830CBBF0C181F3D161BAE3A7792DBF2D842D42A2F09C"
+                      },
+                      {
+                          "path":  "src\\components\\ui\\tooltip.tsx",
+                          "bytes":  1278,
+                          "sha256":  "9682690FC3755D0F4B8684F2D7B1F77945876D41A45B723D0761B26804AD5010"
+                      },
+                      {
+                          "path":  "src\\components\\voice\\vp-voice.tsx",
+                          "bytes":  8267,
+                          "sha256":  "6A57F7ACE69DD999E631C6B07F874D6C9012F321B3D2FD370BB0A1F82B7329BD"
+                      },
+                      {
+                          "path":  "src\\components\\workspace\\vp-command-menu.tsx",
+                          "bytes":  2992,
+                          "sha256":  "4F8E63A190277EC98248A57652350980B25F114BFD5DAA75A821812D5344EA96"
+                      },
+                      {
+                          "path":  "src\\components\\workspace\\vp-icon.tsx",
+                          "bytes":  933,
+                          "sha256":  "FFD07D31C658FD992C10BE7436A939967091069183C2C4586CC5187F10EA3FF5"
+                      },
+                      {
+                          "path":  "src\\hooks\\use-mobile.tsx",
+                          "bytes":  576,
+                          "sha256":  "21EFF740F9E5C965C7F0782925A7E8F67DDFCDF0F58B6613550F99C3E1C454E9"
+                      },
+                      {
+                          "path":  "src\\integrations\\supabase\\auth-middleware.ts",
+                          "bytes":  3236,
+                          "sha256":  "AE40B141CE933B52252E00BFACD3E69FA7A8E6EF88A2C92809780BF7D1BB76CC"
+                      },
+                      {
+                          "path":  "src\\integrations\\supabase\\client.server.ts",
+                          "bytes":  2753,
+                          "sha256":  "56EC7F9AC40CCDF96D8ABA4F7FE33A586590AC63420B81E6CD5DC1E4777EE28E"
+                      },
+                      {
+                          "path":  "src\\integrations\\supabase\\client.ts",
+                          "bytes":  3569,
+                          "sha256":  "B300E9491D5B8500EE77137FBAEEF8E5B46B5F5E8A9463FC2DC01ADC104E1807"
+                      },
+                      {
+                          "path":  "src\\integrations\\supabase\\previewAuthStorage.ts",
+                          "bytes":  6623,
+                          "sha256":  "5B00130146B77ECD8ED49F118C640D3E75AA7C5E76695F3B9E3F7F8833719F0A"
+                      },
+                      {
+                          "path":  "src\\integrations\\supabase\\types.ts",
+                          "bytes":  97036,
+                          "sha256":  "43D4893994E199B8F4F5D6034F8A5C1D00AC2AE4FD272A49D5A41184823274F3"
+                      },
+                      {
+                          "path":  "src\\lib\\app-context.tsx",
+                          "bytes":  3861,
+                          "sha256":  "88460B0B6227B627DA7BC233AF2E2CC5EDC0F83AA9337E944CD93703423CC7EE"
+                      },
+                      {
+                          "path":  "src\\lib\\data.ts",
+                          "bytes":  9853,
+                          "sha256":  "2B6C7F3DCBCD617BA429EE94CC775FE0CDBDDA6555A6B4A34AB766640CC37529"
+                      },
+                      {
+                          "path":  "src\\lib\\error-capture.ts",
+                          "bytes":  2898,
+                          "sha256":  "D6FA7756CBC4C399F4E891B174C2DCE8160E2354972C2AE68413DFD1DB843088"
+                      },
+                      {
+                          "path":  "src\\lib\\error-page.ts",
+                          "bytes":  1371,
+                          "sha256":  "635915886F5D44A18B6ADD2A53959DBE2E8BA1BB3F7E597FC714650E74157BB6"
+                      },
+                      {
+                          "path":  "src\\lib\\lovable-error-reporting.ts",
+                          "bytes":  2219,
+                          "sha256":  "0A2E8B5F3FFD2DD682AB78BE1A9B0998B73284A6525080E4960F85827CD608D3"
+                      },
+                      {
+                          "path":  "src\\lib\\ops.ts",
+                          "bytes":  1407,
+                          "sha256":  "7D7FD85387D7B6D6F9047374AC0BB6753A0809B18A4BD690C718B7466D256921"
+                      },
+                      {
+                          "path":  "src\\lib\\utils.ts",
+                          "bytes":  169,
+                          "sha256":  "D1F1E0D62CB8D8D1E04C26E14DE842D8A151F75812D81B046C65B5D1FE8E4B27"
+                      },
+                      {
+                          "path":  "src\\lib\\valuation.ts",
+                          "bytes":  2707,
+                          "sha256":  "861FF3D7CE423F539ECAE28FEC98036221832BBEAB34D28DC4087D63DB0FE765"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-alerts.ts",
+                          "bytes":  1762,
+                          "sha256":  "B2EBFEDC1DDC368ABBADE67F3689B88589FF57644744BCB50546C563D55CFFBA"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-analytics.ts",
+                          "bytes":  3644,
+                          "sha256":  "2D1AE4F7787AEA08FFF75BD7034ABCD1D8A13136556EBBE5F217833E56057133"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-auth.tsx",
+                          "bytes":  15344,
+                          "sha256":  "97C5615EA7AC0F3368EA8F1E783B9466807B774BD9B6C7AC0821851AA7B3EF63"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-billing.ts",
+                          "bytes":  7267,
+                          "sha256":  "523C4037C4F1DE29ABCFAA7B528F0664F4442BB51143D7ED8C0F37A35B43A299"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-cases.ts",
+                          "bytes":  7199,
+                          "sha256":  "43DA4411DEBA14940510F9CB002629BF3DB656DE0553127CEEBAF67DE103A71C"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-dashboard.ts",
+                          "bytes":  2267,
+                          "sha256":  "5B96A48B01D56C042B38995BA20E8C437BAFDAAD859EAFDBE211D2F39C28FD65"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-db.ts",
+                          "bytes":  600,
+                          "sha256":  "9E490651D2E83E5231A1F81332A54C34737C13BE5EC4CC4CE2CB743D67630807"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-field.ts",
+                          "bytes":  6446,
+                          "sha256":  "8024BC9BD706467FC2BC98BF20F38E6554C1DD39C28E3638EA125477A59138F5"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-inspection-export.ts",
+                          "bytes":  10518,
+                          "sha256":  "F04926FF1798BC98CD3E6BC893C6AFC8992E0482DDDC72AB1C446A952E7C09C8"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-inspection-suggestions.ts",
+                          "bytes":  1837,
+                          "sha256":  "DD2682CBDB90118B842D136DAD2D4C8440C835EF106668700A7E88CA5E999A67"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-inspection-template.ts",
+                          "bytes":  10497,
+                          "sha256":  "CEFE7259F3EC34BDB00759BB9A2B11978DDBC3F0E003EBDF85D70675E90E2C91"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-inspection-valuation-transfer.ts",
+                          "bytes":  3267,
+                          "sha256":  "F04C62C176959BF42DA1755FC042D1935CE8F00477C90EB508AC1B90BFB4AA7B"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-local-ocr.ts",
+                          "bytes":  6382,
+                          "sha256":  "42117C15DB3AAB5313AC98177A043E1D4447AFF7ADB51339B2277EBF07D74544"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-market.ts",
+                          "bytes":  4564,
+                          "sha256":  "93812C45A94D6B9377BAA5810022363AFC80780791FC58BD72602D0F60C81C87"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-ocr-candidates.ts",
+                          "bytes":  6979,
+                          "sha256":  "CB9BF58A06F2BB1D3DED634F29261ED8983439F0E2AF8C2E1A427A07F7669242"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p10-permissions.ts",
+                          "bytes":  2282,
+                          "sha256":  "EC2DC41C93DCD89840C8FAA755EEFA126A71951B3AA90AB760CE655FB887D925"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p14-mobile.ts",
+                          "bytes":  1637,
+                          "sha256":  "06A451D57EBFB53593A7616821380BFE5859008F810A36FDFE40718F39E6FD5A"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p18-api.ts",
+                          "bytes":  1218,
+                          "sha256":  "3B6D0C7AB60A0F5465A6C76F6A5330FBBA6886C533EA124EB4862A0A1D71DD56"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p18-templates.ts",
+                          "bytes":  5772,
+                          "sha256":  "5AF505873EF386682C58B2911014AA64E8363CF5B16BA797D8851B78BAE3FC9F"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p19-api.ts",
+                          "bytes":  2213,
+                          "sha256":  "36FCD3BD7EDBECE131631AA09C3009CD1F1134D2D50535EB22A64325E3BC595A"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p20-api.ts",
+                          "bytes":  2476,
+                          "sha256":  "D4F84250D08C03699338509AF74A2B6F99D257C81F117468CEFB226065B0D1A4"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p20-model.ts",
+                          "bytes":  2402,
+                          "sha256":  "44655F0AE296060E1FC999858C5CFCB91BE30D80E30F839DDC86D7C8B0CB0989"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p20-workbook.ts",
+                          "bytes":  3710,
+                          "sha256":  "A50C46D0854FF1F789418E9E031BAD27FD26D1A7223F864AABEF934D5702C2D3"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p20-xlsx.d.ts",
+                          "bytes":  508,
+                          "sha256":  "EFACB936DDA8515D38631B605B6987487E0388B7F60D79839BBA8E9E6F167CD5"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p21-paddle.ts",
+                          "bytes":  1661,
+                          "sha256":  "A3959F80AFD115AC7F5867EA80E8FB195E31DF35B198BDFDBAE8D3C3EC48D6B9"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p21-property-candidates.ts",
+                          "bytes":  4637,
+                          "sha256":  "5168ED4D3C54ABEDD5569A43406A9683A513214E4C26D5ED4A54573E05D1AD8F"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p22-sketch.ts",
+                          "bytes":  3316,
+                          "sha256":  "86CBAD5128DCC36D9E96631BCFBB575B167E91A9E8E930D313E8D53F30F712CB"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p27-evidence.ts",
+                          "bytes":  1314,
+                          "sha256":  "E824AA3DB3D1208D1E288FC3DDFBD29073927DC4F4D220E44B3D570A7AD28F24"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p4-evidence-review.ts",
+                          "bytes":  2254,
+                          "sha256":  "E1B0A5BB2E9259D64ED67D4811278997227D79E359F45AFBE0B0265F5C5CC3F5"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p4-page-ranges.ts",
+                          "bytes":  636,
+                          "sha256":  "A756788D5CCD5BB2B8C396A1147859961422116D1FDF93EEFBA3C26F2914D8FD"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p5-rpc-diagnostics.ts",
+                          "bytes":  2554,
+                          "sha256":  "6C0074592A513DAB80853AA12ADF19E225A653535CABD16C8A5796C6FD535E33"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p6-ocr-register.ts",
+                          "bytes":  2192,
+                          "sha256":  "C3E6A5C1A4136A6D918C2CDBC55CCA4F449834477285AFE3ED73ADB81EA9A153"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p7-inspection-diagnostics.ts",
+                          "bytes":  2054,
+                          "sha256":  "FCA0A31BC7788D76550C1E9755589BF1D54F3D5E1D0418230F81FE616CCDA6F7"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p7-ocr-visibility.ts",
+                          "bytes":  1440,
+                          "sha256":  "1D641E1D07B0B4C78CB962B84DA38CBA41F484DC2886D484A4874CF3AA081B85"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-p8-persistence-verification.ts",
+                          "bytes":  3217,
+                          "sha256":  "6C0A643C26362CD083BD8C0A2950BB3F79745BCFFA670FECB7C336570AC07518"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-property-data.ts",
+                          "bytes":  3906,
+                          "sha256":  "B383F6221EAC7DF4C795C44138C30AC3A82D073190DDE0AD1956E22C69567B98"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-property-master.ts",
+                          "bytes":  3152,
+                          "sha256":  "47107EDCFC6168F2ADE1777471B178D42254316C1F9776DE77D1D64229A8EFF5"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-qc.ts",
+                          "bytes":  4150,
+                          "sha256":  "2DC251E75FC70A7CA548603C185EF6BB4D8976789D073CBE00809EC1BA06EBBE"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-query.ts",
+                          "bytes":  1271,
+                          "sha256":  "040A022CC8DEEEBCCA339A1E9577834B55CE36F216C235DCB549C8F98BB4BF07"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-reports.ts",
+                          "bytes":  8098,
+                          "sha256":  "E117D610AFC887E10B53808466FE0BE1AB9E2F906D8D0A641CCCBA21966F1184"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-session.ts",
+                          "bytes":  638,
+                          "sha256":  "2BD53A79CF4B74C90B8654FE51543A82784AECB844B1D6DC68E6749095623CEC"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-voice-locale.ts",
+                          "bytes":  2508,
+                          "sha256":  "DE7220A6B7A4FF554B778A237D99222531DA9FA0AA24F15DCAB003F5DC924446"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-workbench.ts",
+                          "bytes":  2077,
+                          "sha256":  "917C8C3F68629DB7B34694B464B2FB3AAE93CE3632BB00FDEAB3F6F334ABDD0C"
+                      },
+                      {
+                          "path":  "src\\lib\\vp-workspace-nav.ts",
+                          "bytes":  2510,
+                          "sha256":  "F5C45213F1D2462AF7474D7032BE9FBDF7B35FB3E9D41E69F1695E45E449246E"
+                      },
+                      {
+                          "path":  "src\\routes\\admin.bank-masters.tsx",
+                          "bytes":  12209,
+                          "sha256":  "F7093E76571E7976759ACA192C1F0D2649EC68F9F201FF776B1C535FA63C387B"
+                      },
+                      {
+                          "path":  "src\\routes\\admin.branches.tsx",
+                          "bytes":  12401,
+                          "sha256":  "80CC22D3D3DCE5FCBDE1E1B897A291F61F2F9E4333FAE874232623E3F91AA6B8"
+                      },
+                      {
+                          "path":  "src\\routes\\admin.data-integrity.tsx",
+                          "bytes":  8796,
+                          "sha256":  "A0318E30699250769D6D0F4DFC7A191BFE75BD07666E2FCCE45FA99723F21C24"
+                      },
+                      {
+                          "path":  "src\\routes\\admin.roles-permissions.tsx",
+                          "bytes":  17973,
+                          "sha256":  "588B354DB0FF8BB82CEE09695238CBD8323E636C1DA755E850284CBD63940841"
+                      },
+                      {
+                          "path":  "src\\routes\\admin.settings.branches.$id.tsx",
+                          "bytes":  1811,
+                          "sha256":  "3C6B6842114471720D701F4368119E58A81AFCCB0325F15E7C41A4F689D43D5F"
+                      },
+                      {
+                          "path":  "src\\routes\\admin.users.tsx",
+                          "bytes":  17168,
+                          "sha256":  "FECB30F84E1D19A67B6AC6FFC2695E7BC096F508F0E0E1CE90DE3F4577F16ABD"
+                      },
+                      {
+                          "path":  "src\\routes\\analytics.tsx",
+                          "bytes":  14112,
+                          "sha256":  "904E2C50CE908A5489FF95708EC0D2782896611EDC9B779740F81210DA8D2FD4"
+                      },
+                      {
+                          "path":  "src\\routes\\billing-mis.tsx",
+                          "bytes":  20750,
+                          "sha256":  "6C4168A981819A74AC891C005D0A2ED16AC65E2EC2C76D61728DC5C4CF359B38"
+                      },
+                      {
+                          "path":  "src\\routes\\cases.tsx",
+                          "bytes":  16737,
+                          "sha256":  "5656971FB92E0C224A8D8CEB8DBC82DB80A578C290598D585CE8AB4E8D1CAAA2"
+                      },
+                      {
+                          "path":  "src\\routes\\cases_.$caseId.tsx",
+                          "bytes":  18512,
+                          "sha256":  "D8215D07F99968F196579C38439DAD86F9132BCB7124FD2C7850F5006042EB0D"
+                      },
+                      {
+                          "path":  "src\\routes\\field-inspections.$visitId.tsx",
+                          "bytes":  5632,
+                          "sha256":  "BE59A1BFF48E0264DF22F5977B07EF2641B02D6CA9417CEBA7C9E05F1934621D"
+                      },
+                      {
+                          "path":  "src\\routes\\field-operations.tsx",
+                          "bytes":  34141,
+                          "sha256":  "AC2DC3A315C6CE33BF2F34E442ACF9547C9DA7569F18CCF9B4DEC60D3004D0DF"
+                      },
+                      {
+                          "path":  "src\\routes\\index.tsx",
+                          "bytes":  9977,
+                          "sha256":  "02CEAFEA4F554917CBFF7995989D93CC20B2ADCA8DCE21866EE29B4328CF04F4"
+                      },
+                      {
+                          "path":  "src\\routes\\market-intelligence.tsx",
+                          "bytes":  11192,
+                          "sha256":  "4798BBB7893C9C79DD99A2621560C1AD0C9A7D44F4848AF95403AFE84A85C24C"
+                      },
+                      {
+                          "path":  "src\\routes\\notifications.tsx",
+                          "bytes":  487,
+                          "sha256":  "133BB7884D95FE0AF9E5C6324B0DDA2F6E8F828EA3D6FD92093C27FF7ADA4772"
+                      },
+                      {
+                          "path":  "src\\routes\\onboarding.tsx",
+                          "bytes":  24213,
+                          "sha256":  "789A01E9DBDBD3C066A191BD571D22DD900DD31BA3D9E3E5B67A85E3D3FE2773"
+                      },
+                      {
+                          "path":  "src\\routes\\properties.tsx",
+                          "bytes":  7836,
+                          "sha256":  "B3F031D1E14C04A063407F61B4302B2E2A8724237EDEBFB68DB113D36C1784ED"
+                      },
+                      {
+                          "path":  "src\\routes\\qc-checking.tsx",
+                          "bytes":  17881,
+                          "sha256":  "A928DDEE17A5C153F9FF371D6BA4B50EED5AC8196EF913E2A2A85D096360E639"
+                      },
+                      {
+                          "path":  "src\\routes\\README.md",
+                          "bytes":  835,
+                          "sha256":  "5C8187DBE79DAC7A3C494F2600585508F5D15E75F04F21EA364D0DE14DE10575"
+                      },
+                      {
+                          "path":  "src\\routes\\reports.tsx",
+                          "bytes":  18302,
+                          "sha256":  "20014F80AB1104B8B84197C8AB0E781C127DA3B92B89C698D50BC30E5B59FB0B"
+                      },
+                      {
+                          "path":  "src\\routes\\__root.tsx",
+                          "bytes":  4229,
+                          "sha256":  "2B906FF4D4E78C87350B8E90D71673D6B4F6A6552CD20FFB292D6E60E5F8B4AA"
+                      },
+                      {
+                          "path":  "src\\test\\app-routing.test.tsx",
+                          "bytes":  698,
+                          "sha256":  "C817058668430273E00A43620A835F562B8CFE1234EE361C057958C06470CEE3"
+                      },
+                      {
+                          "path":  "src\\test\\ops.test.ts",
+                          "bytes":  709,
+                          "sha256":  "E2585DD127744A7D4633B01ADD7148EA37D4D7BDA9CAA6134E8998F725F491C4"
+                      },
+                      {
+                          "path":  "src\\test\\setup.ts",
+                          "bytes":  446,
+                          "sha256":  "049FD55D8C3BF8742482F5684ECF15407EADD752BAD5E86907032112DC05A558"
+                      },
+                      {
+                          "path":  "src\\test\\valuation.test.ts",
+                          "bytes":  1222,
+                          "sha256":  "451EE7625CE06EC18172A34DD2E82DEB16B9825EBBC3D23A7BFB2EADD6DAADF2"
+                      },
+                      {
+                          "path":  "src\\test\\vp-ocr-candidates.test.ts",
+                          "bytes":  1273,
+                          "sha256":  "BC9FF45A5D2B99BF241F1B84F9AB3E4F0A0D84E51D9036C68EAE2A71CFADE1AB"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p10-permissions.test.ts",
+                          "bytes":  1618,
+                          "sha256":  "6900DAD856E657F9A1A91FFDE518B03EBE42B8EAB33637F6F0817F78B3FE3C19"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p14-mobile.test.ts",
+                          "bytes":  1840,
+                          "sha256":  "202FF1CD976FCB7E3294E2C48C79B883796F7A92CF31EAF1848AFFDF0F092647"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p18-templates.test.ts",
+                          "bytes":  1344,
+                          "sha256":  "DEE6450D41289A3EC9EBA3E37CEE82F21AC4022F3E440D5BFF9691398402C8EC"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p26-workbench.test.ts",
+                          "bytes":  1091,
+                          "sha256":  "3E0E2F21FA815647F9F8E969C5C271E889E3A69EEEA8573A5C5A4A482946E75C"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p27-evidence.test.ts",
+                          "bytes":  1596,
+                          "sha256":  "F60A915B9B0697E62A19C52CC1A2F3A9DA0523081A899ABFD3536C603970924F"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p6-ocr-mapping.test.ts",
+                          "bytes":  1424,
+                          "sha256":  "3A8E1901868425B8152EAA86C1F1ED67009C4CD7281139D67A1E32E2818EDC7F"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p7-recovery.test.ts",
+                          "bytes":  2185,
+                          "sha256":  "613E8C353E0DE4EAE98C8CA2A377280403644825DF67DF6029F5D09367ED213C"
+                      },
+                      {
+                          "path":  "src\\test\\vp-p8-persistence.test.ts",
+                          "bytes":  1604,
+                          "sha256":  "782383ED1CEF84CB201A289275EEBA04F7209C5FAA3C13133CDE854E4F8687A4"
+                      },
+                      {
+                          "path":  "src\\test\\vp-query.test.ts",
+                          "bytes":  1077,
+                          "sha256":  "C77EBBDA67C3F3712248D9ED451A7A8839BEE10781AB026F1262BDA384A7E333"
+                      },
+                      {
+                          "path":  "supabase\\config.example.toml",
+                          "bytes":  201,
+                          "sha256":  "DEC3BD6704C72D1E4DE6F36892A3B6AE9CD9932497AEF483D5E63A35504E21E7"
+                      },
+                      {
+                          "path":  "supabase\\config.toml",
+                          "bytes":  35,
+                          "sha256":  "586B1B98A787486711968B23FD0964279535505E65192FA30CE39B9B45BBADFC"
+                      },
+                      {
+                          "path":  "supabase\\.temp\\cli-latest",
+                          "bytes":  6,
+                          "sha256":  "94A8D332C6D4D6A70FC7157286C64B1CAC704D59C1AE8DE7335DDE07862FE21B"
+                      },
+                      {
+                          "path":  "supabase\\.temp\\linked-project.json",
+                          "bytes":  129,
+                          "sha256":  "611119408376BDD7ED05577C529EA08F9F642E3B23CA20CE3B762E6BCBBF4DD8"
+                      },
+                      {
+                          "path":  "supabase\\functions\\vp-invite-user\\index.ts",
+                          "bytes":  4297,
+                          "sha256":  "D935B1B7940AB817CBD8A1BEB9B50C1A3768F438CD50D82B311187EB2C3D0CEA"
+                      },
+                      {
+                          "path":  "supabase\\functions\\vp-ocr-document\\index.ts",
+                          "bytes":  8027,
+                          "sha256":  "646AB013ADB92C751E0E6ACDB48F8E8FC9D194156C0FD72A20F7CFB570BE7783"
+                      },
+                      {
+                          "path":  "supabase\\functions\\vp-provision-users\\index.ts",
+                          "bytes":  12267,
+                          "sha256":  "D9DF2AB9E3C6FB2D299198A45F5549269222E728FC466CFF34F72457AAE34114"
+                      },
+                      {
+                          "path":  "supabase\\migrations\\README.md",
+                          "bytes":  617,
+                          "sha256":  "25524CECD91125BA2D16B26DF7E2755DD7E2BB4150E6CE7A5DF9318434178D12"
+                      },
+                      {
+                          "path":  "supabase\\PAID_OCR_DISABLED_DO_NOT_DEPLOY\\README.md",
+                          "bytes":  657,
+                          "sha256":  "272D84B489F66A67220D003074F295F7B20424838962D59304D38D5CC12E894A"
+                      },
+                      {
+                          "path":  "supabase\\PAID_OCR_DISABLED_DO_NOT_DEPLOY\\vp-ocr-document\\index.ts",
+                          "bytes":  8027,
+                          "sha256":  "646AB013ADB92C751E0E6ACDB48F8E8FC9D194156C0FD72A20F7CFB570BE7783"
+                      },
+                      {
+                          "path":  "tests\\p0-inspection-template.test.ts",
+                          "bytes":  2532,
+                          "sha256":  "49459DDFF04DCA6C12165E50C26A895C0F94CB91C58ADCA594A14498C455B674"
+                      },
+                      {
+                          "path":  "tests\\p1-inspection.test.ts",
+                          "bytes":  2444,
+                          "sha256":  "1D79134EA78A386FE8F6E9B3B89534CE830BF7F0702FB81C671801BA9C46212F"
+                      },
+                      {
+                          "path":  "tests\\p16-property-data.test.ts",
+                          "bytes":  1783,
+                          "sha256":  "D667C3A6F1155D7A568386E6CD20D43A5B5DE807BBF4AB7A6629B00350171531"
+                      },
+                      {
+                          "path":  "tests\\p2-transfer.test.ts",
+                          "bytes":  2264,
+                          "sha256":  "B1B7D9EB2DF4E08B4280FFC8BFE489777781A0738C09B62B5956084EDC52AD38"
+                      },
+                      {
+                          "path":  "tests\\p2-voice-locales.test.ts",
+                          "bytes":  867,
+                          "sha256":  "8EBCD68F7EF1B51F9862A8D7B7E390298501B484BA82E4D4D1E43E6176A36247"
+                      },
+                      {
+                          "path":  "tests\\p4-evidence-review.test.ts",
+                          "bytes":  3033,
+                          "sha256":  "C90BB54CA585D266E284DC7516E7931C4DD66004EA85778FE250F6AB6E670A27"
+                      },
+                      {
+                          "path":  "tests\\p5-rpc-diagnostics.test.ts",
+                          "bytes":  1096,
+                          "sha256":  "DA91689D9FBC98AAE838C04E2FF81497DD2B2E3808CFE0C097B5A5B8FDCBD1C4"
+                      },
+                      {
+                          "path":  "tests\\vp-p20-model.test.ts",
+                          "bytes":  1396,
+                          "sha256":  "19D05F3780C2D2AAA353AD339A71D69C64EAAE29F4509B535D37AD801280C786"
+                      },
+                      {
+                          "path":  "tests\\vp-p21-property-candidates.test.ts",
+                          "bytes":  2027,
+                          "sha256":  "214430B62CB402DB1485898960C64332567C272C48329AB1EDAF4C4327ADC2C7"
+                      },
+                      {
+                          "path":  "tests\\vp-p6-ocr-mapping.test.ts",
+                          "bytes":  1424,
+                          "sha256":  "3A8E1901868425B8152EAA86C1F1ED67009C4CD7281139D67A1E32E2818EDC7F"
+                      },
+                      {
+                          "path":  "third_party\\jsonforms\\LICENSE",
+                          "bytes":  1124,
+                          "sha256":  "79EEB1AD8FDD20ACE6ED8F203DD7F7BDDB7A776996BA55A8B43791E73E0989D2"
+                      },
+                      {
+                          "path":  "third_party\\jsonforms\\SOURCE_REGISTER.md",
+                          "bytes":  1507,
+                          "sha256":  "0F7391E9F2AA95C554952AFE95A3D939EB9F50CDE2A4FE3AC379997DCFC3AD5A"
+                      },
+                      {
+                          "path":  "third_party\\open-comps\\convert_measure.original.sql",
+                          "bytes":  2714,
+                          "sha256":  "89942353E90BE6B512A5FFA3457FAC75AF04CB8CDCA5B0EA5286AAA84A7879D4"
+                      },
+                      {
+                          "path":  "third_party\\open-comps\\LICENSE",
+                          "bytes":  1070,
+                          "sha256":  "34416D1B43C04D427004C42E80D56F8D7A51094BCB1FD0E447D0FE963FA66E22"
+                      },
+                      {
+                          "path":  "third_party\\open-comps\\nearby_sales.original.sql",
+                          "bytes":  1257,
+                          "sha256":  "5D95115CAF51E423C56F334698C3AF6B2912465B326291425155C26828932958"
+                      },
+                      {
+                          "path":  "third_party\\open-comps\\SOURCE_REGISTER.md",
+                          "bytes":  2631,
+                          "sha256":  "76F8AB7583229D6C0B688E7D4CA2E0E8AB7C5CBFED87647BBC4C8F7A12439631"
+                      },
+                      {
+                          "path":  "third_party\\open-comps\\test_convert_measure.original.sql",
+                          "bytes":  1732,
+                          "sha256":  "D67B375DFC82514D793A3DDCA61591F398F14973CCD946221D0BBE267C3CB58A"
+                      },
+                      {
+                          "path":  "third_party\\p22\\SOURCE_REGISTER.md",
+                          "bytes":  1975,
+                          "sha256":  "AA9F5B9DE7BA773345E9347EAA6F102DA5644BFB416DBC89409517F68731832A"
+                      },
+                      {
+                          "path":  "third_party\\paddleocr\\LICENSE",
+                          "bytes":  11358,
+                          "sha256":  "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+                      },
+                      {
+                          "path":  "third_party\\paddleocr\\SOURCE_REGISTER.md",
+                          "bytes":  1917,
+                          "sha256":  "FA115EFE70BF7409C129B9AF7BB296223F12AC0192EF22E64DDE8A04301A034A"
+                      },
+                      {
+                          "path":  "third_party\\xlsx-populate\\LICENSE",
+                          "bytes":  1080,
+                          "sha256":  "A78313AB78E9455CE919A58748CEE8F18B6907BA492ECB75F813F5D79DAFA6D0"
+                      },
+                      {
+                          "path":  "third_party\\xlsx-populate\\SOURCE_REGISTER.md",
+                          "bytes":  1180,
+                          "sha256":  "A77B738DC181217E393216A800847DE9AEC37936D8AA8785117B10BB07A7A06A"
+                      },
+                      {
+                          "path":  "tools\\add-notification-card.ps1",
+                          "bytes":  1492,
+                          "sha256":  "807B919B965C791DA08003B9FDF2E2F4E12788A94EC010B4AF351D75E0E39DA0"
+                      },
+                      {
+                          "path":  "tools\\apply-case-links.mjs",
+                          "bytes":  2060,
+                          "sha256":  "539B3A805D48256828FC3AFD533FAC08C6EC99945182B21BECCB98D8403D7137"
+                      },
+                      {
+                          "path":  "tools\\apply-dashboard.ps1",
+                          "bytes":  4998,
+                          "sha256":  "9DA823B1C86C58B7E11F7F7FBC6C4A37D1FB67DA3EAEDD2E4EDC2D212DD0EB59"
+                      },
+                      {
+                          "path":  "tools\\apply-ui-patches.ps1",
+                          "bytes":  3288,
+                          "sha256":  "DC49DD26BB4EFB5A5157A540BC5AD458AE497E76CF1F539ABA9797FF47942B51"
+                      },
+                      {
+                          "path":  "tools\\audit-clean-code.mjs",
+                          "bytes":  3451,
+                          "sha256":  "79CE742F35B8E14906D5F6FD6890FFD5D07D35D0572AB633799BDD1639D91FCC"
+                      },
+                      {
+                          "path":  "tools\\audit-integrations.mjs",
+                          "bytes":  5955,
+                          "sha256":  "DE96FD28DFD741121D9BBD82EBDE56BAADDC8C8F74857238C8586ACC598B985C"
+                      },
+                      {
+                          "path":  "tools\\fix-ts-strict.mjs",
+                          "bytes":  4282,
+                          "sha256":  "52AF0627B7FCBB3586258109632782B709210BE3B2709C6B1E0505269931CF12"
+                      },
+                      {
+                          "path":  "tools\\install-diagnostic-route.mjs",
+                          "bytes":  1591,
+                          "sha256":  "9E5158E7B874E6C5D6A4774D73731554B922347099042FB9B9758F25A6B97A26"
+                      },
+                      {
+                          "path":  "tools\\test-p2-transfers.mjs",
+                          "bytes":  2191,
+                          "sha256":  "351A4550E1338C6E2D942F3A7F6497F36F1595E8E778E77EBA5E3F40CCA48DF2"
+                      },
+                      {
+                          "path":  "tools\\test-p22-model.mjs",
+                          "bytes":  2749,
+                          "sha256":  "37AAE27BEF8C3DA74E3BEA642B60E5E7ADB0DCBA4AA44F4623FA8428EBF206D8"
+                      },
+                      {
+                          "path":  "tools\\verify-full-source.mjs",
+                          "bytes":  2310,
+                          "sha256":  "61EB3EE39B89CBBC7C1C1B57F841911C78F21180497A91AC151A860C44F0E050"
+                      },
+                      {
+                          "path":  "tools\\verify-p0-source.mjs",
+                          "bytes":  2645,
+                          "sha256":  "F604928837B889E36775CFA5F5B3C01662DE8DB86309DBF3454A7F18ADDF218C"
+                      },
+                      {
+                          "path":  "tools\\verify-p1-source.mjs",
+                          "bytes":  2120,
+                          "sha256":  "4F1E906CF843CEA61BD6BA2207A51CC15E9A15D49A725F42AEEF74BA0E5C9CEF"
+                      },
+                      {
+                          "path":  "tools\\verify-p10-source.mjs",
+                          "bytes":  1890,
+                          "sha256":  "F3C8AD75A3715ED982D592588D2941FEE1687F5F52D29768854917051E4C72A7"
+                      },
+                      {
+                          "path":  "tools\\verify-p12-source.mjs",
+                          "bytes":  1035,
+                          "sha256":  "5089C473F316961E56E72D9E95B3F592E7589D137F4EB4AE7526AEC93B2036D8"
+                      },
+                      {
+                          "path":  "tools\\verify-p15-source.mjs",
+                          "bytes":  2780,
+                          "sha256":  "995CA97AF5BF99556B6CA9B148731D62A9BA00D454F236CF75D8BA02B88F4728"
+                      },
+                      {
+                          "path":  "tools\\verify-p16-source.mjs",
+                          "bytes":  3267,
+                          "sha256":  "8C9D8DFE1BFEADD153704C86E4D975DDA8324AC350484D91F8B0F7023E2A6B7E"
+                      },
+                      {
+                          "path":  "tools\\verify-p17-source.mjs",
+                          "bytes":  3913,
+                          "sha256":  "F90A665297A5F8AFF36C1D355DB42E0E7FF7D410EC15A853AB4D0270FFF10B41"
+                      },
+                      {
+                          "path":  "tools\\verify-p18-source.mjs",
+                          "bytes":  3000,
+                          "sha256":  "F364500F6E67F3E8315727C2840EB1A55F97AEC92BE1E5B733E5B5298C95EDAA"
+                      },
+                      {
+                          "path":  "tools\\verify-p19-source.mjs",
+                          "bytes":  3454,
+                          "sha256":  "F58FF197EF8AFB90EADA7218FED5B14619B5B2FFC33AC4573C8EB3021C6D3CC4"
+                      },
+                      {
+                          "path":  "tools\\verify-p2-source.mjs",
+                          "bytes":  2712,
+                          "sha256":  "153B2586A2D566453686EEF2649374481DF241675AE2E192979C973E5321FA52"
+                      },
+                      {
+                          "path":  "tools\\verify-p20-source.mjs",
+                          "bytes":  3463,
+                          "sha256":  "37200D252CE47AF8A65B6C00D6A37C09B3C22D886A24E27395D12443697AE4C1"
+                      },
+                      {
+                          "path":  "tools\\verify-p21-source.mjs",
+                          "bytes":  4310,
+                          "sha256":  "D90DAB156BB60867547FCBD5161C994ABD67644E50A5455E04F6E978E3CB4EA3"
+                      },
+                      {
+                          "path":  "tools\\verify-p22-source.mjs",
+                          "bytes":  3584,
+                          "sha256":  "DE6F78F8E0BA9C11E29DE6F59FFDF58F153AB8D96B75FFA684097E30EA3D5658"
+                      },
+                      {
+                          "path":  "tools\\verify-p3-source.mjs",
+                          "bytes":  2335,
+                          "sha256":  "26DF1D58651C045DA1D3A09AC1AF47793EA74E7A88F0312BEFDB37F5CA4D71B1"
+                      },
+                      {
+                          "path":  "tools\\verify-p4-source.mjs",
+                          "bytes":  2725,
+                          "sha256":  "45F63BE32C39E49DD965956D2D12565AADC3282F8680D948E67B979A07B21293"
+                      },
+                      {
+                          "path":  "tools\\verify-p5-source.mjs",
+                          "bytes":  1272,
+                          "sha256":  "BDD965AD7C304CFF4A6E453277C0848E3D5D517AD99DC081620CB5616001706B"
+                      },
+                      {
+                          "path":  "tools\\verify-p6-source.mjs",
+                          "bytes":  1519,
+                          "sha256":  "F5B5E02834BF0EF6DF5A20A8F1E85D818784CB03D6A72F6F93B9280043110548"
+                      },
+                      {
+                          "path":  "tools\\verify-p7-source.mjs",
+                          "bytes":  2586,
+                          "sha256":  "EBEF901BB60F96B150EA9407403E29020D406F447BF75D7F5B0628FE1C898C73"
+                      },
+                      {
+                          "path":  "tools\\verify-p8-source.mjs",
+                          "bytes":  1690,
+                          "sha256":  "82E301EC7DB8C4A70C2C6B7708033286E5C7A0C72386EAB53DFDE3D0804FAB1E"
+                      },
+                      {
+                          "path":  "tools\\verify-p9-source.mjs",
+                          "bytes":  2300,
+                          "sha256":  "199393D5C475C4C60BA046B14ABA8E061BE05340C8B55C355CD152BD53C270C6"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\rollback-manifest.json",
+                          "bytes":  7354,
+                          "sha256":  "A63B2152C3EB95D992A0149350770A5EF2BF46280DF5479AC29313A0C47CEBB7"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\styles.css",
+                          "bytes":  6336,
+                          "sha256":  "2D4FFF85B726EF4EF9092C64AA5CE5E675949E899601618466761AEC014EBC4E"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\app-shell.tsx",
+                          "bytes":  16563,
+                          "sha256":  "5146A22DAC1AEA319351F22425D9C69529B6B483E8A3FE851151F65358D88988"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ops-ui.tsx",
+                          "bytes":  1916,
+                          "sha256":  "3A44F1047AACFF2C9167F353104F2A933A48D8F9A4B43BCAE552E4843A77D3B0"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\cases\\vp-case-linked-records.tsx",
+                          "bytes":  8398,
+                          "sha256":  "C98AFBA4C27A37847B5E70EB2ADA15602D2574C6098C66E1BD39806EF23848F3"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\cases\\vp-p19-analysis.tsx",
+                          "bytes":  13806,
+                          "sha256":  "6281E2F22BE4F7F39465E92162A89684CFE5F215775133426927577A2B21C629"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\cases\\vp-p20-report.tsx",
+                          "bytes":  3793,
+                          "sha256":  "E4DCDF30616DD954D4885CB90E40412651E6246A5683432F32B7DBEE86C8C4C6"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\dashboard\\vp9-dashboard-cards.tsx",
+                          "bytes":  10813,
+                          "sha256":  "4782B9813345002C56CAE8520BEA8E7C2AE40C580A00F4CDD0A6CA45DF06A03A"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\documents\\vp-p21-property-review.tsx",
+                          "bytes":  6110,
+                          "sha256":  "CFEF8048E35A81B29D0D67E75E1F63A28628279E851BD6E39DEF49ED5598C68A"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\field\\vp-inspection-form.tsx",
+                          "bytes":  31956,
+                          "sha256":  "08C1FA5BC7762C46EAADA3EF825E45D3718B04EA96C47C78A40CEAF1B39D6BE7"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\field\\vp-mobile-bottom-nav.tsx",
+                          "bytes":  3289,
+                          "sha256":  "F09D78C33759C34CF4E079AA886D6983285B63372C6E2FA207CCC6FE2C8A1079"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\field\\vp-p18-supplement.tsx",
+                          "bytes":  5970,
+                          "sha256":  "922769FFCEF72405739F3A812B3E5BF84E2CB28CF29298AA709EE1A28F826566"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\field\\vp-p22-sketch.tsx",
+                          "bytes":  3841,
+                          "sha256":  "18BE595F9A03D9C928344F45967B79EA7193315D1F9C3ECACF2083DBC3335FA3"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\field\\vp-plot-sketch.tsx",
+                          "bytes":  2872,
+                          "sha256":  "37A822666728FF7CF305A67DEE67171BADAA2A2D2AD50898D6826731894EB0DB"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\alert-dialog.tsx",
+                          "bytes":  4183,
+                          "sha256":  "EE4D7F3341A1E5592787B7DAC8E924BD226189492819F6704D8A7FAF8FE64D20"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\button.tsx",
+                          "bytes":  1894,
+                          "sha256":  "E39813B666BA434660EC088356A0349246B6803A4E99961295D0C82BAB1AB862"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\card.tsx",
+                          "bytes":  1817,
+                          "sha256":  "F13878A0078A5EF9F3E92AF29259FC1E93EA56EA80CB992E0C4DEA4E35396459"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\dialog.tsx",
+                          "bytes":  3648,
+                          "sha256":  "E3A6DE153FB15597EA95BE9C4549211A297C060267787915599E3D680D476BD9"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\input.tsx",
+                          "bytes":  776,
+                          "sha256":  "92DEBB7D6D2D96D9E607A42D5CE8F37B2D63384AE5DD9FFBBF5F047B680FFB85"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\select.tsx",
+                          "bytes":  5749,
+                          "sha256":  "6D4DEEE18CF7CED0354EB719300833A83CAF46400DE6EE9C3D1942FA4C579AD4"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\table.tsx",
+                          "bytes":  2820,
+                          "sha256":  "1E945E564C2CC5CA3EF33019BA7DA7A8B94CBC73FEB3CBC2B7B33C36EA648D92"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\tabs.tsx",
+                          "bytes":  1934,
+                          "sha256":  "E9B454D2F987C83B36CC8870BBA47D9355DB4E8F5C733B310DBC1119A7D27654"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\ui\\textarea.tsx",
+                          "bytes":  677,
+                          "sha256":  "35617A2CF053E52C9E56983BDE82D556861D38E462F9E578876C8E99A0432687"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\lib\\app-context.tsx",
+                          "bytes":  3729,
+                          "sha256":  "2E98DD537E0FFF81CE355C0EC924850534EB6DB4469D3F702F3F1B2685320814"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\lib\\vp-auth.tsx",
+                          "bytes":  13440,
+                          "sha256":  "5622AD049B9775FDBBA6B3E01F14E5E5DD7FEF6116836B3AFB2C6C8D65BCE943"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\routes\\admin.branches.tsx",
+                          "bytes":  12405,
+                          "sha256":  "24C60351F761F558811C7E9DAD99F1F6B0835233786CC64DF203F6EB88208B71"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\routes\\admin.settings.branches.$id.tsx",
+                          "bytes":  7520,
+                          "sha256":  "D8E6E62616FF965D6C6A24DA631B8E9F4B07EBFA47ACED1FFA82BE7AD53E94BF"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\routes\\cases_.$caseId.tsx",
+                          "bytes":  17697,
+                          "sha256":  "F9F8EF59ADE5BD7DAF0DBADB19AE255FE6AD9916022A7514F527BC59944963F3"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\routes\\field-inspections.$visitId.tsx",
+                          "bytes":  5368,
+                          "sha256":  "BEEDD9FD33BAEEF55B2D9F3758D2549A4171912ABF371CAB592D01821A948AF3"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\routes\\index.tsx",
+                          "bytes":  10175,
+                          "sha256":  "A09ACABECF65CEB244465360019FF9727CDDA90A4AD84D773C8BDC704D57FE19"
+                      },
+                      {
+                          "path":  "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\routes\\__root.tsx",
+                          "bytes":  4610,
+                          "sha256":  "84F3D2986BD02FF77DBD8B6090CD0521ADB545F6AD318B1E1523BDFA4E8BE8E5"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\rollback-manifest.json",
+                          "bytes":  5322,
+                          "sha256":  "BA390B42519C04925D501C3A3C13E90379DD740C095E847AB35736EB689BBC45"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\styles.css",
+                          "bytes":  9492,
+                          "sha256":  "793FEF708403E7762CD0BD5C78815392E7FCDC86933C07471CF1C0AB0DD58051"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\app-shell.tsx",
+                          "bytes":  10611,
+                          "sha256":  "11FD67652540AB11B28E20F7C0160CFC0036AEEB5474F4416D897865F1520B3B"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ops-ui.tsx",
+                          "bytes":  1909,
+                          "sha256":  "78309F5F9D3C32C2981008848EA8C98BAD4E2C2264315335733396F0794202FC"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\cases\\vp-case-context.tsx",
+                          "bytes":  2229,
+                          "sha256":  "E25044F393DF58FB57E1C144CAF8977C54BAF79E2A05782EA17DF9496A6EFE21"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\cases\\vp-case-progress.tsx",
+                          "bytes":  1741,
+                          "sha256":  "6815831252AF8248FE598C790B1301F72767089D6304816B372BD43E3774FB5A"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\cases\\vp-value-graphic.tsx",
+                          "bytes":  1176,
+                          "sha256":  "9A0025D088A8520E55BCD3EFC6F564AAAD3C1972C067CA5A013021FD03DA6438"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\dashboard\\vp9-dashboard-cards.tsx",
+                          "bytes":  12840,
+                          "sha256":  "1CD86F2AC6998B1F2F53B42E317E8DC1C2B83D614772A12AB5986A9FDCDF3AC4"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\field\\vp-inspection-form.tsx",
+                          "bytes":  32866,
+                          "sha256":  "13914E91C8067489F3B11E889D28873C2A229E0C1B159BE402113DB9FF9C6D45"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\button.tsx",
+                          "bytes":  1925,
+                          "sha256":  "809ED6708A2FCADE147D4FE01BD5958126CF820A988EC3091637896AC98AFFE7"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\card.tsx",
+                          "bytes":  1881,
+                          "sha256":  "06339A9AC5D5CACF66984A0C9474C758222E0A3548ACFBCCC2D30BAC8C565F03"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\dialog.tsx",
+                          "bytes":  3780,
+                          "sha256":  "8CE56A1C046255CDE319C6997997511C5A7F77AF0D4B6770D9637441C001EF9A"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\input.tsx",
+                          "bytes":  777,
+                          "sha256":  "40D3F50B1E9F7A66640FFA9CCB17B3CAA733D65290EDC886FA16FF22E19E3B0D"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\select.tsx",
+                          "bytes":  5750,
+                          "sha256":  "B3D9BE8314DA1CF06C237E7B59C129A08A552FD9CEFCF617EEF2EE2C930B1B63"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\table.tsx",
+                          "bytes":  2859,
+                          "sha256":  "EFC0F0B6FC0831F941972A672E87ABB5E98307FEBD3315F93EF200F9C7B94AAF"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\tabs.tsx",
+                          "bytes":  2024,
+                          "sha256":  "E864D0A3AD0CC2BC7BB9737E492A22FD3FDE7D32BB8CE2913FC201742B7A8869"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\ui\\textarea.tsx",
+                          "bytes":  677,
+                          "sha256":  "178E214F4A57EC240D882574BC8AEDC3C553D19B6BFE1E92DDF01B164E13BDDA"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\components\\workspace\\vp-command-menu.tsx",
+                          "bytes":  2974,
+                          "sha256":  "CBC38CD1663F36483EDDC20D95C37A83C587206DBF9B0AF673580235B021A515"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\routes\\admin.bank-masters.tsx",
+                          "bytes":  12209,
+                          "sha256":  "9C04085EF5F4C21AA03A4D9531164A12C955992C5D5C34C537E2365F0105B7E2"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\routes\\admin.branches.tsx",
+                          "bytes":  12401,
+                          "sha256":  "D8F295A6B9606E153AE09D78CCA5B7987D601445A1354667DFB48351982FA169"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\routes\\cases.tsx",
+                          "bytes":  16664,
+                          "sha256":  "FEAB7BD02B25CA9F3256893C9090965C001A72A1B76580E45ED898C808A0F5CB"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\routes\\cases_.$caseId.tsx",
+                          "bytes":  20438,
+                          "sha256":  "B7A4049152BBD3AD9E8F4F7E4DC250C79AF22ABC47C4667707E98E170C85A63B"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\routes\\index.tsx",
+                          "bytes":  9951,
+                          "sha256":  "7D42385E3218C18012F281FFCBD2B2822396E712A585B3AA1E970D6314B3E91E"
+                      },
+                      {
+                          "path":  "_vp_p261_backup_2026-11-25T06-55-23-744Z\\src\\routes\\reports.tsx",
+                          "bytes":  18302,
+                          "sha256":  "9D141BE06A8AC6DF2EE33BC4B83CBC0E43A6DB43921104095E957F0731C23A6A"
+                      },
+                      {
+                          "path":  "_vp_p26_backup_2026-11-25T06-46-58-312Z\\rollback-manifest.json",
+                          "bytes":  2432,
+                          "sha256":  "E005946530701108904EB588FEB84F065DE46E9B208FDF7669B94858C7869410"
+                      },
+                      {
+                          "path":  "_vp_p26_backup_2026-11-25T06-46-58-312Z\\src\\styles.css",
+                          "bytes":  7861,
+                          "sha256":  "88219EB4BCA41C3CBC4CC2A9C5FCF41216A569A38F98714F0D104E1EE7FBEE6D"
+                      },
+                      {
+                          "path":  "_vp_p26_backup_2026-11-25T06-46-58-312Z\\src\\components\\app-shell.tsx",
+                          "bytes":  11445,
+                          "sha256":  "87DE5D3BFAAE0C3DFB9C95519D35CDE21A3C7E19CE6222C3899119B6CDBAD667"
+                      },
+                      {
+                          "path":  "_vp_p26_backup_2026-11-25T06-46-58-312Z\\src\\components\\cases\\vp-case-progress.tsx",
+                          "bytes":  1740,
+                          "sha256":  "FC3B0FFCF3050401C7DAB9864A92F889278F66DE5F65009400985E75DF42F729"
+                      },
+                      {
+                          "path":  "_vp_p26_backup_2026-11-25T06-46-58-312Z\\src\\routes\\cases.tsx",
+                          "bytes":  15724,
+                          "sha256":  "369C1A98E40F52ADCDC9EEC443D0CB33403642DB16EBBF6F0B555295495A466F"
+                      },
+                      {
+                          "path":  "_vp_p26_backup_2026-11-25T06-46-58-312Z\\src\\routes\\cases_.$caseId.tsx",
+                          "bytes":  18906,
+                          "sha256":  "DC71FD649D5BCACA0C0D406A8EC01B2CC9CE78C893CC5BA8EF0DF5BDB21207B7"
+                      },
+                      {
+                          "path":  "_vp_p26_backup_2026-11-25T06-46-58-312Z\\src\\routes\\field-inspections.$visitId.tsx",
+                          "bytes":  5039,
+                          "sha256":  "8B544B04DE28151EB5C1A704FADBCE37B1232901D1735A44B5552788B29A0D94"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\rollback-manifest.json",
+                          "bytes":  2594,
+                          "sha256":  "962B9177364D82DBF1D9877A6858C43FA53D2C17EC18BA30D8E6A78ADDAC1CE5"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\src\\styles.css",
+                          "bytes":  11532,
+                          "sha256":  "3DE996432D5CB22A6E30E8A7A367346053188255C83A114325CEBDBC106A6D23"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\src\\components\\documents\\vp-document-ocr.tsx",
+                          "bytes":  16326,
+                          "sha256":  "CDECDAA2583B3D9C1DBB11F02DAD942A0C5763A536B142DBAD1AC68A30DB0FFD"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\src\\components\\documents\\vp-p21-property-review.tsx",
+                          "bytes":  6102,
+                          "sha256":  "10560771764550992FE4CB324469CC54B3E60EFFE52C3585089E8666A3753CC0"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\src\\components\\field\\vp-inspection-source-review.tsx",
+                          "bytes":  6441,
+                          "sha256":  "83A12B587371E4BFF8AE62861B2A9A5A91C806881CF3DF78FDBA05B43D52B56D"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\src\\components\\field\\vp-p18-supplement.tsx",
+                          "bytes":  5962,
+                          "sha256":  "6D93FF16A3296580F394A9BAEE85AE6BB8703EC50D13DE089FDFD1ABE7F9691E"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\src\\components\\properties\\vp-case-property.tsx",
+                          "bytes":  4207,
+                          "sha256":  "29438BB2334496831A15AE0CFEFE84E1F9DD559FBB6FA3E43AA21B279400B84B"
+                      },
+                      {
+                          "path":  "_vp_p27_backup_2026-11-25T07-09-23-263Z\\src\\routes\\cases_.$caseId.tsx",
+                          "bytes":  20453,
+                          "sha256":  "D90DD37BFA01BBAE4A8EE97A6E4154EE6E8AE5FFACA123A47DB60CC54A6EA19B"
+                      }
+                  ],
+    "cleanup_candidates":  [
+                               {
+                                   "path":  "app-shell-before-p25.backup.txt",
+                                   "bytes":  16563,
+                                   "sha256":  "5146A22DAC1AEA319351F22425D9C69529B6B483E8A3FE851151F65358D88988"
+                               },
+                               {
+                                   "path":  "app-shell.p24.backup.txt",
+                                   "bytes":  16563,
+                                   "sha256":  "5146A22DAC1AEA319351F22425D9C69529B6B483E8A3FE851151F65358D88988"
+                               },
+                               {
+                                   "path":  "P0_ACCEPTANCE.md",
+                                   "bytes":  3004,
+                                   "sha256":  "5F4FE954EE47C5396A148274BC4E71043ADA0C1135D1FD8434A000B9D5C9B414"
+                               },
+                               {
+                                   "path":  "P0_CHANGELOG.md",
+                                   "bytes":  524,
+                                   "sha256":  "629D23057E3C3471847263D62C7767C88F239A5B2E341793296206345F340A9C"
+                               },
+                               {
+                                   "path":  "P0_DECISIONS.md",
+                                   "bytes":  2281,
+                                   "sha256":  "0F4953392C029CEE31A8D53BBC026764B7AE7B9A990D00E6EE11736902DCDA69"
+                               },
+                               {
+                                   "path":  "P0_README.md",
+                                   "bytes":  2200,
+                                   "sha256":  "C6E3F1CA47ADA72168290F4F14E5686874EDCE9286A89B52912702EE9192EC97"
+                               },
+                               {
+                                   "path":  "P10_RBAC_ACCEPTANCE.md",
+                                   "bytes":  2974,
+                                   "sha256":  "6E32F8A3EABB4FFD06A4034D25F18E19A763D97AB08FD7BAE14375942E2F05C8"
+                               },
+                               {
+                                   "path":  "P10_RBAC_INSTALL.md",
+                                   "bytes":  6123,
+                                   "sha256":  "B00EDD2865757949D6467A6968E4DAF41FB3CFEE37F468938DB7AC50AC721B42"
+                               },
+                               {
+                                   "path":  "P11_RBAC_RECOVERY_README.md",
+                                   "bytes":  2610,
+                                   "sha256":  "F08E26D27A274D27BAB27652E7D526774D12063A8EE58463B0AEBB846B0EBDC2"
+                               },
+                               {
+                                   "path":  "P12_USER_MANAGEMENT_FIX.md",
+                                   "bytes":  4166,
+                                   "sha256":  "EFC45E5DD47CA763E8452FC21F9E34E6E48D7E3616C0EFC2D01C9A8E42CEBC15"
+                               },
+                               {
+                                   "path":  "P13_AUTH_ROUTING_AND_BACK_OFFICE.md",
+                                   "bytes":  2824,
+                                   "sha256":  "AB634C7C1D001A27586C5038D62CF9AFE6D89ED84F65E6E5234111F419B865FB"
+                               },
+                               {
+                                   "path":  "P14_MOBILE_DELIVERY.md",
+                                   "bytes":  6591,
+                                   "sha256":  "4AA58F5B34CA8053B34567C31EA69FD9E10E77049E134A50C69D4BA00B0FFCB7"
+                               },
+                               {
+                                   "path":  "P15_INSTALL.md",
+                                   "bytes":  6168,
+                                   "sha256":  "876001FAA14DC11819D2AAFA01BC4C797111FE4AAE0011CC4BA537D622E9019D"
+                               },
+                               {
+                                   "path":  "P16_INSTALL.md",
+                                   "bytes":  7745,
+                                   "sha256":  "134BF6D1496A244569C5132A7828A363F6851BCFD26962549E3ECCEEE10E29BA"
+                               },
+                               {
+                                   "path":  "P17_INSTALL.md",
+                                   "bytes":  6259,
+                                   "sha256":  "079BBE67072B19F979F90CBEBC0187E50977C0E9116B7FE4729DAABB8ED21825"
+                               },
+                               {
+                                   "path":  "P17_STATIC_RESULTS.txt",
+                                   "bytes":  3061,
+                                   "sha256":  "10F4D9E87291C7065F03DB0C20A6001857CDFA7D6A9D97B0C3E39635D7463B5B"
+                               },
+                               {
+                                   "path":  "P18_INSTALL.md",
+                                   "bytes":  6178,
+                                   "sha256":  "6049D6BA1A7018AAE2A1699B118A0BDDBDCDEE8D52114E54458A8E55321DD9A1"
+                               },
+                               {
+                                   "path":  "P18_OPEN_ISSUES.md",
+                                   "bytes":  951,
+                                   "sha256":  "8C2AE8AAAD9102F14B85D716CC9F3B1DDA46E8F4C1FF729F748AE9CA6DDFA609"
+                               },
+                               {
+                                   "path":  "P18_STATIC_RESULTS.txt",
+                                   "bytes":  1045,
+                                   "sha256":  "07B35C4D165676F7FFE69AA7B892DC7021A5417A92E4204DB8BC82CF46A79081"
+                               },
+                               {
+                                   "path":  "P19_INSTALL.md",
+                                   "bytes":  4108,
+                                   "sha256":  "62D4D3227D0275F50D89E206444882E6AAF87C413799D691F5EC62FD245184AF"
+                               },
+                               {
+                                   "path":  "P19_OPEN_ISSUES.md",
+                                   "bytes":  1213,
+                                   "sha256":  "104C9DAC84C823F8EC268AC3D1C93E2D019597FC3D09AB3CCA0CC88951FA9412"
+                               },
+                               {
+                                   "path":  "P19_SOURCE_REGISTER.md",
+                                   "bytes":  1342,
+                                   "sha256":  "897D56A4F7274ACD1B3FF067BCC0EA2990B91C6700AD7C8F70756FAE6CA7585C"
+                               },
+                               {
+                                   "path":  "P19_STATIC_RESULTS.txt",
+                                   "bytes":  1405,
+                                   "sha256":  "7EB77539432216A059B527C4034D9C9BCDE8A228EE15F45810E625869B4DFEA0"
+                               },
+                               {
+                                   "path":  "P1_CHANGELOG.md",
+                                   "bytes":  1478,
+                                   "sha256":  "D1DF25155C76E089A5B389D1BF47EB26801C841AA7CE965932630DB76643BEC1"
+                               },
+                               {
+                                   "path":  "P1_DELIVERY.md",
+                                   "bytes":  5119,
+                                   "sha256":  "ABBFC7A396A8BB7D3B9D95F8A48A31CE98B8470C2C04CC707CAFB8FEAD08CCC4"
+                               },
+                               {
+                                   "path":  "P20_INSTALL.md",
+                                   "bytes":  4927,
+                                   "sha256":  "8946F6B3B6230430949B812A310832CD7B6D512D25EC14BB7961B6F718AF2647"
+                               },
+                               {
+                                   "path":  "P20_OPEN_ISSUES.md",
+                                   "bytes":  1663,
+                                   "sha256":  "37CE87560B83DDAA13049139C038C54F1BC1ADC422958CC84C3714F2A06AE411"
+                               },
+                               {
+                                   "path":  "P20_STATIC_RESULTS.txt",
+                                   "bytes":  6342,
+                                   "sha256":  "61543F98A9ABC62884498902B5FDC776633E3659223A7643623FE78366507A6B"
+                               },
+                               {
+                                   "path":  "P21_INSTALL.md",
+                                   "bytes":  6801,
+                                   "sha256":  "A2D016A303C4D8141F2F1AC513C7671C7E941E15FB0291031EF1082B9E04C366"
+                               },
+                               {
+                                   "path":  "P21_MODEL_TESTS.txt",
+                                   "bytes":  272,
+                                   "sha256":  "E7272502F29F8B508640EA61271F5B0687D9D117A20873223C8D5C0DCE8CC62A"
+                               },
+                               {
+                                   "path":  "P21_OPEN_ISSUES.md",
+                                   "bytes":  2411,
+                                   "sha256":  "6EC16173C721B0E5471824AB37E3D839FC2A3CEEBBA60339E869A029E36B7CDE"
+                               },
+                               {
+                                   "path":  "P21_PYTHON_TESTS.txt",
+                                   "bytes":  1083,
+                                   "sha256":  "76B2BE23FF4F8CF053451A62099E8E491AED43A6CA38BADA1B072D51A3F313D5"
+                               },
+                               {
+                                   "path":  "P21_STATIC_RESULTS.txt",
+                                   "bytes":  10351,
+                                   "sha256":  "59641942E51F3E4F4E34B602A2144235422FCCBC96D6CFF42B32BA59C5574A12"
+                               },
+                               {
+                                   "path":  "P21_TS_SYNTAX.txt",
+                                   "bytes":  435,
+                                   "sha256":  "1D8EC4F503A0E6820C28845812EB1F2D95C75566F853ACDDBEAB431D6D2AB114"
+                               },
+                               {
+                                   "path":  "P22_INSTALL.md",
+                                   "bytes":  4517,
+                                   "sha256":  "B4AF97F1AC00FB4E15B4302F3005F33D03605375AFCC4BB48356DFF8591ED37C"
+                               },
+                               {
+                                   "path":  "P22_MODEL_RESULTS.txt",
+                                   "bytes":  490,
+                                   "sha256":  "18F1F444D8062B05A1C6DEB443E1D2F1DD4FB1FF641B6F46415A286D95AE8BDD"
+                               },
+                               {
+                                   "path":  "P22_OPEN_ISSUES.md",
+                                   "bytes":  1920,
+                                   "sha256":  "B59E2E77DC650C7B8814DE20FB2CF6113D4E8AA3F2927774A356D42552D43302"
+                               },
+                               {
+                                   "path":  "P22_STATIC_RESULTS.txt",
+                                   "bytes":  1367,
+                                   "sha256":  "1505521FF350558B114B1DA67643D53C544F8BF803CCF912A83A3E83D42D12BB"
+                               },
+                               {
+                                   "path":  "P25_UI_SOURCE.txt",
+                                   "bytes":  110673,
+                                   "sha256":  "080CFE7E40EC34B7249A44724F644DE3A905D2932B1ED9417E559D251FCF6AB3"
+                               },
+                               {
+                                   "path":  "P2_ACCEPTANCE.md",
+                                   "bytes":  1827,
+                                   "sha256":  "9679B522A6AF4CFCE2F6170234903BBD4C39ADA0FC86E57558DA05E8601E0BBD"
+                               },
+                               {
+                                   "path":  "P2_DELIVERY.md",
+                                   "bytes":  4724,
+                                   "sha256":  "960A8987F61227BE138E8E0205BFDC1210757C79FC9E86B3A05D2125A5DE4463"
+                               },
+                               {
+                                   "path":  "P33_EDGE_FUNCTION_AUDIT.txt",
+                                   "bytes":  78935,
+                                   "sha256":  "EE32A87A80941DF9A7D95DD18A3226E5163FB160C34CE4D3A6F82D364D4C38BA"
+                               },
+                               {
+                                   "path":  "P3_ACCEPTANCE.md",
+                                   "bytes":  1828,
+                                   "sha256":  "5C8FDE65F6DA9140A3FA1C9D5D134DD08CEDEFDB6FCB9AF125D8F25204574D92"
+                               },
+                               {
+                                   "path":  "P3_DELIVERY.md",
+                                   "bytes":  5834,
+                                   "sha256":  "1963773D5E74926E04A9D4C2BB0673D5F07E8B4700B2927FF1F51CF3749CB170"
+                               },
+                               {
+                                   "path":  "P3_FREE_OCR_DELIVERY.md",
+                                   "bytes":  2821,
+                                   "sha256":  "936FE786D26D008BF3F3EDBD4CD3A902F9C81B4F793AC11BDBB5EB4A6E4ADFA3"
+                               },
+                               {
+                                   "path":  "P4_ACCEPTANCE.md",
+                                   "bytes":  1394,
+                                   "sha256":  "A668563D1E7FB40782E3128DDCF85CDE571F22C6300CCB5D80614B2BD4F7BFE0"
+                               },
+                               {
+                                   "path":  "P4_DELIVERY.md",
+                                   "bytes":  5240,
+                                   "sha256":  "36C7DEEC8D62C30DAE1EC50DF6CA91D9270156D2D94A4B9B29C292C79BD22136"
+                               },
+                               {
+                                   "path":  "P5_DELIVERY.md",
+                                   "bytes":  3766,
+                                   "sha256":  "CB522AAF8179BBE3F2DD5191CCDD402E252F80407F8C49E7D507816DCB6BC099"
+                               },
+                               {
+                                   "path":  "P6_CHANGELOG.md",
+                                   "bytes":  1184,
+                                   "sha256":  "3B5C758E9A8B1F2E1772D06467E9FF6AAFB9A5E474FA92D9113EE45DB7837F94"
+                               },
+                               {
+                                   "path":  "P6_DELIVERY.md",
+                                   "bytes":  4991,
+                                   "sha256":  "069F28570CB8126FFAFD1D5930F46A5666F771058C2599708C7741986EB17EAD"
+                               },
+                               {
+                                   "path":  "P7_ACCEPTANCE.md",
+                                   "bytes":  1323,
+                                   "sha256":  "888B6AB6B6EEDD988C3CFDDA4899612D706E7E3D64286820D5AFEED646B17248"
+                               },
+                               {
+                                   "path":  "P7_CHANGELOG.md",
+                                   "bytes":  1538,
+                                   "sha256":  "DC05089A9DBC44408DDC8A76677195C6D0E170B89852E5FD100FDB91A44D583C"
+                               },
+                               {
+                                   "path":  "P7_DELIVERY.md",
+                                   "bytes":  5985,
+                                   "sha256":  "05E5BD42BA389711FEE2377B5A0804AD12320E6D99938DE201C9186EF3519225"
+                               },
+                               {
+                                   "path":  "P7_DELIVERY.txt",
+                                   "bytes":  5985,
+                                   "sha256":  "05E5BD42BA389711FEE2377B5A0804AD12320E6D99938DE201C9186EF3519225"
+                               },
+                               {
+                                   "path":  "P8_ACCEPTANCE.md",
+                                   "bytes":  1191,
+                                   "sha256":  "0C263FDFE02065CDDA90384B34F9603AD1D46C622C342039D7AED158B627DBCA"
+                               },
+                               {
+                                   "path":  "P8_DELIVERY.md",
+                                   "bytes":  3678,
+                                   "sha256":  "D30C99D2936F6158F6B533B53ABF2F0111E4A22D242A8CFC4DBF115ECEADA5E7"
+                               },
+                               {
+                                   "path":  "P8_INSTALLATION.txt",
+                                   "bytes":  3678,
+                                   "sha256":  "D30C99D2936F6158F6B533B53ABF2F0111E4A22D242A8CFC4DBF115ECEADA5E7"
+                               },
+                               {
+                                   "path":  "P9_FIELD_OFFICER_ACCEPTANCE.md",
+                                   "bytes":  2397,
+                                   "sha256":  "8CD260407A002058A7E9FEEF05590C9536ED374E497127395B15399984829520"
+                               },
+                               {
+                                   "path":  "P9_FIELD_OFFICER_MOBILE_INSTALL.md",
+                                   "bytes":  4650,
+                                   "sha256":  "D646E4C2A77E8291C56D11183ED692DDEF0F5266F5487219230E6C8A37454BE8"
+                               },
+                               {
+                                   "path":  "p11\\CHANGES.md",
+                                   "bytes":  1680,
+                                   "sha256":  "822E1A6BA64642B6CA873BF1554B73482892204E5D053420C4AA5F31AAE5433E"
+                               },
+                               {
+                                   "path":  "p11\\INSTALL_AND_TEST.md",
+                                   "bytes":  5893,
+                                   "sha256":  "9BAAE2C9830A9BE8F25EDDE45476631EF13D21637DFFC8340F8472A54F7F216B"
+                               },
+                               {
+                                   "path":  "sql\\p16\\README.txt",
+                                   "bytes":  365,
+                                   "sha256":  "997B02B13DDD7545D5BC3D71893BFCF31CC80F9458D3244A8838BB1C14DDA41C"
+                               },
+                               {
+                                   "path":  "third_party\\p22\\SOURCE_REGISTER.md",
+                                   "bytes":  1975,
+                                   "sha256":  "AA9F5B9DE7BA773345E9347EAA6F102DA5644BFB416DBC89409517F68731832A"
+                               }
+                           ],
+    "total_files":  527,
+    "generated":  "2026-11-25T18:46:55.5789271+05:30",
+    "duplicate_groups":  [
+                             {
+                                 "sha256":  "5146A22DAC1AEA319351F22425D9C69529B6B483E8A3FE851151F65358D88988",
+                                 "files":  [
+                                               "app-shell-before-p25.backup.txt",
+                                               "app-shell.p24.backup.txt",
+                                               "_vp_p25_backup_2026-11-25T06-08-15-361Z\\src\\components\\app-shell.tsx"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "F31ACA3A8D2F38FB8B702BE620A95EAE0879587D6B50BB6A0BD0F3558AB73856",
+                                 "files":  [
+                                               "P4_CHANGE_MANIFEST.json",
+                                               "P4_PATCH_MANIFEST.json"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "05E5BD42BA389711FEE2377B5A0804AD12320E6D99938DE201C9186EF3519225",
+                                 "files":  [
+                                               "P7_DELIVERY.md",
+                                               "P7_DELIVERY.txt"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "D30C99D2936F6158F6B533B53ABF2F0111E4A22D242A8CFC4DBF115ECEADA5E7",
+                                 "files":  [
+                                               "P8_DELIVERY.md",
+                                               "P8_INSTALLATION.txt"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "02FD3084BFB8AD6A5E273A5E39E4CF59DD0F33B2B6DF2B66F4DB7604BD63675B",
+                                 "files":  [
+                                               "Valuation_Report_Reference.xlsx",
+                                               "public\\templates\\Valuation_Report.xlsx"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "B078CE10D85019263E8F7C83E6E4075F3A68992593B2C8B2D5207C9181B8C14E",
+                                 "files":  [
+                                               "sql\\00_PRECHECK_READONLY.sql",
+                                               "sql\\gps_only\\00_PRECHECK_READONLY.sql"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "D16325EA8D4E41695B63E5E0DDA08761F90B2D52AAF6142655DA237F98E9EDB2",
+                                 "files":  [
+                                               "sql\\01_DISABLE_GEOFENCE_KEEP_GPS.sql",
+                                               "sql\\gps_only\\01_DISABLE_GEOFENCE_KEEP_GPS.sql"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "9EBC01B886B5922CB6B65E5848CEC2D94F58C29938E1A852F2016917F5FA60A9",
+                                 "files":  [
+                                               "sql\\02_VERIFY_READONLY.sql",
+                                               "sql\\gps_only\\02_VERIFY_READONLY.sql"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "3A8E1901868425B8152EAA86C1F1ED67009C4CD7281139D67A1E32E2818EDC7F",
+                                 "files":  [
+                                               "src\\test\\vp-p6-ocr-mapping.test.ts",
+                                               "tests\\vp-p6-ocr-mapping.test.ts"
+                                           ]
+                             },
+                             {
+                                 "sha256":  "646AB013ADB92C751E0E6ACDB48F8E8FC9D194156C0FD72A20F7CFB570BE7783",
+                                 "files":  [
+                                               "supabase\\functions\\vp-ocr-document\\index.ts",
+                                               "supabase\\PAID_OCR_DISABLED_DO_NOT_DEPLOY\\vp-ocr-document\\index.ts"
+                                           ]
+                             }
+                         ]
+}

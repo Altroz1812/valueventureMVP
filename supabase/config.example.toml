@@ -1,0 +1,4 @@
+# Merge into existing supabase/config.toml; do not replace your entire config.
+# Keep JWT platform verification enabled for this signed-in user action.
+[functions.vp-provision-users]
+verify_jwt = true

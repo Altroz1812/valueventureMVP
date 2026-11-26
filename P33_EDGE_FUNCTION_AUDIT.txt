@@ -1,0 +1,1368 @@
+﻿VALUATIONPRO - EDGE FUNCTION AUDIT
+Generated: 2026-11-25T17:52:54.5355385+05:30
+
+===== LOCAL FUNCTION INVENTORY =====
+Directory: vp-invite-user
+Default entry point exists: True
+Directory: vp-ocr-document
+Default entry point exists: True
+Directory: vp-provision-users
+Default entry point exists: True
+
+===== FUNCTION CONFIGURATION =====
+project_id = "wavuwqiolwxsfegjpsib"
+
+===== EDGE FUNCTION SOURCE =====
+
+===== FILE: supabase\functions\vp-invite-user\index.ts =====
+// Deploy as a Supabase Edge Function with JWT verification enabled.
+// NEVER expose the service role / secret key to the browser.
+import { createClient } from 'npm:@supabase/supabase-js@2';
+
+const headers = {
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Origin': Deno.env.get('VP_WEB_ORIGIN') ?? '',
+  'Content-Type': 'application/json',
+};
+const result = (status: number, body: unknown) =>
+  new Response(JSON.stringify(body), { status, headers });
+
+Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') return new Response('ok', { headers });
+  if (req.method !== 'POST') return result(405, { error: 'Method not allowed' });
+  const origin = Deno.env.get('VP_WEB_ORIGIN');
+  if (!origin || req.headers.get('origin') !== origin) {
+    return result(403, { error: 'Origin not permitted' });
+  }
+  const authHeader = req.headers.get('Authorization');
+  if (!authHeader?.startsWith('Bearer ')) return result(401, { error: 'Sign in required' });
+  const token = authHeader.slice('Bearer '.length);
+  const url = Deno.env.get('SUPABASE_URL');
+  const publicKey = Deno.env.get('SUPABASE_ANON_KEY') ?? Deno.env.get('SUPABASE_PUBLISHABLE_KEY');
+  const privateKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? Deno.env.get('SUPABASE_SECRET_KEY');
+  if (!url || !publicKey || !privateKey) return result(500, { error: 'Server configuration incomplete' });
+
+  try {
+    const input = await req.json();
+    const email = String(input.email ?? '').trim().toLowerCase();
+    const name = String(input.name ?? '').trim();
+    const role = String(input.role ?? '').trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || email.length > 320 ||
+        name.length < 2 || name.length > 200 || role.length < 2 || role.length > 80) {
+      return result(400, { error: 'Valid email, full name, and role are required' });
+    }
+
+    const admin = createClient(url, privateKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
+    // Authentication is verified against Auth itself, not untrusted JWT claims.
+    const { data: account, error: authErr } = await admin.auth.getUser(token);
+    if (authErr || !account.user) return result(401, { error: 'Session invalid' });
+
+    // Important: execute this check as the CALLING user, with their JWT.
+    // A service-role RLS bypass must not be used for application authorization.
+    const caller = createClient(url, publicKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+    const { data: context, error: ctxErr } = await caller.rpc('vp_my_context');
+    if (ctxErr || !context?.is_admin) return result(403, { error: 'Tenant administrator required' });
+    if (role === 'Tenant Owner' || role === 'Tenant Admin') {
+      if (context.role !== 'Tenant Owner') return result(403, { error: 'Only Tenant Owner can invite administrators' });
+    }
+    const { data: roleRows, error: roleErr } = await caller.from('roles')
+      .select('name').eq('org_id', context.org_id).eq('name', role).limit(1);
+    if (roleErr || !roleRows?.length) return result(400, { error: 'Choose an existing tenant role' });
+    // Admin-created invitation email and redirect are controlled by the server.
+    const { error: inviteErr } = await admin.auth.admin.inviteUserByEmail(email, {
+      data: { vp_invited: true, vp_password_set: false },
+      redirectTo: origin,
+    });
+    if (inviteErr) {
+      return result(409, { error: inviteErr.message,
+        hint: 'If this identity exists already, use Link Existing Auth User in ValuationPro.' });
+    }
+    const { data: id, error: linkErr } = await caller.rpc('vp_admin_attach_invited_user', {
+      p_email: email, p_name: name, p_role: role,
+    });
+    if (linkErr) {
+      return result(409, { error: 'Auth invitation sent, but application linking needs attention: ' + linkErr.message,
+        hint: 'Use Link Existing Auth User with the same email in ValuationPro. Do not send a second invitation.' });
+    }
+    return result(200, { user_id: String(id), invited: true });
+  } catch (e) {
+    return result(500, { error: e instanceof Error ? e.message : 'Invitation failed' });
+  }
+});
+
+
+===== FILE: supabase\functions\vp-ocr-document\index.ts =====
+/**
+ * P3 secure, user-triggered OCR: RLS-scoped registered case documents only.
+ * Google Cloud Vision is optional and paid. No document text is stored by the function.
+ * Requires P3 claim/complete SQL and GOOGLE_VISION_API_KEY secret.
+ */
+import { createClient } from 'npm:@supabase/supabase-js@2';
+
+const env = (key: string) => Deno.env.get(key) ?? '';
+const allowed = env('VP_ALLOWED_ORIGINS').split(',').map(s => s.trim()).filter(Boolean);
+const headers = {
+  'Access-Control-Allow-Headers': 'authorization, apikey, x-client-info, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Content-Type': 'application/json',
+  'Cache-Control': 'no-store',
+};
+function reply(status: number, body: Record<string, unknown>, origin: string | null): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {...headers, ...(origin && allowed.includes(origin) ? {'Access-Control-Allow-Origin':origin,'Vary':'Origin'} : {})},
+  });
+}
+
+type VisionAnnotation = {
+  fullTextAnnotation?: {text?: string};
+  textAnnotations?: Array<{description?: string}>;
+  context?: {pageNumber?: number};
+  error?: {message?: string};
+};
+type VisionResponse = {responses?: Array<VisionAnnotation | {responses?: VisionAnnotation[]}>; error?: {message?: string}};
+const allowedMime = new Set(['application/pdf','image/jpeg','image/png']);
+function hasMagic(bytes: Uint8Array, mime: string): boolean {
+  if (mime === 'application/pdf') return bytes.length > 5 && bytes[0] === 37 && bytes[1] === 80 && bytes[2] === 68 && bytes[3] === 70 && bytes[4] === 45;
+  if (mime === 'image/jpeg') return bytes.length > 3 && bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255;
+  if (mime === 'image/png') return bytes.length > 8 && bytes[0] === 137 && bytes[1] === 80 && bytes[2] === 78 && bytes[3] === 71;
+  return false;
+}
+function encode64(bytes: Uint8Array): string {
+  let binary = '';
+  for (let i = 0; i < bytes.length; i += 8192)
+    binary += String.fromCharCode(...bytes.subarray(i, i + 8192));
+  return btoa(binary);
+}
+function getText(annotation: VisionAnnotation): string {
+  return annotation.fullTextAnnotation?.text ?? annotation.textAnnotations?.[0]?.description ?? '';
+}
+
+Deno.serve(async req => {
+  const origin = req.headers.get('Origin');
+  if (req.method === 'OPTIONS') return reply(200,{ok:true},origin);
+  if (req.method !== 'POST') return reply(405,{error:'POST required'},origin);
+  if (!origin || !allowed.includes(origin)) return reply(403,{error:'Application origin not authorized'},origin);
+  const bearer = req.headers.get('Authorization') ?? '';
+  if (!bearer.startsWith('Bearer ')) return reply(401,{error:'Sign in before requesting OCR'},origin);
+  const url = env('SUPABASE_URL');
+  const publishable = env('SUPABASE_PUBLISHABLE_KEY') || env('SUPABASE_ANON_KEY');
+  const providerKey = env('GOOGLE_VISION_API_KEY');
+  if (!url || !publishable || !providerKey) return reply(503,{error:'OCR provider or Supabase configuration missing on server'},origin);
+  const token = bearer.slice(7);
+  const caller = createClient(url,publishable,{
+    auth:{persistSession:false,autoRefreshToken:false},
+    global:{headers:{Authorization:bearer}},
+  });
+  const {data: userData,error: userError} = await caller.auth.getUser(token);
+  if (userError || !userData.user) return reply(401,{error:'Invalid login session'},origin);
+  let requestId: string | null = null;
+  let status: 'success' | 'error' = 'error';
+  let pagesProcessed = 0;
+  let errorCode = 'unknown';
+  try {
+    const input = await req.json() as Record<string,unknown>;
+    if (input.consent_acknowledged !== true) return reply(400,{error:'Explicit document-processing consent required'},origin);
+    const docId = String(input.document_id ?? '');
+    const caseNum = Number(input.case_num);
+    if (!/^\d{1,20}$/.test(docId) || !Number.isSafeInteger(caseNum) || caseNum < 1) {
+      return reply(400,{error:'Invalid registered document identifier or case number'},origin);
+    }
+    const {data:orgId,error:orgError} = await caller.rpc('vp_current_org_id');
+    if (orgError || !orgId) return reply(403,{error:'No active tenant context'},origin);
+    // The documents SELECT and Storage download both use the signed-in user's RLS.
+    const {data:doc,error:docError} = await caller.from('documents')
+      .select('id,org_id,num,name,mime,size,storage_path')
+      .eq('org_id',String(orgId)).eq('num',caseNum).eq('id',docId).maybeSingle();
+    if (docError || !doc || !doc.storage_path || !allowedMime.has(doc.mime)) {
+      return reply(404,{error:'Registered document not accessible to this login'},origin);
+    }
+    const filePath = String(doc.storage_path);
+    if (!filePath.startsWith(`${orgId}/${caseNum}/`) || filePath.includes('..')) {
+      return reply(403,{error:'Invalid private document path'},origin);
+    }
+    if (Number(doc.size) < 1 || Number(doc.size) > 10485760) {
+      return reply(413,{error:'OCR accepts registered files up to 10 MB'},origin);
+    }
+    const {data:claim,error:claimError} = await caller.rpc('vp_p3_ocr_claim',{
+      p_document_id:docId,p_case_num:caseNum,
+    });
+    if (claimError || !claim) return reply(403,{error:claimError?.message ?? 'OCR quota or authorization denied; install P3 SQL'},origin);
+    requestId = String(claim);
+    const {data:blob,error:downloadError} = await caller.storage.from('vp-case-docs').download(filePath);
+    if (downloadError || !blob) {errorCode='storage_denied';throw new Error('Private document download denied by storage policy');}
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    if (bytes.length < 1 || bytes.length > 10485760 || !hasMagic(bytes,doc.mime)) {
+      errorCode='invalid_file';throw new Error('File size or type does not match the registered document');
+    }
+    const content = encode64(bytes);
+    const isPdf = doc.mime === 'application/pdf';
+    const endpoint = isPdf ? 'files:annotate' : 'images:annotate';
+    const payload = isPdf ? {requests:[{
+      inputConfig:{content,mimeType:'application/pdf'},features:[{type:'DOCUMENT_TEXT_DETECTION'}],
+    }]} : {requests:[{image:{content},features:[{type:'DOCUMENT_TEXT_DETECTION'}]}]};
+    const ocrRes = await fetch(`https://vision.googleapis.com/v1/${endpoint}?key=${encodeURIComponent(providerKey)}`,{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),
+      signal:AbortSignal.timeout(55000),
+    });
+    if (!ocrRes.ok) {
+      errorCode='provider_http';
+      throw new Error(`OCR provider returned HTTP ${ocrRes.status}. Check billing, API key restrictions and quota.`);
+    }
+    const data = await ocrRes.json() as VisionResponse;
+    if (data.error) {errorCode='provider_error';throw new Error('OCR provider rejected the document');}
+    const extracted = isPdf
+      ? (((data.responses?.[0] ?? {}) as {responses?:VisionAnnotation[]}).responses ?? [])
+      : (data.responses ?? []) as VisionAnnotation[];
+    const pages = extracted.slice(0,5).map((annotation,i) => {
+      if (annotation.error) {errorCode='provider_page_error';throw new Error(`OCR could not process page ${i+1}`);}
+      const text = getText(annotation);
+      return {page:annotation.context?.pageNumber ?? i+1,text:text.slice(0,30000),truncated:text.length>30000};
+    });
+    pagesProcessed=pages.length;
+    status='success';
+    return reply(200,{
+      document_id:String(doc.id),case_num:caseNum,document_name:String(doc.name),
+      provider:'google-vision',pages,processing_limit:isPdf?'First five PDF pages only':'Single image',request_id:requestId,
+    },origin);
+  } catch (error) {
+    return reply(502,{error:error instanceof Error?error.message:'OCR processing failed',request_id:requestId},origin);
+  } finally {
+    if (requestId) {
+      // The completion RPC is caller-scoped and does not grant service-role privileges.
+      await caller.rpc('vp_p3_ocr_complete',{
+        p_request_id:requestId,p_status:status,p_page_count:pagesProcessed,
+        p_error_code:status==='error'?errorCode:null,
+      });
+    }
+  }
+});
+
+
+===== FILE: supabase\functions\vp-provision-users\index.ts =====
+// ValuationPro server-side staff provisioning. No invitation emails are sent.
+// Call from a signed-in app session. Keep service/secret keys server-side only.
+import { createClient } from 'npm:@supabase/supabase-js@2';
+
+type UserRow = { name: string; email: string; role: string; branch_codes?: string[] };
+type Outcome = { name: string; email: string; role: string; status: 'created' | 'failed';
+  user_id?: string; temporary_password?: string; error?: string; warning?: string };
+const env = (name: string) => Deno.env.get(name) ?? '';
+const allowedOrigins = env('VP_ALLOWED_ORIGINS').split(',').map(x => x.trim()).filter(Boolean);
+const baseHeaders = {
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Cache-Control': 'no-store',
+  'Content-Type': 'application/json',
+};
+const response = (status: number, value: unknown, origin: string | null) => new Response(JSON.stringify(value), {
+  status, headers: { ...baseHeaders, ...(origin && allowedOrigins.includes(origin)
+    ? { 'Access-Control-Allow-Origin': origin, Vary: 'Origin' } : {}) },
+});
+const emailOk = (value: string) => value.length <= 320 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
+function generatePassword(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(24));
+  const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+  const chars = [...bytes].map(x => alphabet[x % alphabet.length]).join('');
+  return `V!8${chars}m`;
+}
+function normalize(input: unknown): UserRow {
+  const x = (input ?? {}) as Record<string, unknown>;
+  const codes = Array.isArray(x.branch_codes) ? x.branch_codes.map(v => String(v).trim().toUpperCase()).filter(Boolean) : [];
+  return {
+    name: String(x.name ?? '').trim(), email: String(x.email ?? '').trim().toLowerCase(),
+    role: String(x.role ?? '').trim(), branch_codes: Array.from(new Set(codes)),
+  };
+}
+function invalid(x: UserRow): string | null {
+  if (x.name.length < 2 || x.name.length > 200) return 'Full name must be 2â€“200 characters';
+  if (!emailOk(x.email)) return 'Valid email address required';
+  if (!x.role || x.role.length > 80) return 'Role is required';
+  if ((x.branch_codes ?? []).some(code => !/^[A-Z0-9_-]{1,30}$/.test(code))) return 'Invalid branch code';
+  return null;
+}
+
+Deno.serve(async (req: Request) => {
+  const origin = req.headers.get('origin');
+  if (req.method === 'OPTIONS') return response(200, { ok: true }, origin);
+  if (req.method !== 'POST') return response(405, { error: 'POST required' }, origin);
+  if (!allowedOrigins.length || !origin || !allowedOrigins.includes(origin))
+    return response(403, { error: 'Application origin not authorized' }, origin);
+  const authorization = req.headers.get('Authorization') ?? '';
+  if (!authorization.startsWith('Bearer ')) return response(401, { error: 'Please sign in' }, origin);
+  const url = env('SUPABASE_URL');
+  const secret = env('SUPABASE_SECRET_KEY') || env('SUPABASE_SERVICE_ROLE_KEY');
+  const pub = env('SUPABASE_PUBLISHABLE_KEY') || env('SUPABASE_ANON_KEY');
+  if (!url || !secret || !pub) return response(500, { error: 'Server configuration incomplete' }, origin);
+  const token = authorization.substring(7);
+  const admin = createClient(url, secret, { auth: { persistSession: false, autoRefreshToken: false } });
+  const caller = createClient(url, pub, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { headers: { Authorization: authorization } },
+  });
+  try {
+    const { data: current, error: verifyError } = await admin.auth.getUser(token);
+    if (verifyError || !current.user) return response(401, { error: 'Session invalid' }, origin);
+    const body = await req.json() as Record<string, unknown>;
+    const action = String(body.action ?? '');
+
+    if (action === 'set_password') {
+      const next = String(body.password ?? '');
+      if (next.length < 12 || next.length > 128 || !/[A-Za-z]/.test(next) || !/[0-9]/.test(next))
+        return response(400, { error: 'Use 12â€“128 characters with letters and numbers' }, origin);
+      const { data: pending, error: pendingError } = await caller.rpc('vp_first_login_required');
+      if (pendingError || pending !== true) return response(403, { error: 'Password setup is not required for this account' }, origin);
+      const { error: changeError } = await admin.auth.admin.updateUserById(current.user.id, { password: next });
+      if (changeError) return response(400, { error: changeError.message }, origin);
+      const { error: clearError } = await admin.from('vp_user_password_setup')
+        .update({ must_change: false, completed_at: new Date().toISOString() })
+        .eq('auth_uid', current.user.id).eq('must_change', true);
+      if (clearError) return response(500, { error: 'Password updated; please retry the setup step to complete activation' }, origin);
+      return response(200, { ok: true, password_changed: true }, origin);
+    }
+
+    // User provisioning and reset require a current, active tenant administrator.
+    const { data: ctx, error: ctxError } = await caller.rpc('vp_my_context');
+    const { data: liveOrg, error: liveOrgError } = await caller.rpc('vp_current_org_id');
+    if (ctxError || liveOrgError || !ctx || ctx.is_admin !== true || String(liveOrg) !== String(ctx.org_id))
+      return response(403, { error: 'Active tenant administrator access required' }, origin);
+    const tenantId = String(ctx.org_id);
+    const actorId = String(ctx.user_id);
+    // Use the same authoritative, SECURITY DEFINER catalogue as User Management.
+    // Do not infer a role list from RLS-filtered table SELECTs.
+    const { data: setup, error: setupError } = await caller.rpc('vp_sec_admin_user_setup');
+    if (setupError || !setup || String(setup.org_id) !== tenantId ||
+        !Array.isArray(setup.roles) || !Array.isArray(setup.branches)) {
+      return response(500, { error: 'Unable to load authorized tenant role and branch catalogue' }, origin);
+    }
+    const allowedRoles = new Set<string>(setup.roles.filter((r: { assignable: boolean }) => r.assignable)
+      .map((r: { name: string }) => String(r.name)));
+    const elevatedRoles = new Set<string>(setup.roles.filter((r: { privileged: boolean }) => r.privileged)
+      .map((r: { name: string }) => String(r.name)));
+    const branches = new Map<string, string>(setup.branches.filter((b: { is_active: boolean }) => b.is_active)
+      .map((b: { code: string; id: string }) => [String(b.code).toUpperCase(), String(b.id)]));
+    const validate = (row: UserRow) => {
+      const failure = invalid(row);
+      if (failure) return failure;
+      if (!allowedRoles.has(row.role)) return 'Role does not exist in your organization';
+      if ((row.role === 'Tenant Owner' || elevatedRoles.has(row.role)) && ctx.role !== 'Tenant Owner')
+        return 'Only Tenant Owner can create administrative accounts';
+      for (const code of row.branch_codes ?? []) {
+        if (!branches.has(code)) return `Unknown or inactive branch: ${code}`;
+      }
+      return null;
+    };
+
+    if (action === 'reset_password') {
+      const userId = String(body.user_id ?? '');
+      if (!/^\d{1,20}$/.test(userId)) return response(400, { error: 'Invalid user identifier' }, origin);
+      const { data: target, error: targetError } = await admin.from('users')
+        .select('id,org_id,login,name,role').eq('org_id', tenantId).eq('id', userId).maybeSingle();
+      if (targetError || !target) return response(404, { error: 'User not found in this organization' }, origin);
+      if (String(target.id) === actorId || target.role === 'Tenant Owner')
+        return response(403, { error: 'Cannot reset your own or Tenant Owner password here' }, origin);
+      if (elevatedRoles.has(target.role) && ctx.role !== 'Tenant Owner')
+        return response(403, { error: 'Only Tenant Owner may reset an administrator' }, origin);
+      const { data: link, error: linkError } = await admin.from('valuation_auth_links')
+        .select('auth_uid').eq('user_id', userId).maybeSingle();
+      if (linkError || !link) return response(409, { error: 'This user has no linked login account' }, origin);
+      const { error: stageError } = await admin.from('vp_user_password_setup').upsert({
+        auth_uid: link.auth_uid, org_id: tenantId, must_change: true, created_by_user_id: actorId,
+        completed_at: null,
+      }, { onConflict: 'auth_uid' });
+      if (stageError) return response(500, { error: 'Unable to secure password reset state' }, origin);
+      const password = generatePassword();
+      const { error: resetError } = await admin.auth.admin.updateUserById(link.auth_uid, { password });
+      if (resetError) return response(500, { error: 'Password reset failed; account remains locked until retried' }, origin);
+      return response(200, { status: 'reset', email: target.login, name: target.name,
+        role: target.role, temporary_password: password }, origin);
+    }
+    if (action !== 'create' && action !== 'bulk') return response(400, { error: 'Unknown action' }, origin);
+    const raw = action === 'create' ? [body.user] : body.rows;
+    if (!Array.isArray(raw) || raw.length < 1 || raw.length > 20)
+      return response(400, { error: 'Send 1â€“20 users per request' }, origin);
+    const rows = raw.map(normalize);
+    // Preflight all rows before any writes. Per-row errors still reported.
+    const seen = new Set<string>();
+    const preflight = rows.map(row => {
+      const problem = validate(row);
+      if (seen.has(row.email)) return 'Repeated email in this batch';
+      seen.add(row.email);
+      return problem;
+    });
+    const outcomes: Outcome[] = [];
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      if (preflight[i]) {
+        outcomes.push({ ...row, status: 'failed', error: preflight[i]! });
+        continue;
+      }
+      const password = generatePassword();
+      const { data: account, error: createError } = await admin.auth.admin.createUser({
+        email: row.email, password, email_confirm: true,
+        user_metadata: { name: row.name },
+      });
+      if (createError || !account.user) {
+        outcomes.push({ ...row, status: 'failed', error: createError?.message ?? 'Account creation failed' });
+        continue;
+      }
+      const authUid = account.user.id;
+      // Stage the first-login lock before linking, preventing a race to tenant data.
+      const { error: pendingError } = await admin.from('vp_user_password_setup').insert({
+        auth_uid: authUid, org_id: tenantId, must_change: true, created_by_user_id: actorId,
+      });
+      if (pendingError) {
+        await admin.auth.admin.deleteUser(authUid);
+        outcomes.push({ ...row, status: 'failed', error: 'Failed to protect first-login account' });
+        continue;
+      }
+      const { data: appId, error: attachError } = await caller.rpc('vp_admin_attach_invited_user', {
+        p_email: row.email, p_name: row.name, p_role: row.role,
+      });
+      if (attachError || !appId) {
+        // Only delete the Auth user created in this request. Never delete pre-existing accounts.
+        await admin.auth.admin.deleteUser(authUid);
+        outcomes.push({ ...row, status: 'failed', error: attachError?.message ?? 'Application user linking failed' });
+        continue;
+      }
+      let warning: string | undefined;
+      if (row.branch_codes?.length) {
+        const { error: branchError } = await caller.rpc('vp_admin_replace_user_branches', {
+          p_user_id: String(appId), p_branch_ids: row.branch_codes.map(code => branches.get(code)),
+        });
+        if (branchError) warning = 'Account created; branch allocation needs manual review';
+      }
+      outcomes.push({ name: row.name, email: row.email, role: row.role,
+        status: 'created', user_id: String(appId), temporary_password: password, warning });
+    }
+    return response(200, { results: outcomes, created: outcomes.filter(x => x.status === 'created').length,
+      failed: outcomes.filter(x => x.status === 'failed').length, password_visible_once: true }, origin);
+  } catch (error) {
+    // Never log request bodies or passwords.
+    return response(500, { error: error instanceof Error ? error.message : 'Provisioning failed' }, origin);
+  }
+});
+
+
+===== FRONTEND EDGE FUNCTION CALLERS =====
+
+===== FILE: src\components\admin\vp-user-provision.tsx =====
+import { useMemo, useState, type ChangeEvent } from 'react';
+import { Download, FileSpreadsheet, KeyRound, Plus, Upload, UserRoundPlus } from 'lucide-react';
+import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Dialog, DialogContent, DialogDescription, DialogFooter,
+  DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { supabase } from '@/integrations/supabase/client';
+import { vpDb } from '@/lib/vp-db';
+
+type Branch = { id: string; name: string; code: string; is_active: boolean };
+type NewUser = { name: string; email: string; role: string; branch_codes: string[] };
+export type ProvisionResult = { name: string; email: string; role: string;
+  status: 'created' | 'failed' | 'reset'; user_id?: string;
+  temporary_password?: string; error?: string; warning?: string };
+type ImportEntry = NewUser & { excel_row: number; error: string | null };
+const emailValid = (email: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) && email.length <= 320;
+function errorText(e: unknown): string { return e instanceof Error ? e.message : String(e); }
+async function invokeProvision(body: Record<string, unknown>): Promise<{ results: ProvisionResult[] }> {
+  const { data, error } = await supabase.functions.invoke('vp-provision-users', { body });
+  if (error) {
+    let message = error.message;
+    const context = (error as any).context;
+    if (context && typeof context.json === 'function') {
+      try { const json = await context.json(); message = json.error ?? message; } catch { /* ignore */ }
+    }
+    throw new Error(message);
+  }
+  if (data?.error) throw new Error(String(data.error));
+  return data as { results: ProvisionResult[] };
+}
+function csvCell(value: string) {
+  const neutral = /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+  return `"${neutral.replaceAll('"', '""')}"`;
+}
+function downloadCredentials(items: ProvisionResult[], fileName: string) {
+  const headers = ['Full Name', 'Email', 'Role', 'Temporary Password', 'Status', 'Error'];
+  const rows = items.map(x => [x.name, x.email, x.role, x.temporary_password ?? '', x.status, x.error ?? x.warning ?? '']);
+  const content = '\uFEFF' + [headers, ...rows].map(row => row.map(cell => csvCell(String(cell))).join(',')).join('\r\n');
+  const url = URL.createObjectURL(new Blob([content], { type: 'text/csv;charset=utf-8' }));
+  const link = document.createElement('a'); link.href = url; link.download = fileName; link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
+}
+
+export function VpOneTimeCredentials({ results, onClose }: {
+  results: ProvisionResult[] | null; onClose: () => void;
+}) {
+  const completed = results?.filter(r => r.status !== 'failed') ?? [];
+  return <Dialog open={Boolean(results)} onOpenChange={open => { if (!open) onClose(); }}>
+    <DialogContent className="sm:max-w-xl">
+      <DialogHeader><DialogTitle>One-time account credentials</DialogTitle>
+        <DialogDescription>Passwords appear only here. Record or securely distribute them before closing. Never place the credentials file in shared storage or send it by ordinary email.</DialogDescription>
+      </DialogHeader>
+      <div className="max-h-64 space-y-2 overflow-auto rounded-md border p-3 text-sm">
+        {completed.map((x, i) => <div className="border-b pb-2 last:border-0" key={`${x.email}-${i}`}>
+          <b>{x.name}</b> â€” {x.email} ({x.role})
+          <div className="mt-1 font-mono text-xs break-all">Temporary password: {x.temporary_password}</div>
+          {x.warning && <div className="text-xs text-amber-700">{x.warning}</div>}
+        </div>)}
+        {results?.filter(x => x.status === 'failed').map((x, i) =>
+          <p className="text-xs text-destructive" key={`${x.email}-${i}`}>{x.email}: {x.error}</p>)}
+      </div>
+      <DialogFooter>
+        <Button variant="outline" onClick={onClose}>Close and clear passwords</Button>
+        <Button disabled={!completed.length} onClick={() => downloadCredentials(results ?? [], 'ValuationPro_One_Time_Credentials.csv')}>
+          <Download className="size-4" /> Export credentials once
+        </Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>;
+}
+
+export function VpUserProvisionDialog({ open, onOpenChange, roles, branches, onComplete }: {
+  open: boolean; onOpenChange: (open: boolean) => void;
+  roles: string[]; branches: Branch[]; onComplete: () => Promise<void>;
+}) {
+  const [mode, setMode] = useState<'single' | 'bulk' | 'link'>('single');
+  const [user, setUser] = useState<NewUser>({ name: '', email: '', role: '', branch_codes: [] });
+  const [rows, setRows] = useState<ImportEntry[]>([]);
+  const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [results, setResults] = useState<ProvisionResult[] | null>(null);
+  const activeCodes = useMemo(() => new Set(branches.filter(x => x.is_active).map(x => x.code.toUpperCase())), [branches]);
+  const validRows = rows.filter(r => !r.error);
+  const failedRows = rows.filter(r => r.error);
+  const isValid = (x: NewUser): string | null => {
+    if (x.name.trim().length < 2 || x.name.length > 200) return 'Name must be 2â€“200 characters';
+    if (!emailValid(x.email)) return 'Invalid email';
+    if (!roles.includes(x.role)) return `Unknown role: ${x.role}`;
+    const unknown = x.branch_codes.find(code => !activeCodes.has(code));
+    return unknown ? `Unknown/inactive branch: ${unknown}` : null;
+  };
+  async function readExcel(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0]; if (!file) return;
+    setResults(null); setRows([]); setProgress(0);
+    if (!/\.xlsx$/i.test(file.name) || file.size > 3_000_000) {
+      toast.error('Select a .xlsx file up to 3 MB'); return;
+    }
+    try {
+      const { readSheet } = await import('read-excel-file/browser');
+      const data = await readSheet(file);
+      const headers = (data[0] ?? []).map(v => String(v ?? '').trim().toLowerCase());
+      const expected = ['full name', 'email', 'role', 'branch codes'];
+      if (expected.some((name, idx) => headers[idx] !== name))
+        throw new Error('Excel columns must be: Full Name | Email | Role | Branch Codes');
+      const records = data.slice(1).filter(line => line.some(cell => String(cell ?? '').trim()));
+      if (!records.length || records.length > 1000) throw new Error('Workbook must contain 1â€“1000 users');
+      const seen = new Set<string>();
+      setRows(records.map((cells, index) => {
+        const row: NewUser = {
+          name: String(cells[0] ?? '').trim(), email: String(cells[1] ?? '').trim().toLowerCase(),
+          role: String(cells[2] ?? '').trim(),
+          branch_codes: Array.from(new Set(String(cells[3] ?? '').split(';').map(s => s.trim().toUpperCase()).filter(Boolean))),
+        };
+        let error = isValid(row);
+        if (seen.has(row.email)) error = 'Repeated email in import';
+        seen.add(row.email);
+        return { ...row, excel_row: index + 2, error };
+      }));
+    } catch (e) { toast.error(errorText(e)); }
+  }
+  async function provision() {
+    if (busy) return;
+    setBusy(true); setProgress(0); setResults(null);
+    try {
+      if (mode === 'link') {
+        const error = isValid(user); if (error) throw new Error(error);
+        const { data: id, error: linkError } = await vpDb.rpc('vp_admin_attach_invited_user', {
+          p_name: user.name.trim(), p_email: user.email.trim().toLowerCase(), p_role: user.role,
+        });
+        if (linkError) throw linkError;
+        if (user.branch_codes.length) {
+          const ids = user.branch_codes.map(code => branches.find(b => b.code.toUpperCase() === code)?.id).filter(Boolean);
+          const { error: branchError } = await vpDb.rpc('vp_admin_replace_user_branches', {
+            p_user_id: String(id), p_branch_ids: ids,
+          });
+          if (branchError) toast.warning('Linked account; review branch assignments');
+        }
+        toast.success('Existing login linked to this agency');
+        await onComplete(); onOpenChange(false);
+      } else {
+        const batch = mode === 'single' ? [user] : validRows;
+        if (mode === 'single') { const error = isValid(user); if (error) throw new Error(error); }
+        if (!batch.length) throw new Error('No valid users to create');
+        const outcomes: ProvisionResult[] = [];
+        for (let i = 0; i < batch.length; i += 20) {
+          const part = batch.slice(i, i + 20);
+          try {
+            const data = await invokeProvision(mode === 'single' ? { action: 'create', user: part[0] }
+              : { action: 'bulk', rows: part });
+            outcomes.push(...data.results);
+          } catch (e) {
+            outcomes.push(...part.map(x => ({ ...x, status: 'failed' as const, error: errorText(e) })));
+          }
+          setProgress(Math.min(i + part.length, batch.length));
+        }
+        outcomes.push(...failedRows.map(x => ({ ...x, status: 'failed' as const, error: `Row ${x.excel_row}: ${x.error}` })));
+        setResults(outcomes);
+        await onComplete();
+        const successes = outcomes.filter(x => x.status === 'created').length;
+        toast[successes ? 'success' : 'error'](`${successes} user(s) created; ${outcomes.length - successes} failed`);
+      }
+    } catch (e) { toast.error(errorText(e)); }
+    finally { setBusy(false); }
+  }
+  function close() {
+    if (busy) return;
+    setResults(null); setRows([]); setProgress(0);
+    onOpenChange(false);
+  }
+  return <>
+    <Dialog open={open && !results} onOpenChange={v => { if (!v && !results) close(); else if (v) onOpenChange(true); }}>
+      <DialogContent className="sm:max-w-2xl">
+        <DialogHeader><DialogTitle>User Management â€” Add Accounts</DialogTitle>
+          <DialogDescription>Create staff logins directly. No email invitations or database-console steps are needed.</DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-wrap gap-2">
+          <Button type="button" size="sm" variant={mode === 'single' ? 'default' : 'outline'} disabled={busy} onClick={() => setMode('single')}>
+            <UserRoundPlus className="size-4" /> Create User</Button>
+          <Button type="button" size="sm" variant={mode === 'bulk' ? 'default' : 'outline'} disabled={busy} onClick={() => setMode('bulk')}>
+            <Upload className="size-4" /> Excel Bulk Import</Button>
+          <Button type="button" size="sm" variant={mode === 'link' ? 'default' : 'outline'} disabled={busy} onClick={() => setMode('link')}>
+            <Plus className="size-4" /> Link Existing Account</Button>
+        </div>
+        {mode !== 'bulk' ? <div className="space-y-4">
+          <div><Label>Full name</Label><Input value={user.name} onChange={e => setUser(x => ({ ...x, name: e.target.value }))} placeholder="Employee full name" /></div>
+          <div><Label>Work email / login</Label><Input type="email" value={user.email} onChange={e => setUser(x => ({ ...x, email: e.target.value }))} placeholder="staff@company.com" /></div>
+          <div><Label>Role</Label><Select value={user.role || undefined} onValueChange={role => setUser(x => ({ ...x, role }))}>
+            <SelectTrigger><SelectValue placeholder="Choose a role" /></SelectTrigger>
+            <SelectContent>{roles.map(role => <SelectItem key={role} value={role}>{role}</SelectItem>)}</SelectContent>
+          </Select>
+          {!roles.length && <p role="alert" className="mt-1 text-xs text-destructive">No assignable roles available. Ask the Tenant Owner to configure the Role Matrix.</p>}
+          </div>
+          <div><Label>Branch access (optional)</Label><div className="mt-2 flex max-h-28 flex-wrap gap-3 overflow-auto rounded border p-3">
+            {branches.filter(b => b.is_active).map(branch => <label className="flex items-center gap-2 text-xs" key={branch.id}>
+              <Checkbox checked={user.branch_codes.includes(branch.code)} onCheckedChange={checked =>
+                setUser(x => ({ ...x, branch_codes: checked === true ? [...x.branch_codes, branch.code]
+                  : x.branch_codes.filter(code => code !== branch.code) }))} />
+              {branch.name} ({branch.code})
+            </label>)}
+            {!branches.some(b => b.is_active) && <p className="text-xs text-muted-foreground">No active branches in this tenant. Create a branch under Administration â†’ Branches, or create the user without branch allocation.</p>}
+          </div></div>
+          <p className="rounded-md border p-2 text-xs text-muted-foreground">
+            {mode === 'single' ? 'A unique temporary password will be displayed once. The employee must change it on first login.' :
+              'Link an account already registered in the login service. No new password will be created.'}
+          </p>
+        </div> : <div className="space-y-3">
+          <a href="/ValuationPro_User_Import_Template.xlsx" className="inline-flex items-center gap-2 text-sm font-medium underline" download>
+            <Download className="size-4" /> Download Excel template</a>
+          <div className="flex items-center gap-2"><FileSpreadsheet className="size-5" />
+            <Input type="file" accept=".xlsx" disabled={busy} onChange={e => void readExcel(e)} /></div>
+          <p className="text-xs text-muted-foreground">Columns: Full Name, Email, Role, Branch Codes (separate multiple codes with semicolons). No passwords in the upload. Up to 1,000 users per file; processed in batches of 20.</p>
+          {!!rows.length && <div className="rounded border p-3 text-sm">
+            <b>{rows.length} rows</b> Â· {validRows.length} ready Â· {failedRows.length} need correction
+            <div className="mt-2 max-h-36 overflow-auto text-xs">
+              {rows.slice(0, 20).map(x => <p key={x.excel_row} className={x.error ? 'text-destructive' : ''}>
+                Row {x.excel_row}: {x.name} / {x.email} / {x.role} {x.error ? `â€” ${x.error}` : 'âœ“'}
+              </p>)}
+              {rows.length > 20 && <p>...and {rows.length - 20} further rows</p>}
+            </div>
+          </div>}
+          {busy && <p className="text-sm">Processed {progress} of {validRows.length} users. Keep this page open.</p>}
+        </div>}
+        <DialogFooter>
+          <Button variant="outline" disabled={busy} onClick={close}>Cancel</Button>
+          <Button disabled={busy || (mode === 'bulk' ? validRows.length === 0 : Boolean(isValid(user)))} onClick={() => void provision()}>
+            {busy ? 'Creatingâ€¦' : mode === 'bulk' ? `Create ${validRows.length} Users` : mode === 'link' ? 'Link Existing Account' : 'Create User'}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+    <VpOneTimeCredentials results={results} onClose={() => { setResults(null); close(); }} />
+  </>;
+}
+
+export async function resetValuationUser(userId: string): Promise<ProvisionResult> {
+  const { data, error } = await supabase.functions.invoke('vp-provision-users', {
+    body: { action: 'reset_password', user_id: userId },
+  });
+  if (error) {
+    let message = error.message;
+    const context = (error as any).context;
+    if (context && typeof context.json === 'function') {
+      try { const obj = await context.json(); message = obj.error ?? message; } catch { /* ignore */ }
+    }
+    throw new Error(message);
+  }
+  if (data?.error) throw new Error(data.error);
+  return data as ProvisionResult;
+}
+
+
+===== FILE: src\lib\vp-auth.tsx =====
+import { Building2, ClipboardCheck, FileText, MapPinned } from 'lucide-react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
+import { useNavigate, useRouterState } from '@tanstack/react-router';
+import { useQueryClient } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
+import { AppProvider } from '@/lib/app-context';
+import { vpDb, type VpIdentity } from '@/lib/vp-db';
+import { mayOpenPath } from '@/lib/vp-p10-permissions';
+import { vpSignOutToHome } from '@/lib/vp-session';
+
+
+type Gate = 'loading' | 'login' | 'setup' | 'blocked' | 'ready' | 'password-setup' | 'error';
+
+export function VpAuthGate({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (r) => r.location.pathname });
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const [gate, setGate] = useState<Gate>('loading');
+  const refreshSequence = useRef(0);
+  const [identity, setIdentity] = useState<VpIdentity | null>(null);
+  const [capabilities, setCapabilities] = useState<string[]>([]);
+  const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [register, setRegister] = useState(false);
+  const [name, setName] = useState('');
+  const [code, setCode] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [serverPasswordRequired, setServerPasswordRequired] = useState(false);
+  const [invitePassword, setInvitePassword] = useState('');
+  const [confirmInvitePassword, setConfirmInvitePassword] = useState('');
+
+  async function refresh() {
+    const currentSequence = ++refreshSequence.current;
+    const stillCurrent = () => currentSequence === refreshSequence.current;
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (!stillCurrent()) return;
+      if (authError || !user) {
+        queryClient.clear();
+        setIdentity(null);
+        setCapabilities([]);
+        setGate('login');
+        return;
+      }
+      const { data, error: rpcError } = await vpDb.rpc('vp_my_context');
+      if (!stillCurrent()) return;
+      if (rpcError) throw rpcError;
+      const profile = data as VpIdentity | null;
+      if (profile) {
+        // Fail closed if the P10 database security migration is missing.
+        const { data: granted, error: permissionsError } = await vpDb.rpc('vp_sec_my_capabilities');
+        if (!stillCurrent()) return;
+        if (permissionsError) throw new Error('P10 permissions are unavailable. Apply the P10 migration and retry: ' + permissionsError.message);
+        if (!Array.isArray(granted)) throw new Error('Unexpected P10 permission response');
+        setCapabilities(granted.map(String));
+      } else {
+        setCapabilities([]);
+      }
+      setIdentity(profile);
+      if (profile) {
+        const { data: firstLogin, error: setupError } = await vpDb.rpc('vp_first_login_required');
+        if (!stillCurrent()) return;
+        if (setupError) throw setupError;
+        setServerPasswordRequired(firstLogin === true);
+        const meta = user.user_metadata ?? {};
+        setGate(firstLogin === true || (meta['vp_invited'] === true && meta['vp_password_set'] !== true)
+          ? 'password-setup' : 'ready');
+      }
+      else {
+        const { data: accountStatus, error: statusError } = await vpDb.rpc('vp_account_status');
+        if (!stillCurrent()) return;
+        if (statusError) throw statusError;
+        setGate(accountStatus === 'unlinked' ? 'setup' : 'blocked');
+      }
+    } catch (e) {
+      if (!stillCurrent()) return;
+      setError(e instanceof Error ? e.message : 'Unable to verify the session');
+      setGate('error');
+    }
+  }
+
+  useEffect(() => {
+    void refresh();
+    const handlePermissionChange = () => { void refresh(); };
+    window.addEventListener('vp-permissions-changed', handlePermissionChange);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_OUT') {
+        ++refreshSequence.current;
+        queryClient.clear();
+        setIdentity(null);
+        setCapabilities([]);
+        setGate('login');
+      }
+      // Don't await a Supabase query within the auth callback: the library
+      // documents potential lock contention. Defer to a separate microtask.
+      if (event === 'SIGNED_IN' || event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
+        queueMicrotask(() => { void refresh(); });
+      }
+    });
+    return () => { subscription.unsubscribe(); window.removeEventListener('vp-permissions-changed', handlePermissionChange); };
+  }, []);
+
+  // A deep link must not become the login URL or a future post-login redirect.
+  // The authenticated home screen is always /; modules are selected afterwards.
+  useEffect(() => {
+    if (gate === 'login' && pathname !== '/') {
+      void navigate({ to: '/', replace: true });
+    }
+  }, [gate, pathname, navigate]);
+
+  async function submitLogin(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError('');
+    setNotice('');
+    setBusy(true);
+    try {
+      if (register) {
+        const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
+        if (signUpError) throw signUpError;
+        if (!data.session) {
+          setError('Check your email and confirm your account, then sign in.');
+          setRegister(false);
+        } else {
+          await refresh();
+          await navigate({ to: '/', replace: true });
+        }
+      } else {
+        const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+        if (signInError) throw signInError;
+        // Prevent data belonging to a previous login from appearing briefly.
+        queryClient.clear();
+        await refresh();
+        await navigate({ to: '/', replace: true });
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Sign in failed');
+    } finally { setBusy(false); }
+  }
+
+  async function createAgency(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError('');
+    setBusy(true);
+    try {
+      const { error: rpcError } = await vpDb.rpc('vp_register_agency', {
+        p_code: code.trim().toUpperCase(), p_name: name.trim(),
+      });
+      if (rpcError) throw rpcError;
+      await refresh();
+    } catch (e) { setError(e instanceof Error ? e.message : 'Agency setup failed'); }
+    finally { setBusy(false); }
+  }
+
+  async function completeInvitePassword(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (invitePassword.length < 12 || !/[A-Za-z]/.test(invitePassword) || !/[0-9]/.test(invitePassword) || invitePassword !== confirmInvitePassword) {
+      setError('Use a matching password of at least 12 characters containing letters and numbers'); return;
+    }
+    setBusy(true); setError('');
+    try {
+      if (serverPasswordRequired) {
+        const { data, error: updateError } = await supabase.functions.invoke('vp-provision-users', {
+          body: { action: 'set_password', password: invitePassword },
+        });
+        if (updateError) throw updateError;
+        if (data?.error) throw new Error(data.error);
+        setInvitePassword(''); setConfirmInvitePassword('');
+        const { error: signOutError } = await supabase.auth.signOut();
+        if (signOutError) throw signOutError;
+        queryClient.clear();
+        await navigate({ to: '/', replace: true });
+        setIdentity(null);
+        setCapabilities([]);
+        setNotice('Password updated. Please sign in using your new password.');
+        setGate('login');
+        return;
+      } else {
+        const { error: updateError } = await supabase.auth.updateUser({
+          password: invitePassword, data: { vp_password_set: true },
+        });
+        if (updateError) throw updateError;
+      }
+      setInvitePassword(''); setConfirmInvitePassword('');
+      await refresh();
+    } catch (e) { setError(e instanceof Error ? e.message : 'Password update failed'); }
+    finally { setBusy(false); }
+  }
+
+  async function signOut() {
+    try {
+      setError('');
+      await vpSignOutToHome(queryClient);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Sign out failed');
+    }
+  }
+
+  if (gate === 'loading') {
+    return <div className="flex min-h-screen items-center justify-center bg-background text-sm text-muted-foreground">Verifying ValuationPro sessionâ€¦</div>;
+  }
+  if (gate === 'ready' && identity) {
+    if (!mayOpenPath(pathname, capabilities)) {
+      return <main className="flex min-h-screen flex-col items-center justify-center gap-3 bg-background text-foreground"><h1 className="text-xl font-semibold">Access restricted</h1><p>This role has no permission to open this module. Ask the administrator to update its Role Matrix.</p><button className="rounded border px-3 py-2" onClick={signOut}>Sign out</button></main>;
+    }
+    return <AppProvider identity={identity} capabilities={capabilities}>{children}</AppProvider>;
+  }
+  return (
+    <div className="grid min-h-screen bg-background text-foreground lg:grid-cols-[1fr_0.9fr]">
+      <section className="relative hidden overflow-hidden bg-[#0f2542] px-12 py-12 text-white lg:flex lg:flex-col lg:justify-center xl:px-20" aria-label="About ValuationPro">
+        <div className="relative z-10 max-w-xl space-y-6"><div className="flex items-center gap-3"><Building2 className="size-8" aria-hidden="true"/><span className="text-xl font-semibold">ValuationPro</span></div>
+          <h2 className="text-4xl font-semibold leading-tight tracking-tight xl:text-5xl">Property valuation.<br/>One connected workspace.</h2>
+          <p className="max-w-md text-base leading-relaxed text-slate-200">Manage case intake, site inspections, valuation workpapers and quality review in one platform.</p>
+          <div className="grid gap-3 sm:grid-cols-3">{[{Icon:MapPinned,label:'Inspect'},{Icon:ClipboardCheck,label:'Review'},{Icon:FileText,label:'Report'}].map(({Icon,label})=><div key={label} className="rounded-xl border border-slate-500 bg-white/10 p-4"><Icon className="mb-3 size-6 text-blue-200" aria-hidden="true"/><p className="text-sm font-medium">{label}</p></div>)}</div>
+        </div>
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 600 400" className="pointer-events-none absolute bottom-0 right-0 w-full max-w-[650px] opacity-20" fill="none" stroke="#93c5fd" strokeWidth="1.5"><path d="M0 400 600 0M120 400 600 80M240 400 600 160M360 400 600 240M480 400 600 320M0 200 300 400M0 100 450 400M100 0 600 333"/><path d="M245 280V140l100-65 100 65v140M245 140l100 60 100-60M345 200v160M445 280l-100 80-100-80M290 168v140M400 168v140" strokeWidth="3"/></svg>
+      </section>
+      <main className="flex min-w-0 items-center justify-center p-4 sm:p-8"><div className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
+        <h1 className="font-display text-xl font-bold">ValuationPro</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {gate === 'setup' ? 'Set up your valuation agency' : 'Secure workspace access'}
+        </p>
+        {gate === 'password-setup' ? (
+          <form className="mt-6 space-y-4" onSubmit={completeInvitePassword}>
+            <p className="text-sm">For account security, replace your temporary password before entering the workspace.</p>
+            <label className="block text-sm">New password<input type="password" autoComplete="new-password" className="mt-1 min-h-11 w-full rounded-md border border-input bg-background px-3 py-2" required minLength={12} value={invitePassword} onChange={(e)=>setInvitePassword(e.target.value)}/></label>
+            <label className="block text-sm">Confirm password<input type="password" autoComplete="new-password" className="mt-1 min-h-11 w-full rounded-md border border-input bg-background px-3 py-2" required minLength={12} value={confirmInvitePassword} onChange={(e)=>setConfirmInvitePassword(e.target.value)}/></label>
+            <button disabled={busy} className="min-h-11 w-full rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground disabled:opacity-50">{busy ? 'Savingâ€¦' : 'Set password & continue'}</button>
+            <button type="button" onClick={signOut} className="w-full text-sm underline">Sign out</button>
+          </form>
+        ) : gate === 'blocked' ? (
+          <div className="mt-5 space-y-3 text-sm"><p>This user or organization is inactive. Contact your tenant administrator.</p><button className="rounded border px-3 py-2" onClick={signOut}>Sign out</button></div>
+        ) : gate === 'setup' ? (
+          <form className="mt-6 space-y-4" onSubmit={createAgency}>
+            <label className="block text-sm">Agency legal name<input className="mt-1 min-h-11 w-full rounded-md border border-input bg-background px-3 py-2" value={name} onChange={(e) => setName(e.target.value)} required minLength={3} maxLength={200}/></label>
+            <label className="block text-sm">Agency code (2â€“6 letters)<input className="mt-1 min-h-11 w-full rounded-md border border-input bg-background px-3 py-2 uppercase" value={code} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0,6))} required pattern="[A-Z]{2,6}"/></label>
+            <p className="text-xs text-muted-foreground">Your verified account becomes the Tenant Owner. Set up your agency before inviting staff.</p>
+            <button disabled={busy} className="min-h-11 w-full rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground disabled:opacity-50">{busy ? 'Creatingâ€¦' : 'Create agency'}</button>
+            <button type="button" className="w-full text-sm underline" onClick={signOut}>Sign out</button>
+          </form>
+        ) : gate !== 'error' ? (
+          <form className="mt-6 space-y-4" onSubmit={submitLogin}>
+            <label className="block text-sm">Email<input type="email" className="mt-1 min-h-11 w-full rounded-md border border-input bg-background px-3 py-2" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)}/></label>
+            <label className="block text-sm">Password<input type="password" className="mt-1 min-h-11 w-full rounded-md border border-input bg-background px-3 py-2" autoComplete={register ? 'new-password' : 'current-password'} required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)}/></label>
+            <button disabled={busy} className="min-h-11 w-full rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground disabled:opacity-50">{busy ? 'Workingâ€¦' : register ? 'Create account' : 'Sign in'}</button>
+            <button type="button" className="w-full text-sm underline" onClick={() => { setRegister((p) => !p); setError(''); }}>{register ? 'Already have an account? Sign in' : 'New agency? Create an account'}</button>
+          </form>
+        ) : <button className="mt-5 rounded border px-3 py-2" onClick={() => { setGate('loading'); void refresh(); }}>Retry</button>}
+        {notice && <p className="mt-4 text-xs text-green-700">{notice}</p>}
+        {error && <p role="alert" className="mt-4 rounded-md border border-destructive/30 bg-destructive/5 p-3 text-xs text-destructive">{error}</p>}
+      </div></main>
+    </div>
+  );
+}
+
+
+===== FILE: src\lib\vp-db.ts =====
+import type { SupabaseClient } from '@supabase/supabase-js';
+import { supabase } from '@/integrations/supabase/client';
+
+// The repo's generated Database type targets a different UUID schema.
+// The Phase-1 SQL/RPC contract is deliberately kept separate until the live
+// 16-table types are regenerated from the user's Supabase project.
+export const vpDb = supabase as unknown as SupabaseClient;
+
+export type VpIdentity = {
+  org_id: string;
+  org_name: string;
+  org_code: string;
+  org_type: string;
+  user_id: string;
+  user_name: string;
+  email: string;
+  role: string;
+  is_admin: boolean;
+};
+
+
+
+===== FILE: src\lib\vp-p10-permissions.ts =====
+// P10 role-matrix navigation. This is a UX guard only; PostgreSQL RLS/RPCs enforce data access.
+// Administration (tenant.admin) is deliberately a separate recovery permission.
+export function hasRolePermission(capabilities: readonly string[], action: string): boolean {
+  return capabilities.includes(action);
+}
+export type AccessRule = { path: string; anyOf: readonly string[] };
+export const accessRules: readonly AccessRule[] = [
+  { path: '/admin/roles-permissions', anyOf: ['tenant.admin'] },
+  { path: '/admin/users', anyOf: ['tenant.admin'] },
+  { path: '/admin/', anyOf: ['tenant.admin'] },
+  { path: '/cases/', anyOf: ['cases.View', 'field.View', 'field.Check In/Out', 'qc.View', 'signoff.View'] },
+  { path: '/cases', anyOf: ['cases.View'] },
+  { path: '/properties', anyOf: ['cases.View'] },
+  { path: '/market-intelligence', anyOf: ['cases.View'] },
+  { path: '/field-inspections/', anyOf: ['field.View', 'field.Check In/Out', 'qc.View'] },
+  { path: '/field-operations', anyOf: ['field.View','field.Assign','field.Check In/Out'] },
+  { path: '/qc-checking', anyOf: ['qc.View'] },
+  { path: '/reports', anyOf: ['signoff.View', 'signoff.Generate'] },
+  { path: '/billing-mis', anyOf: ['billing.View'] },
+  { path: '/analytics', anyOf: ['analytics.View'] },
+  { path: '/notifications', anyOf: [] }, // personal notifications are separately recipient-scoped.
+  // Any authenticated member may load the safe home shell. Dashboard data
+  // remains guarded by analytics.View in both React and the database RPC.
+  { path: '/', anyOf: [] },
+];
+export function requiredPermissions(pathname: string): readonly string[] {
+  const match = accessRules.find(r => pathname === r.path ||
+    (r.path !== '/' && r.path.endsWith('/') && pathname.startsWith(r.path)));
+  return match?.anyOf ?? [];
+}
+export function mayOpenPath(pathname: string, capabilities: readonly string[]): boolean {
+  const required = requiredPermissions(pathname);
+  // Unknown paths fail closed, except public onboarding which is handled by VpAuthGate.
+  if (!accessRules.some(r => pathname === r.path || (r.path !== '/' && r.path.endsWith('/') && pathname.startsWith(r.path))))
+    return pathname === '/onboarding';
+  return required.length === 0 || required.some(x => hasRolePermission(capabilities, x));
+}
+
+
+===== FILE: src\lib\vp-session.ts =====
+import type { QueryClient } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
+
+/**
+ * Always leave a signed-out user at the root login screen.
+ * Replace, rather than push, the route to avoid retaining the active
+ * protected location as the next login destination.
+ */
+export async function vpSignOutToHome(queryClient: QueryClient): Promise<void> {
+  const { error } = await supabase.auth.signOut();
+  if (error) throw error;
+  queryClient.clear();
+  // A full replacement also resets mounted components and stale tenant state.
+  if (typeof window !== 'undefined') window.location.replace('/');
+}
+
+
+===== FILE: src\routes\admin.users.tsx =====
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect, useMemo, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import { CheckCircle2, Clock, GitBranch, RefreshCw, ShieldCheck,
+  UserPlus, Users, UserX, AlertTriangle, Settings2, KeyRound } from 'lucide-react';
+import { toast } from 'sonner';
+import { AppShell, PageHeader } from '@/components/app-shell';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Dialog, DialogContent, DialogDescription, DialogFooter,
+  DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useApp } from '@/lib/app-context';
+import { vpDb } from '@/lib/vp-db';
+import { VpUserProvisionDialog, VpOneTimeCredentials, resetValuationUser,
+  type ProvisionResult } from '@/components/admin/vp-user-provision';
+
+export const Route = createFileRoute('/admin/users')({
+  head: () => ({ meta: [{ title: 'ValuationPro â€” Users & Permissions' }] }),
+  component: UsersPage,
+});
+
+type DirectoryUser = {
+  id: string; org_id: string; login: string; name: string; role: string;
+  active: boolean; email_confirmed: boolean; invited_at: string | null;
+  last_login: string | null; branch_ids: string[];
+  qc_eligible: boolean; qc_issue: string; password_setup_required?: boolean; login_linked?: boolean;
+};
+type Branch = { id: string; code: string; name: string; is_active: boolean };
+type SetupRole = { name: string; privileged: boolean; assignable: boolean };
+type UserSetup = { org_id: string; roles: SetupRole[]; branches: Branch[] };
+
+function status(u: DirectoryUser): 'Suspended' | 'Login Not Linked' | 'Pending Invite' | 'Password Change Required' | 'Active' {
+  if (u.login_linked === false) return 'Login Not Linked';
+  if (!u.active) return 'Suspended';
+  if (u.password_setup_required) return 'Password Change Required';
+  if (!u.email_confirmed) return 'Pending Invite';
+  return 'Active';
+}
+function getError(e: unknown): string {
+  return e instanceof Error ? e.message : String(e);
+}
+
+function UsersPage() {
+  const { tenant, reloadUsers } = useApp();
+  const qc = useQueryClient();
+  const [users, setUsers] = useState<DirectoryUser[]>([]);
+  const [roles, setRoles] = useState<string[]>([]);
+  const [roleDefinitions, setRoleDefinitions] = useState<SetupRole[]>([]);
+  const [assignableRoles, setAssignableRoles] = useState<string[]>([]);
+  const [branches, setBranches] = useState<Branch[]>([]);
+  const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState('all');
+  const [roleFilter, setRoleFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
+  const [directoryError, setDirectoryError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [inviteOpen, setInviteOpen] = useState(false);
+  const [resetResult, setResetResult] = useState<ProvisionResult[] | null>(null);
+  const [selected, setSelected] = useState<DirectoryUser | null>(null);
+  const [editRole, setEditRole] = useState('');
+  const [editBranches, setEditBranches] = useState<string[]>([]);
+
+  async function reload() {
+    setLoading(true);
+    setDirectoryError(null);
+    setUsers([]); // Never display a stale partial directory after an RPC failure.
+    setRoles([]); setRoleDefinitions([]); setAssignableRoles([]); setBranches([]);
+    try {
+      // Single authenticated catalogue RPC avoids incomplete direct-table RLS reads.
+      // Both RPCs enforce tenant.admin and derive the tenant from the login.
+      const [members, setupResponse] = await Promise.all([
+        vpDb.rpc('vp_sec_admin_user_directory'),
+        vpDb.rpc('vp_sec_admin_user_setup'),
+      ]);
+      if (members.error) throw members.error;
+      if (setupResponse.error) throw setupResponse.error;
+      const setup = setupResponse.data as UserSetup | null;
+      if (!setup || String(setup.org_id) !== String(tenant.id) ||
+          !Array.isArray(setup.roles) || !Array.isArray(setup.branches)) {
+        throw new Error('User setup catalogue is missing or belongs to another tenant');
+      }
+
+      setUsers(((members.data ?? []) as DirectoryUser[]).map((u) => ({
+        ...u, id: String(u.id), branch_ids: (u.branch_ids ?? []).map(String),
+        password_setup_required: Boolean(u.password_setup_required),
+        qc_eligible: u.qc_eligible && !u.password_setup_required,
+        qc_issue: u.password_setup_required ? 'First login password change required' : u.qc_issue,
+      }))); 
+      setRoles(setup.roles.map((r) => r.name));
+      setRoleDefinitions(setup.roles);
+      setAssignableRoles(setup.roles.filter((r) => r.assignable).map((r) => r.name));
+      setBranches(setup.branches.map((b) => ({ ...b, id: String(b.id) })));
+      // The secure directory is the source of truth for this page. A failure
+      // refreshing the legacy app-context list must not hide verified members.
+      try { await reloadUsers(); } catch (refreshError) {
+        console.warn('Legacy user-list refresh failed; administrator directory remains available', refreshError);
+      }
+      await qc.invalidateQueries({ queryKey: ['vp-qc-eligible-checkers', tenant.id] });
+    } catch (e) { setDirectoryError(getError(e)); toast.error(`Unable to load user directory: ${getError(e)}`); }
+    finally { setLoading(false); }
+  }
+  useEffect(() => { void reload(); }, [tenant.id]);
+
+  const filtered = useMemo(() => users.filter((u) => {
+    const search = `${u.name} ${u.login}`.toLowerCase();
+    return (!query || search.includes(query.toLowerCase())) &&
+      (filter === 'all' || (filter === 'qc' ? u.qc_eligible : status(u) === filter)) &&
+      (roleFilter === 'all' || roleFilter === u.role);
+  }), [users, query, filter, roleFilter]);
+  // Server calculates which roles this administrator may assign.
+  const permittedRoles = assignableRoles;
+  const isProtectedRole = (roleName: string) =>
+    roleName === 'Tenant Owner' || roleDefinitions.some(r => r.name === roleName && r.privileged);
+  const mayManageAccount = (u: DirectoryUser) =>
+    tenant.role === 'Tenant Owner' || !isProtectedRole(u.role);
+
+  async function resetPassword(u: DirectoryUser) {
+    if (!window.confirm(`Reset the password for ${u.name}? Their current login will be blocked until they set a new password.`)) return;
+    setBusy(true);
+    try {
+      const result = await resetValuationUser(u.id);
+      setResetResult([result]);
+      await reload();
+      toast.success('A temporary password was created; distribute it securely');
+    } catch (e) { toast.error(getError(e)); }
+    finally { setBusy(false); }
+  }
+
+  async function changeActive(u: DirectoryUser) {
+    setBusy(true);
+    try {
+      const { error } = await vpDb.rpc('vp_admin_set_user_active', {
+        p_user_id: u.id, p_active: !u.active,
+      });
+      if (error) throw error;
+      toast.success(u.active ? 'User suspended' : 'User reactivated');
+      await reload();
+    } catch (e) { toast.error(getError(e)); }
+    finally { setBusy(false); }
+  }
+
+  async function saveUser() {
+    if (!selected) return;
+    if (selected.role !== editRole && !permittedRoles.includes(editRole)) {
+      toast.error('You cannot assign the selected protected role'); return;
+    }
+    setBusy(true);
+    try {
+      if (selected.role !== editRole) {
+        const { error } = await vpDb.rpc('vp_admin_set_user_role', {
+          p_user_id: selected.id, p_role: editRole,
+        });
+        if (error) throw error;
+      }
+      const previous = [...selected.branch_ids].sort().join(',');
+      const next = [...editBranches].sort().join(',');
+      if (previous !== next) {
+        const { error } = await vpDb.rpc('vp_admin_replace_user_branches', {
+          p_user_id: selected.id, p_branch_ids: editBranches,
+        });
+        if (error) throw error;
+      }
+      toast.success('User access updated');
+      setSelected(null);
+      await reload();
+    } catch (e) {
+      toast.error(`${getError(e)}. Refresh to see any changes already saved.`);
+      await reload();
+    } finally { setBusy(false); }
+  }
+
+  const kpis = [
+    { title: 'Total users', count: users.length, icon: Users },
+    { title: 'Active', count: users.filter((u) => status(u)==='Active').length, icon: CheckCircle2 },
+    { title: 'Password setup', count: users.filter((u) => status(u)==='Password Change Required').length, icon: Clock },
+    { title: 'QC ready', count: users.filter((u) => u.qc_eligible).length, icon: ShieldCheck },
+  ];
+
+  return <AppShell>
+    <PageHeader title="Users & Permissions"
+      description={`Manage staff accounts, tenant roles, branch allocation and QC eligibility for ${tenant.shortName}.`}>
+      <Button variant="outline" size="sm" onClick={() => void reload()} disabled={loading}>
+        <RefreshCw className="size-4" /> Refresh
+      </Button>
+      <Link to="/admin/roles-permissions"><Button variant="outline" size="sm">
+        <Settings2 className="size-4" /> Role Matrix
+      </Button></Link>
+      <Button size="sm" disabled={loading || Boolean(directoryError) || !permittedRoles.length} onClick={() => { setInviteOpen(true); }}>
+        <UserPlus className="size-4" /> Add User
+      </Button>
+    </PageHeader>
+
+    {directoryError && <div role="alert" className="mb-4 rounded-md border border-destructive bg-destructive/5 p-3 text-sm text-destructive">User Management could not load securely: {directoryError}. Verify P10/P11 and install the P12 user-setup RPC. No roles or users will be guessed.</div>}
+    {!loading && !directoryError && !permittedRoles.length && <div role="alert" className="mb-4 rounded-md border border-amber-500/50 p-3 text-sm">No assignable roles exist for this tenant. Configure roles in the Role Matrix before adding an account.</div>}
+    {!loading && !directoryError && !branches.some(b => b.is_active) && <div className="mb-4 rounded-md border p-3 text-sm">No active agency branches are configured. You can create an account without a branch, or <Link className="underline" to="/admin/branches">configure real branches</Link> first.</div>}
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      {kpis.map((x) => <Card key={x.title}><CardContent className="flex items-center gap-3 p-4">
+        <x.icon className="size-5 text-primary"/><div><p className="font-display text-xl font-bold">{x.count}</p>
+          <p className="text-xs text-muted-foreground">{x.title}</p></div>
+      </CardContent></Card>)}
+    </div>
+
+    <div className="mt-5 flex flex-wrap gap-3">
+      <Input className="max-w-72" placeholder="Search name or email" value={query} onChange={(e)=>setQuery(e.target.value)} />
+      <Select value={filter} onValueChange={setFilter}><SelectTrigger className="w-44"><SelectValue /></SelectTrigger>
+        <SelectContent><SelectItem value="all">All statuses</SelectItem><SelectItem value="Active">Active</SelectItem>
+        <SelectItem value="Pending Invite">Pending Invite</SelectItem><SelectItem value="Login Not Linked">Login Not Linked</SelectItem><SelectItem value="Password Change Required">Password Change Required</SelectItem><SelectItem value="Suspended">Suspended</SelectItem>
+        <SelectItem value="qc">QC ready</SelectItem></SelectContent></Select>
+      <Select value={roleFilter} onValueChange={setRoleFilter}><SelectTrigger className="w-44"><SelectValue /></SelectTrigger>
+        <SelectContent><SelectItem value="all">All roles</SelectItem>
+          {roles.map((r)=><SelectItem key={r} value={r}>{r}</SelectItem>)}
+        </SelectContent></Select>
+    </div>
+    <Card className="mt-4">
+      <CardHeader><CardTitle className="text-base">User directory ({filtered.length})</CardTitle></CardHeader>
+      <CardContent className="overflow-x-auto p-0">
+        <Table><TableHeader><TableRow>
+          <TableHead>Name / Login</TableHead><TableHead>Role</TableHead>
+          <TableHead>Access status</TableHead><TableHead>QC assignment</TableHead>
+          <TableHead>Branches</TableHead><TableHead className="text-right">Actions</TableHead>
+        </TableRow></TableHeader><TableBody>
+          {filtered.map((u)=><TableRow key={u.id}>
+            <TableCell><div className="font-medium">{u.name}</div><div className="text-xs text-muted-foreground">{u.login}</div></TableCell>
+            <TableCell>{u.role}</TableCell>
+            <TableCell><Badge variant="outline">{status(u)}</Badge></TableCell>
+            <TableCell>{u.qc_eligible ? <Badge className="bg-success/15 text-success">Eligible</Badge> :
+              <span className="flex max-w-48 items-start gap-1 text-xs text-muted-foreground">
+                <AlertTriangle className="mt-0.5 size-3 shrink-0"/>{u.qc_issue}</span>}</TableCell>
+            <TableCell>{u.branch_ids.length ? u.branch_ids.map((id)=>branches.find((b)=>b.id===id)?.code ?? id).join(', ') : 'Not allocated'}</TableCell>
+            <TableCell className="text-right"><div className="flex justify-end gap-2">
+              {mayManageAccount(u) ? <Button size="sm" variant="outline" disabled={busy}
+                onClick={()=>{setSelected(u);setEditRole(u.role);setEditBranches([...u.branch_ids]);}}>Manage</Button> : <span className="text-xs text-muted-foreground">Protected account</span>}
+              {u.role!=='Tenant Owner' && mayManageAccount(u) && <Button size="sm" variant="outline" disabled={busy || u.login_linked === false}
+                onClick={()=>void resetPassword(u)}><KeyRound className="size-4" /> Reset password</Button>}
+              {u.role!=='Tenant Owner' && mayManageAccount(u) && <Button size="sm" variant="outline" disabled={busy}
+                onClick={()=>void changeActive(u)}>{u.active?<UserX className="size-4"/>:<CheckCircle2 className="size-4"/>}
+                {u.active?'Suspend':'Activate'}</Button>}
+            </div></TableCell>
+          </TableRow>)}
+          {!filtered.length && <TableRow><TableCell colSpan={6} className="p-8 text-center text-muted-foreground">
+            {loading?'Loading all agency usersâ€¦':directoryError?'Directory unavailable â€” inspect the error above.':'No users match. Clear filters or create an account.'}
+          </TableCell></TableRow>}
+        </TableBody></Table>
+      </CardContent>
+    </Card>
+    <p className="mt-3 text-xs text-muted-foreground">Branch allocations must be enforced in each workflow. Missing allocations do not imply unrestricted data access. QC eligibility also depends on maker/checker separation.</p>
+
+    <VpUserProvisionDialog open={inviteOpen} onOpenChange={setInviteOpen}
+      roles={permittedRoles} branches={branches} onComplete={reload} />
+    <VpOneTimeCredentials results={resetResult} onClose={() => setResetResult(null)} />
+
+    <Dialog open={Boolean(selected)} onOpenChange={(open)=>{if(!open)setSelected(null);}}>
+      <DialogContent className="sm:max-w-lg"><DialogHeader><DialogTitle>Manage user: {selected?.name}</DialogTitle>
+        <DialogDescription>Update the real role and branch assignments. Changes are saved to ValuationPro.</DialogDescription></DialogHeader>
+        {selected && <div className="space-y-4">
+          <div className="rounded-md border p-3 text-sm"><b>{selected.login}</b><p className="mt-1 text-xs text-muted-foreground">
+            {status(selected)} Â· {selected.qc_issue}</p></div>
+          <div className="space-y-1"><Label>Role</Label>
+            <Select value={editRole} onValueChange={setEditRole} disabled={selected.role==='Tenant Owner' || !permittedRoles.includes(selected.role)}>
+              <SelectTrigger><SelectValue/></SelectTrigger><SelectContent>
+              {permittedRoles.map((r)=><SelectItem value={r} key={r}>{r}</SelectItem>)}</SelectContent></Select>
+          </div>
+          <div className="space-y-2"><Label>Allocated branches (optional)</Label>
+            <div className="max-h-44 space-y-2 overflow-auto rounded-md border p-3">
+              {branches.filter((b)=>b.is_active).map((b)=><label key={b.id} className="flex items-center gap-2 text-sm">
+                <Checkbox checked={editBranches.includes(b.id)} onCheckedChange={(v)=>setEditBranches((old)=>v===true?[...old,b.id]:old.filter((x)=>x!==b.id))}/>
+                {b.name} ({b.code})
+              </label>)}
+              {!branches.length && <p className="text-xs text-muted-foreground">Create an agency branch first.</p>}
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">For a Checker, grant qc.View, qc.Approve and qc.Return in Role Matrix. Only a different maker can be selected as its checker.</p>
+        </div>}
+        <DialogFooter><Button variant="outline" onClick={()=>setSelected(null)}>Cancel</Button>
+          <Button disabled={busy} onClick={()=>void saveUser()}>Save changes</Button></DialogFooter>
+      </DialogContent>
+    </Dialog>
+  </AppShell>;
+}
+
+
+===== FILE: src\test\vp-p10-permissions.test.ts =====
+import { describe, it, expect } from 'vitest';
+import { mayOpenPath } from '@/lib/vp-p10-permissions';
+
+describe('P10 role matrix navigation (backend must independently deny)', () => {
+  it('denies operational modules when every checkbox is unchecked', () => {
+    const adminRecoveryOnly = ['tenant.admin'];
+    for (const path of ['/cases','/field-operations','/qc-checking','/reports','/billing-mis','/analytics'])
+      expect(mayOpenPath(path, adminRecoveryOnly)).toBe(false);
+    expect(mayOpenPath('/admin/users', adminRecoveryOnly)).toBe(true);
+    expect(mayOpenPath('/admin/roles-permissions', adminRecoveryOnly)).toBe(true);
+  });
+  it('always allows the safe home route, without granting analytics data', () => {
+    expect(mayOpenPath('/', [])).toBe(true);
+    expect(mayOpenPath('/analytics', [])).toBe(false);
+  });
+  it('denies direct URLs, not just sidebar entries', () => {
+    expect(mayOpenPath('/cases/121', [])).toBe(false);
+    expect(mayOpenPath('/field-inspections/8', [])).toBe(false);
+    expect(mayOpenPath('/admin/users', ['cases.View'])).toBe(false);
+    expect(mayOpenPath('/unknown-private-page', ['cases.View'])).toBe(false);
+  });
+  it('allows specifically permitted modules and assigned field workflow routes', () => {
+    expect(mayOpenPath('/cases', ['cases.View'])).toBe(true);
+    expect(mayOpenPath('/cases/121', ['field.Check In/Out'])).toBe(true);
+    expect(mayOpenPath('/field-inspections/8', ['field.Check In/Out'])).toBe(true);
+    expect(mayOpenPath('/qc-checking', ['qc.View'])).toBe(true);
+    expect(mayOpenPath('/billing-mis', ['cases.View'])).toBe(false);
+  });
+});
+

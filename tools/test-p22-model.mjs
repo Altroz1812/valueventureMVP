@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);const ts=require(process.env.TYPESCRIPT_PATH||'typescript');const code=ts.transpileModule(readFileSync(new URL('../src/lib/vp-p22-sketch.ts',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const m=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));let n=0;const test=(name,fn)=>{fn();console.log('PASS '+name);n++;};const fresh=()=>m.emptySketches();const p=(x,y,label='')=>({x,y,label});
+test('Optional empty sketch passes',()=>assert.equal(m.sketchSubmissionError(undefined),null));
+test('Round-trip plot and floor',()=>{const d=fresh();d.plot.points=[p(1,1,'12 ft'),p(100,1),p(50,80)];d.floor.name='First floor';assert.deepEqual(m.decodeSketches(m.encodeSketches(d)),d);});
+test('Coordinates clamped',()=>assert.deepEqual(m.clampPoint(-3,999),p(0,360)));
+test('Bad version rejected',()=>assert.throws(()=>m.decodeSketches('{"version":2}')));
+test('Overlong payload rejected',()=>assert.throws(()=>m.decodeSketches(' '.repeat(12001))));
+test('Out-of-range vertex rejected',()=>{const d=fresh();d.plot.points=[p(601,1)];assert.throws(()=>m.encodeSketches(d));});
+test('Overlong labels rejected',()=>{const d=fresh();d.plot.points=[p(1,1,'x'.repeat(81))];assert.throws(()=>m.encodeSketches(d));});
+test('Maximum vertices',()=>{const d=fresh();d.plot.points=Array.from({length:25},(_,i)=>p(i,i));assert.throws(()=>m.encodeSketches(d));});
+test('Partial draft allowed but not submit',()=>{const d=fresh();d.plot.points=[p(1,1),p(3,3)];assert.match(m.sketchSubmissionError(m.encodeSketches(d)),/three/);});
+test('Duplicate points denied on submit',()=>{const d=fresh();d.plot.points=[p(1,1),p(3,3),p(1,1)];assert.match(m.sketchSubmissionError(m.encodeSketches(d)),/duplicate/);});
+test('Degenerate polygon denied',()=>{const d=fresh();d.plot.points=[p(1,1),p(3,3),p(4,4)];assert.match(m.sketchSubmissionError(m.encodeSketches(d)),/degenerate/);});
+test('Self crossing denied',()=>{const d=fresh();d.plot.points=[p(0,0),p(100,100),p(0,80),p(100,0)];assert.ok(m.sketchSubmissionError(m.encodeSketches(d)));});
+test('Irregular outline accepted',()=>{const d=fresh();d.plot.points=[p(1,1),p(100,1),p(120,50),p(80,90),p(1,80)];assert.equal(m.sketchSubmissionError(m.encodeSketches(d)),null);});
+test('Map rejects absent and out-of-projection coordinates',()=>{assert.equal(m.validMapPoint(null,78),false);assert.equal(m.validMapPoint(90,78),false);assert.equal(m.validMapPoint(17.3,181),false);assert.equal(m.validMapPoint(17.3,78.5),true);});
+console.log(`${n}/${n} P22 model tests passed`);

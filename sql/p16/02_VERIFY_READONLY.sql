@@ -1,0 +1,9 @@
+-- P16 installation verification (read-only; catalog assertions, not role tests).
+SELECT n.nspname,c.relname,c.relrowsecurity,has_table_privilege('authenticated',c.oid,'SELECT') AS auth_read,
+ has_table_privilege('authenticated',c.oid,'INSERT') AS auth_insert,has_table_privilege('authenticated',c.oid,'UPDATE') AS auth_update,has_table_privilege('authenticated',c.oid,'DELETE') AS auth_delete,has_table_privilege('anon',c.oid,'SELECT') AS anon_read
+FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='public' AND c.relname IN ('vp_property_master','vp_property_revisions','vp_property_case_links','vp_property_current_links');
+SELECT tablename,policyname,cmd,qual FROM pg_policies WHERE schemaname='public' AND tablename IN ('vp_property_master','vp_property_revisions','vp_property_case_links');
+SELECT c.conrelid::regclass AS relation,pg_get_constraintdef(c.oid) AS constraint_definition FROM pg_constraint c WHERE c.conrelid IN ('public.vp_property_master'::regclass,'public.vp_property_revisions'::regclass,'public.vp_property_case_links'::regclass);
+SELECT c.reloptions FROM pg_class c WHERE c.oid='public.vp_property_current_links'::regclass;
+SELECT p.oid::regprocedure AS rpc,p.prosecdef AS security_definer,p.proconfig AS settings,has_function_privilege('authenticated',p.oid,'EXECUTE') AS auth_execute,has_function_privilege('anon',p.oid,'EXECUTE') AS anon_execute FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname IN ('vp_p16_validate','vp_p16_save_property','vp_p16_link_case');
+SELECT count(*) AS revision_mismatches FROM public.vp_property_master m LEFT JOIN public.vp_property_revisions r ON r.org_id=m.org_id AND r.property_id=m.id AND r.revision=m.current_revision WHERE r.revision IS NULL OR r.data IS DISTINCT FROM m.data;

@@ -1,0 +1,23 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+const root=path.resolve(process.argv[2]??'.');const read=p=>fs.readFileSync(path.join(root,p),'utf8');let n=0;const check=(name,v)=>{assert.ok(v,name);console.log('PASS '+name);n++;};
+const srv=read('services/paddle-ocr/server.py'),adapter=read('src/lib/vp-p21-paddle.ts'),extract=read('src/lib/vp-local-ocr.ts'),ocr=read('src/components/documents/vp-document-ocr.tsx'),adopt=read('sql/p21/02_PROPERTY_ADOPTION.sql'),gate=read('sql/p21/01_OCR_CASE_SCOPE.sql'),ui=read('src/components/documents/vp-p21-property-review.tsx');
+check('Original PaddleOCR package pinned and called',read('services/paddle-ocr/requirements.txt').includes('paddleocr==3.3.2')&&srv.includes('from paddleocr import PaddleOCR')&&srv.includes('MODEL.predict(img)'));
+check('English Hindi Telugu language mappings',srv.includes("{'eng': 'en', 'hin': 'hi', 'tel': 'te'}"));
+check('Loopback listener and browser endpoint',srv.includes("('127.0.0.1', PORT)")&&adapter.includes('http://127.0.0.1:8765/ocr'));
+check('Token, exact origin and host checks',srv.includes('hmac.compare_digest')&&srv.includes("self.headers.get('Origin') == self.server.origin")&&srv.includes("self.headers.get('Host')"));
+check('No cookies, redirects or browser caching',adapter.includes("credentials:'omit'")&&adapter.includes("redirect:'error'")&&adapter.includes("cache:'no-store'"));
+check('Body, pixels and concurrency bounded',srv.includes('MAX_BYTES')&&srv.includes('MAX_PIXELS')&&srv.includes('LOCK.acquire(blocking=False)'));
+check('Private registered storage and path validation retained',extract.includes('expectedPrefix')&&extract.includes('vpDb.storage.from(DOC_BUCKET).download'));
+check('PDF text path, 5 page batches and Tesseract fallback retained',extract.includes("engine: NonNullable<OcrPage['engine']> = 'pdf-text'")&&extract.includes('pdfBatch(pdf.numPages, startPage)')&&extract.includes("import('tesseract.js')"));
+check('P21 engine choice and explicit consent',ocr.includes('setAuthorized(false)')&&ocr.includes('I am authorized')&&ocr.includes('paddleToken:undefined'));
+check('Page provenance and save readback',extract.includes('engine,')&&read('src/lib/vp-p8-persistence-verification.ts').includes('expected.engine!==actual.engine')&&ocr.includes('setSavedBatchId(await persistAndVerify'));
+check('Legacy OCR scope patch guarded and both RPCs covered',gate.includes('Unexpected OCR function definition')&&gate.includes('vp_p6_save_ocr')&&gate.includes('vp_p6_ocr_history')&&gate.includes('vp_sec_case_visible(p_case_num)'));
+check('Adoption uses authenticated case edit and case visibility',adopt.includes("vp_sec_can('cases.Edit')")&&adopt.includes('vp_sec_case_visible(p_num)')&&adopt.includes('auth.uid() IS NULL'));
+check('Adoption pins case link and expected revision',adopt.includes('l.link_version IS DISTINCT FROM p_link')&&adopt.includes('m.current_revision=p_revision')&&adopt.includes('FOR UPDATE'));
+check('Source line checked against tenant saved OCR and registered doc',adopt.includes('b.org_id=o AND b.num=p_num AND b.document_id=p_doc AND b.id=p_batch')&&adopt.includes('regexp_split_to_table(t')&&adopt.includes('doc.storage_path IS NOT NULL'));
+check('Existing P16 validator/versioning and limited fields',adopt.includes('public.vp_p16_save_property')&&adopt.includes('p_field NOT IN')&&!adopt.includes('UPDATE public.cases'));
+check('User review, revision staleness and readback',ui.includes('window.confirm')&&ui.includes('reviewContext!==context')&&ui.includes("from('vp_property_revisions')"));
+check('No direct invocation from field-only screen',read('src/routes/cases_.$caseId.tsx').includes('propertyReview/>')&&!read('src/components/field/vp-inspection-source-review.tsx').includes('propertyReview'));
+check('Paid OCR duplicate archived not deployable',!fs.existsSync(path.join(root,'supabase/functions/vp-ocr-document/index.ts'))&&fs.existsSync(path.join(root,'supabase/PAID_OCR_DISABLED_DO_NOT_DEPLOY/vp-ocr-document/index.ts')));
+for(const file of ['01_OCR_CASE_SCOPE.sql','02_PROPERTY_ADOPTION.sql']){const s=read('sql/p21/'+file);check(file+' bounded and complete',Buffer.byteLength(s)<4096&&s.trim().endsWith('COMMIT;')&&(s.match(/\$p21\$/g)||[]).length===2)}
+console.log(`${n}/${n} P21 static checks passed`);

@@ -1,0 +1,24 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+const root=path.resolve(process.argv[2]??'.');const read=p=>fs.readFileSync(path.join(root,p),'utf8');let n=0;
+const check=(name,ok)=>{assert.ok(ok,name);console.log('PASS '+name);n++;};
+const save=read('sql/p19/06_SAVE.sql'),review=read('sql/p19/07_REVIEW.sql'),table=read('sql/p19/01_TABLE.sql'),cost=read('sql/p19/03_COST.sql'),comp=read('sql/p19/04_COMPARISON.sql'),inc=read('sql/p19/05_INCOME.sql');
+check('RLS, tenant and case gate',table.includes('ENABLE ROW LEVEL SECURITY')&&table.includes('vp_sec_case_visible(num)')&&table.includes('vp_current_org_id()'));
+check('no direct client writes',table.includes('GRANT SELECT')&&!/GRANT (INSERT|UPDATE|DELETE)/.test(table+review));
+check('server checks stage, edit and pending QC',save.includes("vp_report_can('Edit')")&&save.includes("'Report Draft'")&&save.includes("status='Pending'"));
+check('case locking and optimistic version',save.includes('FOR UPDATE')&&save.includes('v IS DISTINCT FROM p_expected'));
+check('pinned current property link and category',save.includes('l.link_version IS DISTINCT FROM p_link')&&save.includes('cat IS DISTINCT FROM c.prod'));
+check('authoritative approved inspection reference',save.includes('public.vp_p2_valuer_inspection_for_case(p_num)'));
+check('evidence is queried on server for exact case link date',save.includes('FROM public.vp_case_market_evidence WHERE org_id=o AND num=p_num AND link_version=p_link AND effective_date=p_date'));
+check('verified registered sales and matching basis',comp.includes("IS DISTINCT FROM 'registered_sale'")&&comp.includes("IS DISTINCT FROM 'verified'")&&comp.includes("IS DISTINCT FROM basis"));
+check('duplicate and unselected evidence rejected',comp.includes('eid=ANY(seen)')&&comp.includes('IF NOT FOUND'));
+check('upstream measurement converter reused',cost.includes('public.vp_p17_convert_measure')&&comp.includes('public.vp_p17_convert_measure'));
+check('floor-wise useful life and residual value',cost.includes('least(age,life)')&&cost.includes("'salvage',0,100"));
+check('positive net operating income and cap rate',inc.includes('noi<=0')&&inc.includes("'cap_rate_pct',0.01,100"));
+check('no fixed disposal percentages; distress <= realizable',save.includes("'distress_pct',0.01,r")&&save.includes("'realizable_pct',0.01,100"));
+check('guideline separate from market value',save.includes("'guidelineValue',g")&&save.includes("'guideline_source'"));
+check('independent review and current revision',review.includes('a.created_by=u')&&review.includes('l IS DISTINCT FROM a.link_version')&&review.includes("vp_sec_can('qc.Edit')"));
+check('no writes to existing report, forms or QC tables',!/(INSERT INTO|UPDATE|DELETE FROM) public\.(forms|vp_report_versions|vp_valuation_versions|vp_qc_tasks|cases)\b/i.test(save+review));
+check('existing case valuation screen integration',read('src/routes/cases_.$caseId.tsx').includes('<P19Analysis')&&read('src/routes/cases_.$caseId.tsx').includes('<VpInspectionValuationReview'));
+check('source traceability',read('P19_SOURCE_REGISTER.md').includes('a2c42772c766fe31eb900fd7368cf900cd8b8190'));
+for(const f of fs.readdirSync(path.join(root,'sql/p19')).filter(f=>/^0[1-7]/.test(f))){const s=read('sql/p19/'+f);check(f+' bounded and complete',Buffer.byteLength(s)<4096&&s.trim().endsWith('COMMIT;')&&(s.match(/\$\$/g)||[]).length%2===0);}
+console.log(`${n}/${n} static checks passed`);

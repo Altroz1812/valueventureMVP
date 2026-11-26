@@ -1,0 +1,21 @@
+import {useEffect,useState} from 'react';
+import {FileText,Upload,Search} from 'lucide-react';
+import {Button} from '@/components/ui/button';
+import {Input} from '@/components/ui/input';
+import {useApp} from '@/lib/app-context';
+import type {VpCaseDocument} from '@/lib/vp-cases';
+import {VpDocumentOcr} from './vp-document-ocr';
+import {filterEvidence,selectedEvidence,previewable} from '@/lib/vp-p27-evidence';
+export function VpDocumentWorkbench({caseNum,documents,loading,error,uploading,onUpload}:{caseNum:number;documents:readonly VpCaseDocument[];loading:boolean;error:string|undefined;uploading:boolean;onUpload:(file:File|undefined)=>void}){
+ const {tenant}=useApp();const [selected,setSelected]=useState('');const [filter,setFilter]=useState('');const [activity,setActivity]=useState<{busy:boolean;unsaved:boolean}>({busy:false,unsaved:false});
+ const doc=selected?documents.find(d=>d.id===selected):selectedEvidence(documents,selected);
+ useEffect(()=>{if(!selected&&doc)setSelected(doc.id);},[selected,doc?.id]);
+ const visible=filterEvidence(documents,filter);
+ function choose(id:string){if(activity.busy||id===doc?.id)return;if(activity.unsaved&&!window.confirm('This extraction has not been confirmed saved. Switch documents and discard the local result?'))return;setActivity({busy:false,unsaved:false});setSelected(id);}
+ return <section aria-label="Document workbench" className="vp-evidence-workspace space-y-2">
+ <div className="flex flex-wrap items-center justify-between gap-2"><div><h2 className="font-semibold">Document intelligence</h2><p className="text-xs text-muted-foreground">{documents.length} registered · select a file to compare original and extracted data</p></div><label className="vp-upload inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-md border bg-card px-3 text-sm font-medium lg:min-h-8"><Upload className="size-4"/>{uploading?'Uploading…':'Upload document'}<input type="file" className="sr-only" disabled={uploading||activity.busy} accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" onChange={e=>{const f=e.target.files?.[0];e.target.value='';onUpload(f);}}/></label></div>
+ {loading&&<p role="status" className="text-sm">Loading registered documents…</p>}{error&&<p role="alert" className="text-sm text-destructive">{error}</p>}
+ <div className="vp-document-register"><aside className="min-w-0 rounded-lg border bg-card"><div className="border-b p-2"><div className="relative"><Search className="pointer-events-none absolute left-2 top-2.5 size-4 text-muted-foreground"/><Input type="search" aria-label="Filter documents" placeholder="Find document" value={filter} onChange={e=>setFilter(e.target.value)} className="pl-8"/></div></div><div className="max-h-40 overflow-auto lg:max-h-72"><ul className="divide-y">{visible.map(d=><li key={d.id}><button type="button" disabled={activity.busy} aria-pressed={d.id===doc?.id} onClick={()=>choose(d.id)} className={`flex w-full min-w-0 items-start gap-2 px-2.5 py-2 text-left text-sm ${d.id===doc?.id?'bg-primary/10 font-semibold text-primary':'hover:bg-muted'}`}><FileText className="mt-0.5 size-4 shrink-0"/><span className="min-w-0 flex-1"><span className="block break-words">{d.name}</span><span className="block text-xs font-normal text-muted-foreground">{Math.ceil(d.size/1024)} KB · {d.storage_path?'Registered':'Metadata only'}</span></span></button></li>)}</ul>{!visible.length&&!loading&&!error&&<p className="p-3 text-sm text-muted-foreground">{documents.length?'No matching documents.':'No registered documents.'}</p>}</div></aside>
+ <div className="min-w-0">{doc?<><div className="mb-2 flex flex-wrap items-center justify-between gap-1"><h3 className="min-w-0 break-words text-sm font-semibold">{doc.name}</h3><span className="text-xs text-muted-foreground">{doc.at} · {doc.by}</span></div>{previewable(doc,tenant.id,caseNum)?<VpDocumentOcr key={`${tenant.id}:${caseNum}:${doc.id}:${doc.storage_path}`} document={doc} caseNum={caseNum} propertyReview onActivity={setActivity}/>:<p className="rounded border bg-card p-3 text-sm">This registered record has no supported private file in the current case scope.</p>}</>:<p className="rounded border bg-card p-3 text-sm text-muted-foreground">Select or upload a document (PDF, JPEG or PNG, maximum 10 MB).</p>}</div></div>
+ </section>;
+}

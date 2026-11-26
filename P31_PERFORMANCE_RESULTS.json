@@ -1,0 +1,18 @@
+[
+    {
+        "Check":  "TypeScript",
+        "ExitCode":  0
+    },
+    {
+        "Check":  "Regression",
+        "ExitCode":  0
+    },
+    {
+        "Check":  "Dependencies",
+        "ExitCode":  0
+    },
+    {
+        "Check":  "Production Build",
+        "ExitCode":  0
+    }
+]

@@ -1,0 +1,24 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+const root=path.resolve(process.argv[2]??'.');const read=p=>fs.readFileSync(path.join(root,p),'utf8');let n=0;function check(k,v){assert.ok(v,k);console.log('PASS '+k);n++;}
+const pkg=JSON.parse(read('package.json')),canvas=read('src/components/field/vp-p22-canvas.tsx'),sketch=read('src/components/field/vp-p22-sketch.tsx'),model=read('src/lib/vp-p22-sketch.ts'),form=read('src/components/field/vp-inspection-form.tsx'),qc=read('src/components/field/vp-inspection-qc-summary.tsx'),map=read('src/components/market/vp-p22-map-canvas.tsx'),query=read('src/components/market/vp-p22-comparable-map.tsx'),gate=read('sql/p21/01_OCR_CASE_SCOPE.sql');
+check('Pinned actual React Konva and Konva packages',pkg.dependencies['react-konva']==='19.0.10'&&pkg.dependencies.konva==='10.0.12'&&canvas.includes("from 'react-konva'"));
+check('Original Leaflet and free Geoman pinned and imported',pkg.dependencies.leaflet==='1.9.4'&&pkg.dependencies['@geoman-io/leaflet-geoman-free']==='2.18.0'&&map.includes("import '@geoman-io/leaflet-geoman-free'"));
+check('Canvas delayed until client mount',sketch.includes('lazy(')&&sketch.includes('mounted&&<Suspense'));
+check('Normalized dimensions and bounded vertex count',model.includes('MAX_POINTS=24')&&model.includes('raw.length>12000'));
+check('Pointer and draggable vertices',canvas.includes('onPointerDown')&&canvas.includes('onDragEnd')&&canvas.includes('draggable={!disabled}'));
+check('Read-only mode cannot update sketch',sketch.includes('if(!disabled)onChange?.')&&canvas.includes('if(disabled||'));
+check('Two sketch types and user-entered observed edge labels',model.includes('plot:Sketch;floor:Sketch')&&sketch.includes('Edge to next vertex (observed)'));
+check('Original draft save and readback used',form.includes('onChange={v=>setValue(P22_KEY,v)}')&&form.includes('verifyInspectionReadback(savedValues,readback,submit)'));
+check('Client validation before submit',form.includes('if(submit&&sketchSubmissionError(values[P22_KEY]))'));
+check('Checker read-only sketch',qc.includes('<VpP22Sketch raw={fields[P22_KEY]} disabled/>'));
+check('Original rectangular sketch remains',form.includes('<VpPlotSketch values={values}/>'));
+check('Only current matching evidence ids and pinned revision queried',query.includes(".in('id',ids)")&&query.includes(".eq('revision',filters.revision)")&&query.includes('lookup.get(String(p.id))'));
+check('Tenant filter and existing read permission',query.includes(".eq('org_id',tenant.id)")&&query.includes("enabled:open&&can('cases.View')"));
+check('Map uses coordinates, original search radius and real distance',map.includes('L.circle([subject.lat,subject.lng],{radius')&&map.includes('L.circleMarker([p.lat,p.lng]')&&query.includes('r.dist_meters/1000'));
+check('Safe tooltip text, no HTML injection',map.includes('label.textContent=p.label')&&!map.includes('innerHTML'));
+check('No external tiles or geofencing',!map.includes('tileLayer')&&!map.includes('navigator.geolocation')&&!map.includes('fetch('));
+check('Original Geoman draw API, temporary geometry only',map.includes("pm.enableDraw('Polygon'")&&map.includes("map.on('pm:create'")&&!map.includes('vpDb'));
+check('Map lifecycle cleanup',map.includes('map?.remove()')&&map.includes('observer?.disconnect()'));
+check('P21 Windows line ending repair retained',gate.includes("replace(pg_get_functiondef(f),E'\\r\\n',E'\\n')"));
+check('No new migration directory',!fs.existsSync(path.join(root,'sql/p22')));
+console.log(`${n}/${n} P22 static checks passed`);

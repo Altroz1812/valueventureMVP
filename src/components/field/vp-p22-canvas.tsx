@@ -1,0 +1,11 @@
+import {useEffect,useRef,useState} from 'react';
+import {Stage,Layer,Line,Circle,Text,Rect} from 'react-konva';
+import {WIDTH,HEIGHT,MAX_POINTS,clampPoint,type Sketch} from '@/lib/vp-p22-sketch';
+export default function SketchCanvas({sketch,disabled,onChange}:{sketch:Sketch;disabled:boolean;onChange:(s:Sketch)=>void}){
+ const wrap=useRef<HTMLDivElement>(null);const [width,setWidth]=useState(300);
+ useEffect(()=>{const el=wrap.current;if(!el)return;const update=()=>{if(el.clientWidth>0)setWidth(Math.min(WIDTH,el.clientWidth));};update();const ro=new ResizeObserver(update);ro.observe(el);return()=>ro.disconnect();},[]);
+ const scale=width/WIDTH;const points=sketch.points;
+ return <div ref={wrap} className="w-full max-w-[600px] overflow-hidden rounded border bg-white" aria-label="Schematic drawing canvas"><Stage width={width} height={HEIGHT*scale} scaleX={scale} scaleY={scale} onPointerDown={e=>{
+  if(disabled||points.length>=MAX_POINTS||e.target.name()!=='sketch-background')return;const p=e.target.getStage()?.getPointerPosition();if(!p)return;onChange({...sketch,points:[...points,clampPoint(p.x/scale,p.y/scale)]});
+ }}><Layer><Rect name="sketch-background" width={WIDTH} height={HEIGHT} fill="#fff"/>{Array.from({length:14},(_,i)=><Line key={`x${i}`} points={[i*48,0,i*48,HEIGHT]} stroke="#e2e8f0" listening={false}/>)}{Array.from({length:9},(_,i)=><Line key={`y${i}`} points={[0,i*48,WIDTH,i*48]} stroke="#e2e8f0" listening={false}/>)}<Line points={points.flatMap(p=>[p.x,p.y])} closed={points.length>=3} fill={points.length>=3?'#dbeafe':'transparent'} stroke="#1e3a8a" strokeWidth={2} listening={false}/>{points.map((p,i)=>{return <Circle key={i} x={p.x} y={p.y} radius={8} fill="#2563eb" stroke="white" strokeWidth={2} draggable={!disabled} onDragEnd={e=>{if(disabled)return;const v=clampPoint(e.target.x(),e.target.y());onChange({...sketch,points:points.map((q,j)=>j===i?{...v,label:q.label}:q)});}}/>;})}{points.map((p,i)=>{const next=points[(i+1)%points.length];return <Text key={i} x={next?(p.x+next.x)/2:p.x} y={next?(p.y+next.y)/2:p.y} text={p.label||`P${i+1}`} fill="#0f172a" fontSize={13} listening={false}/>;})}<Text x={12} y={12} text="SCHEMATIC — NOT TO SCALE" fontSize={12} fill="#475569" listening={false}/></Layer></Stage></div>;
+}

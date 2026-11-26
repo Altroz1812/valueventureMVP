@@ -1,0 +1,22 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+const root=path.resolve(process.argv[2]??'.');const read=p=>fs.readFileSync(path.join(root,p),'utf8');let n=0;const check=(name,v)=>{assert.ok(v,name);console.log('PASS '+name);n++;};
+const tables=read('sql/p20/01_TABLES.sql'),publish=read('sql/p20/02_PUBLISH.sql'),prepare=read('sql/p20/03_PREPARE.sql'),wb=read('src/lib/vp-p20-workbook.ts');
+check('original npm version pinned',JSON.parse(read('package.json')).dependencies['xlsx-populate']==='1.21.0');
+check('actual original browser package import',wb.includes("import('xlsx-populate/browser/xlsx-populate-no-encryption.js')")&&wb.includes('XlsxPopulate.fromDataAsync')&&wb.includes('wb.outputAsync'));
+check('template and export RLS',tables.match(/ENABLE ROW LEVEL SECURITY/g)?.length===2&&tables.includes('vp_sec_case_visible(num)'));
+check('no direct client mutations',!/(GRANT\s+(?:ALL|INSERT|UPDATE|DELETE))/i.test(tables+publish+prepare));
+check('tenant constrained foreign keys',tables.includes('FOREIGN KEY(org_id,template_id)')&&tables.includes('FOREIGN KEY(org_id,num,analysis_version)'));
+check('template permission and bank scope',publish.includes("vp_report_can('Manage Formats')")&&publish.includes('org_id=o AND name=p_bank'));
+check('mapping status and numeric value required',publish.includes("ARRAY['status','case_num','method','analysis_version','marketValue'] <@ keys"));
+check('template payload size checked',publish.includes('octet_length(raw)>1048576'));
+check('prepare role, stage, case and pending QC',prepare.includes("vp_report_can('Prepare')")&&prepare.includes('vp_sec_case_visible(p_num)')&&prepare.includes("'Report Draft'")&&prepare.includes("status='Pending'"));
+check('independent reviewed analysis',prepare.includes("r.decision<>'Reviewed'")&&prepare.includes('r.reviewed_by=a.created_by'));
+check('latest analysis/link and bank/category matched',prepare.includes('v IS DISTINCT FROM p_version')&&prepare.includes('l IS DISTINCT FROM a.link_version')&&prepare.includes('bank_name=c.bank AND category=c.prod'));
+check('latest template and frozen values',prepare.includes('SELECT max(id)')&&prepare.includes("a.results-'lines'")&&prepare.includes('ON CONFLICT'));
+check('does not modify legacy reports or cases',!/(INSERT INTO|UPDATE|DELETE FROM) public\.(forms|vp_report_versions|vp_valuation_versions|vp_qc_tasks|cases)\b/i.test(tables+publish+prepare));
+check('no formula target overwrite and bounded zip',wb.includes('.formula()')&&wb.includes('originalSize')&&wb.includes('20*1024*1024'));
+check('audit and draft label',wb.includes('_VP20_AUDIT')&&wb.includes('WORKPAPER_NOT_RELEASED')&&prepare.includes('REVIEWED WORKPAPER - NOT RELEASED'));
+check('existing admin and case screen integration',read('src/routes/admin.bank-masters.tsx').includes('<VpP20TemplateAdmin')&&read('src/routes/cases_.$caseId.tsx').includes('<VpP20Report')&&read('src/routes/cases_.$caseId.tsx').includes('<P19Analysis'));
+check('upstream attribution',read('third_party/xlsx-populate/SOURCE_REGISTER.md').includes('7480a02575c9140c0e7995623ea192c88c1886d3')&&read('third_party/xlsx-populate/LICENSE').includes('Dave Johnson'));
+for(const f of ['01_TABLES.sql','02_PUBLISH.sql','03_PREPARE.sql']){const s=read('sql/p20/'+f);check(f+' bounded and complete',Buffer.byteLength(s)<4096&&s.trim().endsWith('COMMIT;')&&(s.match(/\$p20\$/g)||[]).length%2===0);}
+console.log(`${n}/${n} static checks passed`);

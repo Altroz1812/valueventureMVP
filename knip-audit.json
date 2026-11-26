@@ -1,0 +1,19 @@
+﻿{
+  "entry": [
+    "src/routes/**/*.{ts,tsx}",
+    "src/routeTree.gen.ts",
+    "src/{router,main,client,server,start}.{ts,tsx}",
+    "src/integrations/supabase/*.{ts,tsx}",
+    "src/test/**/*.{ts,tsx}",
+    "tests/**/*.{ts,tsx}",
+    "tools/*.mjs",
+    "supabase/functions/*/index.ts",
+    "*.config.{ts,js,mjs,cjs}"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx,js,jsx}",
+    "tests/**/*.{ts,tsx}",
+    "tools/*.mjs",
+    "supabase/functions/**/*.ts"
+  ]
+}
