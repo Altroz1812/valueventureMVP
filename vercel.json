@@ -1,5 +1,5 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "$schema": "https://vercel.sh",
   "services": {
     "app": {
       "root": ".",
@@ -8,7 +8,7 @@
     "paddle-ocr": {
       "root": "services/paddle-ocr",
       "runtime": "python",
-      "entrypoint": "main.py"
+      "entrypoint": "server.py"
     }
   },
   "rewrites": [
