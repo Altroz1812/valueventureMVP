@@ -1,3 +1,8 @@
+import { VpFin05CRegisters } from '@/components/vp-fin05c-registers';
+import { VpFin05BProfitability } from '@/components/vp-fin05b-profitability';
+import { VpFin05ADashboard } from '@/components/vp-fin05a-dashboard';
+import { VpFin04D3 } from '@/components/vp-fin04d3';
+import { VpFin04D2Accounts } from '@/components/vp-fin04d2-adjustments';
 import { VpFin04DAdvances } from '@/components/vp-fin04d-advances';
 import { VpFin04CReview } from '@/components/vp-fin04c-claims';
 import { VpFin04BReview } from '@/components/vp-fin04b-journeys';
@@ -165,6 +170,11 @@ function BillingPage(){
     <VpFin04BReview />
     <VpFin04CReview />
     <VpFin04DAdvances />
+    <VpFin04D2Accounts />
+    <VpFin05CRegisters />
+    <VpFin05BProfitability />
+    <VpFin05ADashboard />
+    <VpFin04D3 />
     {errors.length>0&&<p className="mb-4 rounded-md border border-destructive/40 p-3 text-sm text-destructive">Database error: {errMsg(errors[0])}</p>}
     {perms.isLoading&&<p className="mb-4 text-sm text-muted-foreground">Checking billing permissions…</p>}
     {!perms.isLoading&&!view&&<Card><CardContent className="p-6 text-sm text-muted-foreground">Billing access is not configured for your role. Ask your tenant administrator to enable <strong>billing.View</strong> in the Role Matrix.</CardContent></Card>}

@@ -1,0 +1,835 @@
+{
+  "tables": [
+    "vp_fin02_branch_geo",
+    "vp_fin02_client_branches",
+    "vp_fin02_report_profiles",
+    "vp_fin02_sla_rules",
+    "vp_fin02b_case_context",
+    "vp_fin02b_codes",
+    "vp_fin02b_road_evidence",
+    "vp_fin02b_rule_terms",
+    "vp_fin03a_events",
+    "vp_fin03b_batches",
+    "vp_fin03b_lines",
+    "vp_fin03c_allocations",
+    "vp_fin03c_invoices",
+    "vp_fin03c_settlements",
+    "vp_fin04a_policies",
+    "vp_fin04b_events",
+    "vp_fin04b_journeys",
+    "vp_fin04b_stops",
+    "vp_fin04c_claims",
+    "vp_fin04c_events",
+    "vp_fin04c_payments",
+    "vp_fin04d2_receipts",
+    "vp_fin04d3_ceilings",
+    "vp_fin04d_entries"
+  ],
+  "routines": [
+    {
+      "signature": "public.vp_fin02_add_client_branch(text,text,text,text,text,numeric,numeric)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02_admin_org()",
+      "browser": false,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02_catalog()",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02_decide_rule(text,integer,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02_preview(text,bigint,text,text,text,text,text,numeric,numeric)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02_radial_km(numeric,numeric,numeric,numeric)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin02_save_geo(bigint,integer,numeric,numeric,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02_save_report_profile(text,integer,text,text,text[],text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02_save_rule(jsonb,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02_standard_columns(text)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin02_travel_charge(numeric,numeric,text,numeric,text,integer)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_add_code(text,text,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02b_approval_guard()",
+      "browser": false,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02b_approve_rule(text,integer,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02b_case_info(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_catalog()",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_code_list(bigint)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_decide_road(bigint,integer,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02b_penalty(integer,integer,numeric,numeric,numeric)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_preview_case(integer,bigint,text,numeric,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_road_current(bigint,bigint,integer)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_save_case_context(integer,integer,text,text,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02b_save_terms(text,integer,jsonb,text,numeric,integer,numeric,numeric,numeric,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02b_slab_fee(jsonb,numeric,numeric)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin02b_submit_road(integer,bigint,integer,numeric,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin02b_validate_slabs(jsonb)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin03a_calculate(bigint,text,bigint,bigint,integer,text)",
+      "browser": false,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03a_decide(text,bigint,integer,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03a_history(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03a_org(text)",
+      "browser": false,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03a_preview(text,bigint,bigint,integer,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03a_queue(date,date,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03a_sources(bigint)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03a_submit(text,bigint,integer,bigint,integer,text,text,jsonb)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03b_build(bigint,text,bigint,integer)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03b_check_event(public.vp_fin03a_events)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03b_create(text,bigint,integer,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03b_decide(bigint,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03b_detail(bigint)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03b_group(public.vp_fin03a_events)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03b_legacy_guard()",
+      "browser": false,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03b_list(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03b_period(date,text)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin03b_preview(text,bigint,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03b_queue(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03c_balance(bigint,bigint)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03c_decide(bigint,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03c_invoice_detail(bigint)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03c_record_invoice(bigint,jsonb)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03c_register(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03c_submit_settlement(text,text,text,date,numeric,jsonb)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin03c_vouchers(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin03c_write_org(text)",
+      "browser": false,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04a_calculate(jsonb,boolean,jsonb)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin04a_catalogue()",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin04a_decide(bigint,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04a_list(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04a_preview(bigint,text,date,jsonb)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04a_resolve(bigint,bigint,text,date)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04a_save(bigint,text,integer,date,text,jsonb,boolean,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04a_setup()",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04a_validate_rules(jsonb)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_assert_sources(public.vp_fin04b_journeys)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_candidates(bigint,bigint,date)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_day(date)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_decide(bigint,integer,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04b_km(text,numeric,numeric,numeric)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_legacy(bigint,bigint,date,bigint)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_log(bigint,bigint,bigint,text)",
+      "browser": false,
+      "definer": false,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04b_owner()",
+      "browser": false,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_payload(public.vp_fin04b_journeys)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_point(jsonb)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_queue(date,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_review_org(boolean)",
+      "browser": false,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04b_save(date,integer,bigint,bigint[],text,text,jsonb,jsonb,numeric,numeric,numeric,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04b_submit(bigint,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04c_assert_current(public.vp_fin04c_claims)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_assert_payable(public.vp_fin04c_claims)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_calculate(bigint,bigint,bigint,text,date,jsonb)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_decide(bigint,integer,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04c_log(bigint,bigint,bigint,text)",
+      "browser": false,
+      "definer": false,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04c_month(date)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_month_view(date)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_overlap(bigint,bigint,date)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_payload(public.vp_fin04c_claims)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_payment_decide(bigint,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04c_queue(date,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_record_payment(bigint,numeric,date,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04c_rules(bigint,date)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04c_save(date,bigint,integer,jsonb)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04c_submit(bigint,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d2_receipt_decide(uuid,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d2_receipt_finish(uuid)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d2_receipt_list(bigint,bigint)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d2_receipt_reserve(bigint,bigint,text,text,text,integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d2_receipt_scope(bigint,bigint,boolean)",
+      "browser": false,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d2_record(text,bigint,numeric,date,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d2_storage_ok(text,boolean)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d3_apply(jsonb,jsonb)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin04d3_caps(bigint,date)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d3_ceiling_decide(bigint,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d3_ceiling_list(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d3_ceiling_save(text,date,numeric,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d3_record_reduction(bigint,numeric,date,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d_available(bigint,bigint)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d_balance(bigint,bigint)",
+      "browser": false,
+      "definer": false,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d_decide(bigint,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d_list(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin04d_payment_guard()",
+      "browser": false,
+      "definer": false,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d_record(text,bigint,bigint,bigint,bigint,bigint,numeric,date,text,text)",
+      "browser": true,
+      "definer": true,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin04d_validate(public.vp_fin04d_entries)",
+      "browser": false,
+      "definer": false,
+      "volatility": "VOLATILE"
+    },
+    {
+      "signature": "public.vp_fin05a_snapshot()",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin05b_snapshot(integer)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    },
+    {
+      "signature": "public.vp_fin05b_split(numeric,numeric,numeric,numeric)",
+      "browser": false,
+      "definer": false,
+      "volatility": "IMMUTABLE"
+    },
+    {
+      "signature": "public.vp_fin05c_register(text,date,date)",
+      "browser": true,
+      "definer": true,
+      "volatility": "STABLE"
+    }
+  ],
+  "indexes": {
+    "vp_fin02_sla_lookup": [
+      "vp_fin02_sla_rules",
+      false
+    ],
+    "vp_fin03a_one_open_event": [
+      "vp_fin03a_events",
+      true
+    ],
+    "vp_fin03a_case_lookup": [
+      "vp_fin03a_events",
+      false
+    ],
+    "vp_fin03b_event_reserved": [
+      "vp_fin03b_lines",
+      true
+    ],
+    "vp_fin03b_case_reserved": [
+      "vp_fin03b_lines",
+      false
+    ],
+    "vp_fin03b_batch_history": [
+      "vp_fin03b_batches",
+      false
+    ],
+    "vp_fin03c_invoice_number": [
+      "vp_fin03c_invoices",
+      true
+    ],
+    "vp_fin03c_settlement_reference": [
+      "vp_fin03c_settlements",
+      true
+    ],
+    "vp_fin03c_alloc_invoice": [
+      "vp_fin03c_allocations",
+      false
+    ],
+    "vp_fin04a_scope_revision": [
+      "vp_fin04a_policies",
+      true
+    ],
+    "vp_fin04a_effective": [
+      "vp_fin04a_policies",
+      false
+    ],
+    "vp_fin04b_review_queue": [
+      "vp_fin04b_journeys",
+      false
+    ],
+    "vp_fin04b_history": [
+      "vp_fin04b_events",
+      false
+    ],
+    "vp_fin04c_payment_ref": [
+      "vp_fin04c_payments",
+      true
+    ],
+    "vp_fin04c_pending": [
+      "vp_fin04c_payments",
+      true
+    ],
+    "vp_fin04c_queue_idx": [
+      "vp_fin04c_claims",
+      false
+    ],
+    "vp_fin04d_reference": [
+      "vp_fin04d_entries",
+      true
+    ],
+    "vp_fin04d_reverse_once": [
+      "vp_fin04d_entries",
+      true
+    ],
+    "vp_fin04d_claim_pending": [
+      "vp_fin04d_entries",
+      true
+    ],
+    "vp_fin04d_worker": [
+      "vp_fin04d_entries",
+      false
+    ],
+    "vp_fin04d_claim": [
+      "vp_fin04d_entries",
+      false
+    ],
+    "vp_fin04d_advance": [
+      "vp_fin04d_entries",
+      false
+    ],
+    "vp_fin04d2_reverse_allocation_once": [
+      "vp_fin04d_entries",
+      true
+    ],
+    "vp_fin04d2_recover": [
+      "vp_fin04d_entries",
+      false
+    ],
+    "vp_fin04d2_receipt_claim": [
+      "vp_fin04d2_receipts",
+      false
+    ],
+    "vp_fin04d2_receipt_entry": [
+      "vp_fin04d2_receipts",
+      false
+    ],
+    "vp_fin04d3_ceiling_version": [
+      "vp_fin04d3_ceilings",
+      true
+    ]
+  },
+  "triggers": {
+    "vp_fin02b_approval_guard": "vp_fin02_sla_rules",
+    "vp_fin03b_legacy_guard": "vp_invoice_records",
+    "vp_fin04d_payment_guard": "vp_fin04c_payments"
+  }
+}

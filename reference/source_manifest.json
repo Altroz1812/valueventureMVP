@@ -1,0 +1,62 @@
+[
+  {
+    "source": "ValuationPro_FIN_01_02A/01_INSTALL.sql",
+    "sha256": "803a339f6a23c7e105bf52d24b680d4378d4b1165b53cb64a0efec889f4b983b"
+  },
+  {
+    "source": "ValuationPro_FIN_02B/01_INSTALL.sql",
+    "sha256": "9021797e7cccf5e6f0707f2d678ab1ff8e323d29865811df77c34e3b14b97fef"
+  },
+  {
+    "source": "ValuationPro_FIN_03A/01_INSTALL.sql",
+    "sha256": "3064ac589a219af5b1bcecfb13de795d965a800d3b795a3a9c52172abecfe989"
+  },
+  {
+    "source": "ValuationPro_FIN_03B/01_INSTALL.sql",
+    "sha256": "8f5c3a68fa09fc0d5d148c915fc4b37aebb385ccca1c1ee760e8ded46433b9c4"
+  },
+  {
+    "source": "ValuationPro_FIN_03C/01_INSTALL.sql",
+    "sha256": "edbe6ba94807d7b567951ce9673b73eef706c57907ea98b752a9fc5bce40d047"
+  },
+  {
+    "source": "ValuationPro_FIN_04A/01_INSTALL.sql",
+    "sha256": "a831bb113613cda69d0a6dc57d8c143ea0caf5fbe8f8b39c30cba4317dbb419c"
+  },
+  {
+    "source": "ValuationPro_FIN_04B/01_INSTALL.sql",
+    "sha256": "d86f9f71f6332e0a72b30f627b44c9c8767bcbbe7c316a02856a7f59d16687b8"
+  },
+  {
+    "source": "ValuationPro_FIN_04C/01_INSTALL.sql",
+    "sha256": "6d029848bf6bdbf8dff84d6a521fcfbe316df65299b52cf03a039079744efc78"
+  },
+  {
+    "source": "ValuationPro_FIN_04D1/01_INSTALL.sql",
+    "sha256": "9def5a3865d861402ebb2eb503fde03b07b678fc3b03665d5cac6fffa6a32d43"
+  },
+  {
+    "source": "ValuationPro_FIN_04D2/01_INSTALL.sql",
+    "sha256": "bc15784bba6b2669091755653c38d45b3434e10ded639358d7c0b54c34ad0563"
+  },
+  {
+    "source": "ValuationPro_FIN_04D2/02_INSTALL_RECEIPTS.sql",
+    "sha256": "122a1ff6338a7ed3e7213b66309c0e84109ec0373e072bb2b15d77d4fdd29eea"
+  },
+  {
+    "source": "ValuationPro_FIN_04D3/01_INSTALL.sql",
+    "sha256": "56748b406a609e02372384c691e2ed3b623fa1443554734f3a094c1783621c5b"
+  },
+  {
+    "source": "ValuationPro_FIN_05A/01_INSTALL.sql",
+    "sha256": "717cc8a5cc22c6607c2f67dec74606656c12c168d478706f2352eaf20cf0f36a"
+  },
+  {
+    "source": "ValuationPro_FIN_05B/01_INSTALL.sql",
+    "sha256": "7dcd06ca18ece735ae24e78763ea836c67944c4e191133cdac70e5939c812bfd"
+  },
+  {
+    "source": "ValuationPro_FIN_05C/01_INSTALL.sql",
+    "sha256": "029478fa1d0ba1e4599fdca28c00f5d54cedb64cdb963349cb771bc57e2ba591"
+  }
+]

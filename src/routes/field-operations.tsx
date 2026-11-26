@@ -1,3 +1,4 @@
+import { VpFin04D2Field } from '@/components/vp-fin04d2-adjustments';
 import { VpFin04CClaim } from '@/components/vp-fin04c-claims';
 import { VpFin04BJourney } from '@/components/vp-fin04b-journeys';
 import { VoiceMic, VoiceLanguage, VoiceOption, spokenNumber, type VoiceLang } from '@/components/voice/vp-voice';
@@ -101,6 +102,7 @@ function FieldPage(){
   return <AppShell>
     <VpFin04BJourney />
     <VpFin04CClaim />
+    <VpFin04D2Field />
     <div className="hidden md:block">
       <PageHeader title="Field Operations" description="Site inspections, GPS attendance records and photo evidence.">
         {canAssign&&<Button onClick={()=>setSchedule({visit:null,caseNum:null})}><Plus className="size-4"/> Schedule visit</Button>}
