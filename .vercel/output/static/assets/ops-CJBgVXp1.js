@@ -1,0 +1,1 @@
+var e=[`Initiation`,`Initiation QC`,`Field Visit`,`Field QC`,`Report Draft`,`Final QC`,`Approved`,`Delivered`];function t(e,t){return[`Approved`,`Delivered`,`Submitted`,`Invoiced`].includes(t)?`done`:e<0?`overdue`:e<=1?`today`:`ok`}export{t as n,e as t};
