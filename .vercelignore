@@ -10,3 +10,5 @@ services/paddle-ocr/
 coverage/
 *.zip
 *.log
+
+services/paddle-ocr/
