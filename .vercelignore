@@ -1,0 +1,12 @@
+
+# Separately hosted Python OCR service
+services/paddle-ocr/
+
+# Local Python environments
+**/.venv/
+**/__pycache__/
+
+# Development files
+coverage/
+*.zip
+*.log
