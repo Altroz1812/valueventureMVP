@@ -1,29 +1,6 @@
-{
-  "$schema": "https://vercel.sh",
-  "services": {
-    "app": {
-      "root": ".",
-      "framework": "tanstack-start-lovable"
-    },
-    "paddle-ocr": {
-      "root": "services/paddle-ocr",
-      "runtime": "python",
-      "entrypoint": "server.py"
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/ocr/(.*)",
-      "destination": {
-        "service": "paddle-ocr",
-        "path": "/$1"
-      }
-    },
-    {
-      "source": "/(.*)",
-      "destination": {
-        "service": "app"
-      }
-    }
-  ]
+﻿{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "tanstack-start",
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci"
 }
