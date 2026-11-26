@@ -7,10 +7,18 @@
     },
     "paddle-ocr": {
       "root": "services/paddle-ocr",
-      "runtime": "python"
+      "runtime": "python",
+      "entrypoint": "main.py"
     }
   },
   "rewrites": [
+    {
+      "source": "/api/ocr/(.*)",
+      "destination": {
+        "service": "paddle-ocr",
+        "path": "/$1"
+      }
+    },
     {
       "source": "/(.*)",
       "destination": {
